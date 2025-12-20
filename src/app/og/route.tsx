@@ -29,9 +29,7 @@ export async function GET(request: Request) {
         <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', maxWidth: '60%' }}>
           {/* NAME & USERNAME */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-            <div style={{ fontSize: 56, fontWeight: 900, letterSpacing: '-0.03em' }}>
-              Maverick
-            </div>
+            <div style={{ fontSize: 56, fontWeight: 900, letterSpacing: '-0.03em' }}>Maverick</div>
             <div style={{ fontSize: 24, color: '#888', fontWeight: 500 }}>@MaverickVilasara</div>
           </div>
 

@@ -8,8 +8,7 @@ export const metadata: Metadata = {
     'Read articles about web development, programming, and technology. Learn about React, Next.js, TypeScript, and modern software development practices.',
   openGraph: {
     title: 'Blog — Maverick',
-    description:
-      'Read articles about web development, programming, and technology by Maverick',
+    description: 'Read articles about web development, programming, and technology by Maverick',
     url: 'https://maverick.live/blog',
     siteName: 'Maverick Portfolio',
     images: [
