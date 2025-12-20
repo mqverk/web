@@ -69,7 +69,7 @@ function Github() {
   return (
     <div className="flex justify-center pb-2">
       <GitHubCalendar
-        username="MannuVilasara"
+        username="MaverickVilasara"
         colorScheme={resolvedTheme === 'dark' ? 'dark' : 'light'}
         blockSize={7.5}
         fontSize={14}

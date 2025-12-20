@@ -20,7 +20,7 @@ export default function HomeContent() {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = async () => {
-    await navigator.clipboard.writeText('npx hello-mannu');
+    await navigator.clipboard.writeText('npx hello-maverick');
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -84,7 +84,7 @@ export default function HomeContent() {
               aria-label="Copy npx command"
             >
               <Terminal className="h-4 w-4 text-muted-foreground group-hover:text-foreground transition-colors" />
-              <code className="font-mono text-sm text-foreground">npx hello-mannu</code>
+              <code className="font-mono text-sm text-foreground">npx hello-maverick</code>
               <div className="pl-3 border-l border-border/50 ml-1">
                 {copied ? (
                   <Check className="h-3.5 w-3.5 text-green-500 animate-in zoom-in" />
@@ -103,7 +103,7 @@ export default function HomeContent() {
                 asChild
               >
                 <a
-                  href="https://github.com/MannuVilasara"
+                  href="https://github.com/MaverickVilasara"
                   target="_blank"
                   rel="noopener noreferrer"
                   title="GitHub"
@@ -118,7 +118,7 @@ export default function HomeContent() {
                 asChild
               >
                 <a
-                  href="https://instagram.com/dev_mannuu"
+                  href="https://instagram.com/dev_maverick"
                   target="_blank"
                   rel="noopener noreferrer"
                   title="Instagram"

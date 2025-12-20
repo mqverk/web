@@ -36,15 +36,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     '@context': 'https://schema.org',
     '@type': 'Person',
     name: 'Manpreet Singh',
-    alternateName: 'Mannu Vilasara',
-    url: 'https://mannu.live',
-    image: 'https://mannu.live/og.png',
+    alternateName: 'Maverick Vilasara',
+    url: 'https://maverick.live',
+    image: 'https://maverick.live/og.png',
     jobTitle: 'Full Stack Developer',
     worksFor: {
       '@type': 'Organization',
       name: 'Independent',
     },
-    sameAs: ['https://github.com/MannuVilasara', 'https://twitter.com/dev_mannuu'],
+    sameAs: ['https://github.com/MaverickVilasara', 'https://twitter.com/dev_maverick'],
     knowsAbout: [
       'Web Development',
       'Full Stack Development',
@@ -59,7 +59,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     name: 'Manpreet Singh Portfolio',
-    url: 'https://mannu.live',
+    url: 'https://maverick.live',
     description:
       'Full Stack Developer & Designer portfolio featuring web apps, UI experiments, and open source contributions.',
     author: {

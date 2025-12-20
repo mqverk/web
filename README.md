@@ -136,7 +136,7 @@ The site is optimized for deployment on Vercel:
 1. Configure environment variables
 1. Deploy automatically on push to main branch
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/MannuVilasara/me)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/MaverickVilasara/me)
 
 ## 🤝 Contributing
 
@@ -148,12 +148,12 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🔗 Links
 
-- **Live Site**: [https://mannu.live](https://mannu.live)
-- **GitHub**: [@MannuVilasara](https://github.com/MannuVilasara)
-- **Twitter**: [@dev_mannuu](https://twitter.com/dev_mannuu)
+- **Live Site**: [https://maverick.live](https://maverick.live)
+- **GitHub**: [@MaverickVilasara](https://github.com/MaverickVilasara)
+- **Twitter**: [@dev_maverick](https://twitter.com/dev_maverick)
 
 ---
 
-**Built with ❤️ by [Manpreet Singh](https://mannu.live)**
+**Built with ❤️ by [Manpreet Singh](https://maverick.live)**
 
-[⭐ Star this repo](https://github.com/MannuVilasara/me/stargazers) • [🐛 Report Bug](https://github.com/MannuVilasara/me/issues) • [💡 Request Feature](https://github.com/MannuVilasara/me/issues)
+[⭐ Star this repo](https://github.com/MaverickVilasara/me/stargazers) • [🐛 Report Bug](https://github.com/MaverickVilasara/me/issues) • [💡 Request Feature](https://github.com/MaverickVilasara/me/issues)

@@ -84,14 +84,14 @@ export function CommandMenu({
           break;
         case 'p':
           if (shiftKey) {
-            runCommand(() => window.open('https://mannu.live', '_blank'));
+            runCommand(() => window.open('https://maverick.live', '_blank'));
           } else {
             runCommand(() => router.push('/projects'));
           }
           break;
         case 'g':
           if (shiftKey) {
-            runCommand(() => window.open('https://github.com/MannuVilasara', '_blank'));
+            runCommand(() => window.open('https://github.com/MaverickVilasara', '_blank'));
           } else {
             runCommand(() => router.push('/guestbook'));
           }
@@ -271,7 +271,7 @@ export function CommandMenu({
         <CommandGroup heading="Links">
           <CommandItem
             onSelect={() =>
-              runCommand(() => window.open('https://github.com/MannuVilasara', '_blank'))
+              runCommand(() => window.open('https://github.com/MaverickVilasara', '_blank'))
             }
           >
             <Github size={16} className="mr-2 text-muted-foreground" />
@@ -290,7 +290,7 @@ export function CommandMenu({
             <CommandShortcut>⌘⇧D</CommandShortcut>
           </CommandItem>
           <CommandItem
-            onSelect={() => runCommand(() => window.open('https://mannu.live', '_blank'))}
+            onSelect={() => runCommand(() => window.open('https://maverick.live', '_blank'))}
           >
             <Globe size={16} className="mr-2 text-muted-foreground" />
             <span className="font-mono">Portfolio</span>

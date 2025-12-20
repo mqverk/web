@@ -32,7 +32,7 @@ export async function GET(request: Request) {
             <div style={{ fontSize: 56, fontWeight: 900, letterSpacing: '-0.03em' }}>
               Manpreet Singh
             </div>
-            <div style={{ fontSize: 24, color: '#888', fontWeight: 500 }}>@MannuVilasara</div>
+            <div style={{ fontSize: 24, color: '#888', fontWeight: 500 }}>@MaverickVilasara</div>
           </div>
 
           {/* BIO */}
@@ -57,7 +57,7 @@ export async function GET(request: Request) {
               marginTop: '12px',
             }}
           >
-            <div style={{ display: 'flex', alignItems: 'center' }}>🌐 mannu.live</div>
+            <div style={{ display: 'flex', alignItems: 'center' }}>🌐 maverick.live</div>
             <div style={{ display: 'flex', alignItems: 'center' }}>📍 India</div>
           </div>
         </div>

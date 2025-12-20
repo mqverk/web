@@ -8,7 +8,7 @@ export default function Footer() {
       <footer className="text-sm text-muted-foreground flex justify-between items-center w-full mono">
         <div>© 2025 Manpreet Singh</div>
         <Link
-          href="https://github.com/MannuVilasara"
+          href="https://github.com/MaverickVilasara"
           target="_blank"
           rel="noopener noreferrer"
           className="hover:underline flex items-center gap-1"

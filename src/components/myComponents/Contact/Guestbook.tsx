@@ -183,7 +183,7 @@ export default function Guestbook() {
     );
   }
 
-  const isAdmin = session?.user?.username === 'MannuVilasara';
+  const isAdmin = session?.user?.username === 'MaverickVilasara';
 
   return (
     <div className="max-w-2xl mx-auto px-4 py-8 sm:py-8 animate-in fade-in duration-700">
@@ -334,7 +334,7 @@ export default function Guestbook() {
                         </div>
                       )}
 
-                      {entry.username === 'MannuVilasara' && (
+                      {entry.username === 'MaverickVilasara' && (
                         <Badge
                           variant="secondary"
                           className="bg-green-500/10 text-green-700 border-green-500/20 text-xs px-1.5 py-0.5"
@@ -360,7 +360,7 @@ export default function Guestbook() {
 
                     {/* Actions */}
                     <div className="flex items-center gap-1">
-                      {session?.user.username === 'MannuVilasara' && (
+                      {session?.user.username === 'MaverickVilasara' && (
                         <button
                           onClick={() => togglePin(entry.id, entry.pinned ?? false)}
                           className="opacity-0 group-hover:opacity-100 transition-opacity p-1.5 hover:bg-blue-500/10 hover:text-blue-600 rounded-md text-muted-foreground"

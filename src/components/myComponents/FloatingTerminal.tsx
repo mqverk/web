@@ -12,7 +12,7 @@ type HistoryItem = {
 
 // --- Mock File System ---
 const fileSystem: Record<string, string> = {
-  'about.txt': `Hi! I'm Manpreet Singh, also known as Mannu Vilasara.
+  'about.txt': `Hi! I'm Manpreet Singh, also known as Maverick Vilasara.
 
 I'm a passionate Full Stack Developer from India with a love for creating beautiful and functional web applications. I specialize in modern web technologies and enjoy turning ideas into reality through code.
 
@@ -47,12 +47,12 @@ Currently focused on building scalable web applications and learning about syste
 - **System Design** - Scalable architecture patterns`,
   'contact.json': `{
   "name": "Manpreet Singh",
-  "alias": "MannuVilasara",
-  "email": "mannuvilasara@gmail.com",
-  "github": "https://github.com/MannuVilasara",
-  "twitter": "https://twitter.com/dev_mannuu",
-  "website": "https://mannu.live",
-  "discord": "dev_mannu",
+  "alias": "MaverickVilasara",
+  "email": "maverickvilasara@gmail.com",
+  "github": "https://github.com/MaverickVilasara",
+  "twitter": "https://twitter.com/dev_maverick",
+  "website": "https://maverick.live",
+  "discord": "dev_maverick",
   "location": "India",
   "timezone": "IST (UTC+5:30)",
   "status": "Available for opportunities"
@@ -68,7 +68,7 @@ export default function FloatingTerminal() {
       type: 'output',
       content: (
         <div className="space-y-1">
-          <p>Welcome to MannuShell v1.0.0 🚀</p>
+          <p>Welcome to MaverickShell v1.0.0 🚀</p>
           <p className="text-muted-foreground">
             Type <span className="text-green-400 font-bold">'help'</span> to see available commands.
           </p>
