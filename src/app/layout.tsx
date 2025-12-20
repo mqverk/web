@@ -58,13 +58,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   const websiteSchema = {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    name: 'Manpreet Singh Portfolio',
+    name: 'Maverick Portfolio',
     url: 'https://maverick.live',
     description:
       'Full Stack Developer & Designer portfolio featuring web apps, UI experiments, and open source contributions.',
     author: {
       '@type': 'Person',
-      name: 'Manpreet Singh',
+      name: 'Maverick',
     },
     inLanguage: 'en-US',
   };

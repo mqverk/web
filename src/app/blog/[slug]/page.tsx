@@ -100,7 +100,7 @@ export default async function Blog({ params }: BlogPageProps) {
     url: `${baseUrl}/blog/${post.slug}`,
     author: {
       '@type': 'Person',
-      name: 'Manpreet Singh',
+      name: 'Maverick',
       url: 'https://mannu.live',
     },
   };

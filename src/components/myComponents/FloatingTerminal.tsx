@@ -12,7 +12,7 @@ type HistoryItem = {
 
 // --- Mock File System ---
 const fileSystem: Record<string, string> = {
-  'about.txt': `Hi! I'm Manpreet Singh, also known as Maverick Vilasara.
+  'about.txt': `Hi! I'm Maverick, a passionate full-stack developer from India.
 
 I'm a passionate Full Stack Developer from India with a love for creating beautiful and functional web applications. I specialize in modern web technologies and enjoy turning ideas into reality through code.
 
@@ -46,7 +46,7 @@ Currently focused on building scalable web applications and learning about syste
 - **AWS/Azure** - Cloud platforms
 - **System Design** - Scalable architecture patterns`,
   'contact.json': `{
-  "name": "Manpreet Singh",
+  "name": "Maverick",
   "alias": "MaverickVilasara",
   "email": "maverickvilasara@gmail.com",
   "github": "https://github.com/MaverickVilasara",

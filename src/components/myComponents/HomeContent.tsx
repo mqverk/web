@@ -56,7 +56,7 @@ export default function HomeContent() {
       />
       <div className="flex flex-col">
         <main className="grow px-4 max-w-3xl mx-auto py-8">
-          <h1 className="text-4xl font-bold mb-4">Manpreet Singh</h1>
+          <h1 className="text-4xl font-bold mb-4">Maverick</h1>
           <div className="text-xl sm:text-2xl text-muted-foreground font-medium h-8 flex items-center mb-8">
             <span className="mr-2 text-foreground/50">{'>'}</span>
             <Typewriter

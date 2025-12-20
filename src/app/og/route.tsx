@@ -30,7 +30,7 @@ export async function GET(request: Request) {
           {/* NAME & USERNAME */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
             <div style={{ fontSize: 56, fontWeight: 900, letterSpacing: '-0.03em' }}>
-              Manpreet Singh
+              Maverick
             </div>
             <div style={{ fontSize: 24, color: '#888', fontWeight: 500 }}>@MaverickVilasara</div>
           </div>
@@ -67,7 +67,7 @@ export async function GET(request: Request) {
           src="https://avatars.githubusercontent.com/u/117009138?v=4"
           width={180}
           height={180}
-          alt="Manpreet Singh Avatar"
+          alt="Maverick Avatar"
           style={{
             borderRadius: '50%',
             border: '4px solid #222',

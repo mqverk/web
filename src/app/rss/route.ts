@@ -25,9 +25,9 @@ export async function GET() {
   const rssFeed = `<?xml version="1.0" encoding="UTF-8" ?>
   <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>Manpreet Singh's Blog</title>
+        <title>Maverick's Blog</title>
         <link>${baseUrl}</link>
-        <description>Articles about web development, programming, and technology by Manpreet Singh</description>
+        <description>Articles about web development, programming, and technology by Maverick</description>
         <language>en-us</language>
         <atom:link href="${baseUrl}/rss" rel="self" type="application/rss+xml" />
         ${itemsXml}

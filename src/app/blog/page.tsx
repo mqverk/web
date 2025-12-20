@@ -3,21 +3,21 @@ import { BlogPosts } from '@/components/myComponents/stats';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Blog — Manpreet Singh',
+  title: 'Blog — Maverick',
   description:
     'Read articles about web development, programming, and technology. Learn about React, Next.js, TypeScript, and modern software development practices.',
   openGraph: {
-    title: 'Blog — Manpreet Singh',
+    title: 'Blog — Maverick',
     description:
-      'Read articles about web development, programming, and technology by Manpreet Singh.',
+      'Read articles about web development, programming, and technology by Maverick',
     url: 'https://maverick.live/blog',
-    siteName: 'Manpreet Singh Portfolio',
+    siteName: 'Maverick Portfolio',
     images: [
       {
         url: 'https://maverick.live/og?title=Blog%20%E2%80%94%20Manpreet%20Singh&description=Read%20articles%20about%20web%20development%2C%20programming%2C%20and%20technology',
         width: 1200,
         height: 630,
-        alt: 'Manpreet Singh Blog',
+        alt: 'Maverick Blog',
       },
     ],
     locale: 'en_US',

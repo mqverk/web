@@ -1,11 +1,11 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Projects — Manpreet Singh',
+  title: 'Projects — Maverick',
   description:
     'Browse my portfolio of web applications, creative experiments, and open-source contributions. Built with React, Next.js, TypeScript, and modern web technologies.',
   openGraph: {
-    title: 'Projects — Manpreet Singh',
+    title: 'Projects — Maverick',
     description:
       'Browse my portfolio of web applications, creative experiments, and open-source contributions.',
     url: 'https://maverick.live/projects',

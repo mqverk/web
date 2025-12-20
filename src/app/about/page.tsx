@@ -4,21 +4,21 @@ import { webdev, tools, database, devops } from '@/data/techstack';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'About Me — Manpreet Singh',
+  title: 'About Me — Maverick',
   description:
-    'Learn more about Manpreet Singh, a Full Stack Developer passionate about building scalable web applications with modern technologies like React, Next.js, and TypeScript.',
+    'Learn more about Maverick, a Full Stack Developer passionate about building scalable web applications with modern technologies like React, Next.js, and TypeScript.',
   openGraph: {
-    title: 'About Me — Manpreet Singh',
+    title: 'About Me — Maverick',
     description:
-      'Learn more about Manpreet Singh, a Full Stack Developer passionate about building scalable web applications.',
+      'Learn more about Maverick, a Full Stack Developer passionate about building scalable web applications',
     url: 'https://mannu.live/about',
-    siteName: 'Manpreet Singh Portfolio',
+    siteName: 'Maverick Portfolio',
     images: [
       {
         url: 'https://mannu.live/og?title=About%20Me%20%E2%80%94%20Manpreet%20Singh&description=Learn%20more%20about%20Manpreet%20Singh%2C%20a%20Full%20Stack%20Developer',
         width: 1200,
         height: 630,
-        alt: 'About Manpreet Singh',
+        alt: 'About Maverick',
       },
     ],
     locale: 'en_US',

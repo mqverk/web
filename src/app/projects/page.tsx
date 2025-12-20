@@ -4,18 +4,18 @@ import ProjectSection from '@/components/myComponents/projects/ProjectSection';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Projects — Manpreet Singh',
+  title: 'Projects — Maverick',
   description:
     'Explore my portfolio of web applications, creative experiments, and open-source contributions built with modern technologies.',
   openGraph: {
-    title: 'Projects — Manpreet Singh',
+    title: 'Projects — Maverick',
     description:
       'Explore my portfolio of web applications, creative experiments, and open-source contributions.',
     url: 'https://maverick.live/projects',
-    siteName: 'Manpreet Singh Portfolio',
+    siteName: 'Maverick Portfolio',
     images: [
       {
-        url: 'https://maverick.live/og?title=Projects%20%E2%80%94%20Manpreet%20Singh&description=Explore%20my%20portfolio%20of%20web%20applications%20and%20open-source%20contributions',
+        url: 'https://maverick.live/og?title=Projects%20%E2%80%94%20Maverick&description=Explore%20my%20portfolio%20of%20web%20applications%20and%20open-source%20contributions',
         width: 1200,
         height: 630,
         alt: 'Manpreet Singh Projects',

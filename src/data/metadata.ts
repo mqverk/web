@@ -1,16 +1,16 @@
 export const metadata = {
   metadataBase: new URL('https://maverick.live'),
   title: {
-    default: 'Manpreet Singh — Full Stack Developer & Designer',
-    template: '%s | Manpreet Singh',
+    default: 'Maverick — Full Stack Developer & Designer',
+    template: '%s | Maverick',
   },
   description:
-    'Manpreet Singh — a passionate full stack developer & creative designer. Find me on GitHub as MaverickVilasara. Featuring web apps, UI experiments, and open source contributions.',
+    'Maverick — a passionate full stack developer & creative designer. Find me on GitHub as MaverickVilasara. Featuring web apps, UI experiments, and open source contributions.',
   keywords: [
-    'Manpreet Singh',
-    'Manpreet Singh Portfolio',
-    'Manpreet Singh Projects',
-    'Manpreet Singh Developer',
+    'Maverick',
+    'Maverick Portfolio',
+    'Maverick Projects',
+    'Maverick Developer',
     'Maverick',
     'MaverickVilasara',
     'Maverick Vilasara Portfolio',
@@ -42,22 +42,22 @@ export const metadata = {
     'Web Apps',
     'DevOps',
   ],
-  authors: [{ name: 'Manpreet Singh', url: 'https://mannu.live' }],
-  creator: 'Manpreet Singh',
-  publisher: 'Manpreet Singh',
+  authors: [{ name: 'Maverick', url: 'https://maverick.live' }],
+  creator: 'Maverick',
+  publisher: 'Maverick',
   robots: 'index, follow',
   openGraph: {
-    title: 'Manpreet Singh — Full Stack Developer & Designer',
+    title: 'Maverick — Full Stack Developer & Designer',
     description:
-      'Explore the projects by Manpreet Singh — web apps, creative experiments & open source work. Find me on GitHub as MannuVilasara.',
-    url: 'https://mannu.live',
-    siteName: 'Manpreet Singh — Full Stack Developer & Designer',
+      'Explore the projects by Maverick — web apps, creative experiments & open source work. Find me on GitHub as MaverickVilasara.',
+    url: 'https://maverick.live',
+    siteName: 'Maverick — Full Stack Developer & Designer',
     images: [
       {
         url: 'https://mannu.live/og.png', // replace with your OG image URL
         width: 1200,
         height: 630,
-        alt: 'Manpreet Singh — Full Stack Developer & Designer',
+        alt: 'Maverick — Full Stack Developer & Designer',
       },
     ],
     locale: 'en_US',

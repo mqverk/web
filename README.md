@@ -1,4 +1,4 @@
-# Portfolio Website - Manpreet Singh
+# Portfolio Website - Maverick
 
 A modern, responsive portfolio website built with Next.js 15, TypeScript, and Tailwind CSS. Features real-time Discord status, GitHub activity, blog posts, and project showcases.
 
@@ -154,6 +154,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-**Built with ❤️ by [Manpreet Singh](https://maverick.live)**
+**Built with ❤️ by [Maverick](https://maverick.live)**
 
 [⭐ Star this repo](https://github.com/MaverickVilasara/me/stargazers) • [🐛 Report Bug](https://github.com/MaverickVilasara/me/issues) • [💡 Request Feature](https://github.com/MaverickVilasara/me/issues)
