@@ -64,7 +64,7 @@ Here's the plot twist that'll ruin your day: **browsers always animate `backgrou
 
 Picture this: you're transitioning from vibrant red (`rgb(255, 77, 77)`) to electric teal (`rgb(77, 255, 255)`). The RGB channels move independently. Red channel goes down, green and blue go up. They all meet in the middle at roughly equal values.
 
-**Result?** A depressing, washed-out gray. 
+**Result?** A depressing, washed-out gray.
 
 Your colors don't gradually shift through the rainbow like you imagined. Instead, they take a detour through Grayscale Town, population: your broken dreams.
 
@@ -85,7 +85,7 @@ button:hover {
 }
 ```
 
-Know what happens? **Absolutely nothing.** 
+Know what happens? **Absolutely nothing.**
 
 Why? Because `hsl(0deg 100% 65%)` and `hsl(360deg 100% 65%)` are mathematically identical. The browser converts both to the same RGB value, sees no difference, and just... doesn't animate. Cool cool cool.
 
@@ -142,13 +142,13 @@ For those who enjoy pain— I mean, cutting-edge CSS:
 }
 ```
 
-By giving your custom property an actual *type*, the browser can animate it properly. This forces recalculation on every frame, dodging the RGB conversion entirely.
+By giving your custom property an actual _type_, the browser can animate it properly. This forces recalculation on every frame, dodging the RGB conversion entirely.
 
 **The catch?** The `filter` approach is faster and has better browser support. Save this trick for when you want to show off at parties.
 
 ## Bonus: Adding That Sparkle Factor
 
-Want to make your particles feel *alive*? Add a twinkling effect:
+Want to make your particles feel _alive_? Add a twinkling effect:
 
 ```css
 @keyframes fadeToTransparent {
@@ -173,7 +173,7 @@ Want to make your particles feel *alive*? Add a twinkling effect:
 }
 ```
 
-The secret sauce? **Randomize the timing.** Give each particle its own `--twinkle-duration` and `--twinkle-amount`. They'll flicker independently instead of blinking in unison like a synchronized swimming team. Much more organic, much more *chef's kiss*.
+The secret sauce? **Randomize the timing.** Give each particle its own `--twinkle-duration` and `--twinkle-amount`. They'll flicker independently instead of blinking in unison like a synchronized swimming team. Much more organic, much more _chef's kiss_.
 
 ## TL;DR
 
