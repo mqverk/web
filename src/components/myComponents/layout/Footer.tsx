@@ -6,9 +6,9 @@ export default function Footer() {
   return (
     <section className="mt-12 border-t pt-4 pb-6">
       <footer className="text-sm text-muted-foreground flex justify-between items-center w-full mono">
-        <div>© 2025 Manpreet Singh</div>
+        <div>© 2025 mqverk</div>
         <Link
-          href="https://github.com/MaverickVilasara"
+          href="https://github.com/mqverk"
           target="_blank"
           rel="noopener noreferrer"
           className="hover:underline flex items-center gap-1"
