@@ -98,7 +98,7 @@ export default function HomeContent() {
               <Button
                 variant="ghost"
                 size="icon"
-                className="text-muted-foreground hover:text-foreground transition-all duration-300 hover:scale-110"
+                className="text-muted-foreground hover:text-foreground transition-all duration-300 hover:bg-foreground/10 hover:backdrop-blur-sm rounded-full"
                 asChild
               >
                 <a
@@ -107,13 +107,13 @@ export default function HomeContent() {
                   rel="noopener noreferrer"
                   title="GitHub"
                 >
-                  <Github className="h-5 w-5" />
+                  <Github className="h-5 w-5 stroke-[1.5]" />
                 </a>
               </Button>
               <Button
                 variant="ghost"
                 size="icon"
-                className="text-muted-foreground hover:text-foreground transition-all duration-300 hover:scale-110"
+                className="text-muted-foreground hover:text-foreground transition-all duration-300 hover:bg-foreground/10 hover:backdrop-blur-sm rounded-full"
                 asChild
               >
                 <a
@@ -122,13 +122,13 @@ export default function HomeContent() {
                   rel="noopener noreferrer"
                   title="Instagram"
                 >
-                  <Instagram className="h-5 w-5" />
+                  <Instagram className="h-5 w-5 stroke-[1.5]" />
                 </a>
               </Button>
               <Button
                 variant="ghost"
                 size="icon"
-                className="text-muted-foreground hover:text-foreground transition-all duration-300 hover:scale-110"
+                className="text-muted-foreground hover:text-foreground transition-all duration-300 hover:bg-foreground/10 hover:backdrop-blur-sm rounded-full"
                 asChild
               >
                 <a
@@ -137,7 +137,7 @@ export default function HomeContent() {
                   rel="noopener noreferrer"
                   title="Discord"
                 >
-                  <MessageCircle className="h-5 w-5" />
+                  <MessageCircle className="h-5 w-5 stroke-[1.5]" />
                 </a>
               </Button>
             </div>
