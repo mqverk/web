@@ -20,6 +20,7 @@ import {
   SiPnpm,
   SiEslint,
   SiNodedotjs,
+  SiJest,
 } from 'react-icons/si';
 import { VscVscode } from 'react-icons/vsc';
 
@@ -68,6 +69,11 @@ export const webdev = [
     name: 'ExpressJS',
     description: 'Web Framework for Node.js',
     icon: <SiExpress className="text-gray-800 dark:text-gray-400 text-4xl" />,
+  },
+  {
+    name: 'Jest',
+    description: 'Testing Framework',
+    icon: <SiJest className="text-red-500 text-4xl" />,
   },
 ];
 
