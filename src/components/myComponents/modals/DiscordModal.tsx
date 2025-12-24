@@ -242,14 +242,13 @@ export function DiscordModal({ isOpen, onClose, data }: DiscordModalProps) {
               ease: [0.16, 1, 0.3, 1],
             }}
             onClick={(e) => e.stopPropagation()}
-            className="bg-background border border-border rounded-xl shadow-2xl max-w-md w-full overflow-hidden relative flex flex-col"
+            className="bg-background border border-border rounded-2xl shadow-2xl max-w-md w-full overflow-hidden relative flex flex-col"
           >
-            {/* Top Banner - MONOCHROME */}
-            {/* Changed from Blue Gradient to solid Muted background */}
-            <div className="h-28 bg-muted border-b border-border w-full relative pattern-grid-lg">
+            {/* Top Banner */}
+            <div className="h-28 bg-gradient-to-r from-foreground/5 via-foreground/[0.02] to-background border-b border-border/20 w-full relative">
               <button
                 onClick={onClose}
-                className="absolute top-3 right-3 p-2 bg-background/50 hover:bg-background text-foreground rounded-full transition-colors z-10 border border-border/50"
+                className="absolute top-4 right-4 p-2 bg-background/80 hover:bg-background text-foreground rounded-lg transition-colors z-10 border border-border/50"
                 title="Close modal"
               >
                 <X size={18} />
@@ -336,11 +335,11 @@ export function DiscordModal({ isOpen, onClose, data }: DiscordModalProps) {
               </div>
 
               {/* User Info & Badges */}
-              <div className="mb-6 bg-muted/30 p-4 rounded-xl border border-border">
+              <div className="mb-6 bg-gradient-to-br from-foreground/[0.04] to-transparent p-4 rounded-xl border border-border/20 hover:border-border/40 transition-colors">
                 <h4 className="font-bold text-2xl text-foreground leading-tight truncate flex items-center gap-2">
                   {user.global_name || user.username}
                 </h4>
-                <p className="text-base text-muted-foreground font-medium">@{user.username}</p>
+                <p className="text-sm text-foreground/60 font-medium">@{user.username}</p>
 
                 {renderBadges()}
               </div>
@@ -357,7 +356,7 @@ export function DiscordModal({ isOpen, onClose, data }: DiscordModalProps) {
 
                   {activities.map((activity: DiscordActivity, index: number) => (
                     <div key={index} className="relative group">
-                      <div className="flex gap-4 p-3 rounded-xl bg-card border border-border shadow-sm">
+                      <div className="flex gap-4 p-3 rounded-xl bg-gradient-to-br from-foreground/[0.04] to-transparent border border-border/20 hover:border-border/40 transition-colors shadow-sm">
                         {/* Large Asset */}
                         <div className="relative shrink-0">
                           {activity.assets?.large_image ? (
@@ -458,15 +457,14 @@ export function DiscordModal({ isOpen, onClose, data }: DiscordModalProps) {
                 </div>
               )}
 
-              {/* Action Button - MONOCHROME */}
-              {/* Replaced specific Blue #5865F2 with Primary/Primary-Foreground */}
+              {/* Action Button */}
               <a
                 href={`https://discord.com/users/${user.id}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 w-full px-4 py-3 bg-primary text-primary-foreground hover:bg-primary/90 rounded-xl transition-all shadow-sm font-medium active:scale-[0.98]"
+                className="flex items-center justify-center gap-2 w-full px-4 py-3 bg-gradient-to-r from-foreground/10 to-foreground/5 hover:from-foreground/15 hover:to-foreground/10 text-foreground font-medium rounded-xl transition-all active:scale-[0.98] border border-border/30 hover:border-border/50"
               >
-                <ExternalLink size={18} />
+                <ExternalLink size={16} />
                 View Full Profile
               </a>
             </div>

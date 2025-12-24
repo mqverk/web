@@ -41,23 +41,24 @@ export function NowPlayingModal({ isOpen, onClose, data }: NowPlayingModalProps)
               ease: [0.16, 1, 0.3, 1],
             }}
             onClick={(e) => e.stopPropagation()}
-            className="bg-background border border-border rounded-xl shadow-2xl max-w-lg w-full overflow-hidden"
+            className="bg-background border border-border rounded-2xl shadow-2xl max-w-lg w-full overflow-hidden"
           >
             {/* Header */}
-            <div className="flex items-center justify-between p-4 border-b border-border/50 bg-muted/20">
-              <div className="flex items-center gap-2">
-                {/* MONOCHROME: Changed text-primary to text-foreground, kept pulse if playing */}
-                <Radio
-                  size={18}
-                  className={
-                    data?.isPlaying ? 'text-foreground animate-pulse' : 'text-muted-foreground'
-                  }
-                />
-                <h3 className="text-lg font-semibold">Now Playing</h3>
+            <div className="flex items-center justify-between p-6 border-b border-border/20 bg-gradient-to-r from-foreground/[0.04] via-foreground/[0.01] to-background">
+              <div className="flex items-center gap-3">
+                <div className="p-2 rounded-lg bg-foreground/8">
+                  <Radio
+                    size={18}
+                    className={
+                      data?.isPlaying ? 'text-foreground animate-pulse' : 'text-foreground/60'
+                    }
+                  />
+                </div>
+                <h3 className="text-lg font-bold tracking-tight">Now Playing</h3>
               </div>
               <button
                 onClick={onClose}
-                className="p-2 hover:bg-muted rounded-full transition-colors text-muted-foreground hover:text-foreground"
+                className="p-2 hover:bg-foreground/8 rounded-lg transition-colors text-foreground/60 hover:text-foreground"
                 title="Close modal"
               >
                 <X size={20} />
@@ -69,9 +70,8 @@ export function NowPlayingModal({ isOpen, onClose, data }: NowPlayingModalProps)
                 <div className="flex items-start gap-6 mb-6">
                   {/* Left: Album Art */}
                   <div className="relative shrink-0">
-                    {/* MONOCHROME: Changed ring color to muted */}
                     <div
-                      className={`w-32 h-32 rounded-lg shadow-lg overflow-hidden border border-border ${data?.isPlaying ? 'ring-2 ring-muted-foreground/20' : ''}`}
+                      className={`w-32 h-32 rounded-xl shadow-lg overflow-hidden border border-border/50 ${data?.isPlaying ? 'ring-2 ring-foreground/20' : ''}`}
                     >
                       {data.albumImageUrl ? (
                         <img
@@ -113,28 +113,27 @@ export function NowPlayingModal({ isOpen, onClose, data }: NowPlayingModalProps)
                   {/* Right: Info */}
                   <div className="flex-1 min-w-0 flex flex-col justify-center h-32">
                     {/* Source Badge */}
-                    <div className="mb-2">
-                      {/* MONOCHROME: Removed brandText, using standard muted colors */}
-                      <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium bg-muted/50 text-muted-foreground capitalize border border-border">
+                    <div className="mb-3">
+                      <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-semibold bg-foreground/8 text-foreground/70 capitalize border border-border/30 uppercase tracking-widest">
                         {data.source}
                       </span>
                     </div>
 
                     {/* Song Info */}
-                    <div className="space-y-1">
+                    <div className="space-y-1.5">
                       <h4
-                        className="font-bold text-xl leading-tight text-foreground truncate"
+                        className="font-bold text-lg leading-tight text-foreground truncate"
                         title={data.title}
                       >
                         {data.title}
                       </h4>
                       <p
-                        className="text-base font-medium text-foreground/80 truncate"
+                        className="text-sm font-medium text-foreground/70 truncate"
                         title={data.artist}
                       >
                         {data.artist}
                       </p>
-                      <p className="text-sm text-muted-foreground truncate" title={data.album}>
+                      <p className="text-xs text-foreground/50 truncate" title={data.album}>
                         {data.album}
                       </p>
                     </div>
@@ -154,16 +153,15 @@ export function NowPlayingModal({ isOpen, onClose, data }: NowPlayingModalProps)
 
               {/* Footer Action */}
               {isPlaying && data && (
-                <div className="pt-2">
-                  {/* MONOCHROME: Changed to standard primary button styles instead of brand colors */}
+                <div className="pt-4">
                   <a
                     href={data.songUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-2 w-full px-6 py-3.5 bg-primary text-primary-foreground hover:bg-primary/90 rounded-xl font-medium shadow-sm transition-all active:scale-[0.99]"
+                    className="flex items-center justify-center gap-2 w-full px-6 py-3 bg-gradient-to-r from-foreground/10 to-foreground/5 hover:from-foreground/15 hover:to-foreground/10 text-foreground font-medium rounded-xl transition-all active:scale-[0.98] border border-border/30 hover:border-border/50"
                   >
-                    <ExternalLink size={18} />
-                    <span>Play on {isSpotify ? 'Spotify' : 'Last.fm'}</span>
+                    <ExternalLink size={16} />
+                    <span>Open on {isSpotify ? 'Spotify' : 'Last.fm'}</span>
                   </a>
                 </div>
               )}
