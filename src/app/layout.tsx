@@ -105,8 +105,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <CommandMenuProvider>
                   <ProgressBar />
                   <Oneko />
-                  <Navbar />
-                  <div className="mx-auto max-w-2xl px-5 sm:px-6 lg:px-8 flex flex-col pt-32 min-h-screen">
+                  <div className="mx-auto max-w-2xl px-5 sm:px-6 lg:px-8 flex flex-col pt-12 min-h-screen">
+                    <Navbar />
                     <PageTransition>
                       <main className="grow">{children}</main>
                     </PageTransition>
