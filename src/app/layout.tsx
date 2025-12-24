@@ -9,7 +9,6 @@ import { metadata as appMetadata } from '@/data/metadata';
 import { Analytics } from '@vercel/analytics/next';
 import { Oneko } from '../components/myComponents/Oneko';
 import { CommandMenuProvider } from '@/components/CommandMenuProvider';
-import FloatingTerminal from '@/components/myComponents/FloatingTerminal';
 import { PageTransition } from '@/components/myComponents/PageTransition';
 
 const dmSans = DM_Sans({
@@ -112,9 +111,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                       <main className="grow">{children}</main>
                     </PageTransition>
                     <Footer />
-                  </div>
-                  <div className="hidden md:block">
-                    <FloatingTerminal />
                   </div>
                   <Toaster
                     position="bottom-right"
