@@ -100,63 +100,67 @@ export default function Navbar() {
                 ref={dropdownRef}
                 className="absolute top-full right-0 mt-2 bg-background/40 backdrop-blur-md border border-border/20 rounded-xl p-2 shadow-lg z-20 min-w-[140px]"
               >
-              {dropdownNavItems.map(({ name, href }) => {
-                const isActive = pathname === href;
-                return (
-                  <Link
-                    key={href}
-                    href={href}
-                    data-href={href}
-                    className={`block px-4 py-2 text-sm font-medium rounded-lg transition-all duration-300 ${
-                      isActive ? 'text-foreground bg-foreground/10' : 'text-foreground/70 hover:text-foreground hover:bg-foreground/5'
-                    }`}
-                    onClick={() => setIsDesktopDropdownOpen(false)}
-                  >
-                    {name}
-                  </Link>
-                );
-              })}
-            </div>
-          )}
+                {dropdownNavItems.map(({ name, href }) => {
+                  const isActive = pathname === href;
+                  return (
+                    <Link
+                      key={href}
+                      href={href}
+                      data-href={href}
+                      className={`block px-4 py-2 text-sm font-medium rounded-lg transition-all duration-300 ${
+                        isActive
+                          ? 'text-foreground bg-foreground/10'
+                          : 'text-foreground/70 hover:text-foreground hover:bg-foreground/5'
+                      }`}
+                      onClick={() => setIsDesktopDropdownOpen(false)}
+                    >
+                      {name}
+                    </Link>
+                  );
+                })}
+              </div>
+            )}
+          </div>
+
+          <SwitchTheme />
         </div>
 
-        <SwitchTheme />
-      </div>
-
-      {/* Mobile menu button */}
-      <div className="md:hidden flex items-center space-x-4 pointer-events-auto">
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="relative p-2 transition-transform"
-          aria-label="Toggle menu"
-        >
-          <ChevronDown className={`w-5 h-5 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
-        </button>
-        <SwitchTheme />
-      </div>
-
-      {/* Mobile dropdown */}
-      {isOpen && (
-        <div className="md:hidden absolute top-full left-4 right-4 mt-2 bg-background/40 backdrop-blur-md border border-border/20 rounded-xl p-3 shadow-lg z-20">
-          {[...mainNavItems, ...dropdownNavItems].map(({ name, href }) => {
-            const isActive = pathname === href;
-            return (
-              <Link
-                key={href}
-                href={href}
-                data-href={href}
-                className={`block px-4 py-2 text-sm font-medium rounded-lg transition-all duration-300 ${
-                  isActive ? 'text-foreground bg-foreground/10' : 'text-foreground/70 hover:text-foreground hover:bg-foreground/5'
-                }`}
-                onClick={() => setIsOpen(false)}
-              >
-                {name}
-              </Link>
-            );
-          })}
+        {/* Mobile menu button */}
+        <div className="md:hidden flex items-center space-x-4 pointer-events-auto">
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="relative p-2 transition-transform"
+            aria-label="Toggle menu"
+          >
+            <ChevronDown className={`w-5 h-5 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+          </button>
+          <SwitchTheme />
         </div>
-      )}
-    </div>
+
+        {/* Mobile dropdown */}
+        {isOpen && (
+          <div className="md:hidden absolute top-full left-4 right-4 mt-2 bg-background/40 backdrop-blur-md border border-border/20 rounded-xl p-3 shadow-lg z-20">
+            {[...mainNavItems, ...dropdownNavItems].map(({ name, href }) => {
+              const isActive = pathname === href;
+              return (
+                <Link
+                  key={href}
+                  href={href}
+                  data-href={href}
+                  className={`block px-4 py-2 text-sm font-medium rounded-lg transition-all duration-300 ${
+                    isActive
+                      ? 'text-foreground bg-foreground/10'
+                      : 'text-foreground/70 hover:text-foreground hover:bg-foreground/5'
+                  }`}
+                  onClick={() => setIsOpen(false)}
+                >
+                  {name}
+                </Link>
+              );
+            })}
+          </div>
+        )}
+      </div>
     </header>
   );
 }
