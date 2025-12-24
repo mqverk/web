@@ -14,6 +14,12 @@ import {
   SiGithubactions,
   SiSass,
   SiVite,
+  SiNeovim,
+  SiTmux,
+  SiNpm,
+  SiPnpm,
+  SiEslint,
+  SiNodedotjs,
 } from 'react-icons/si';
 import { VscVscode } from 'react-icons/vsc';
 
@@ -75,6 +81,31 @@ export const tools = [
     name: 'VS Code',
     description: 'Code Editor',
     icon: <VscVscode className="text-blue-500 text-4xl" />,
+  },
+  {
+    name: 'Neovim',
+    description: 'Terminal Text Editor',
+    icon: <SiNeovim className="text-green-500 text-4xl" />,
+  },
+  {
+    name: 'Tmux',
+    description: 'Terminal Multiplexer',
+    icon: <SiTmux className="text-green-500 text-4xl" />,
+  },
+  {
+    name: 'NPM & PNPM',
+    description: 'Package Managers',
+    icon: <SiNpm className="text-red-500 text-4xl" />,
+  },
+  {
+    name: 'ESLint',
+    description: 'JavaScript Linter',
+    icon: <SiEslint className="text-purple-500 text-4xl" />,
+  },
+  {
+    name: 'Node.js',
+    description: 'JavaScript Runtime',
+    icon: <SiNodedotjs className="text-green-500 text-4xl" />,
   },
   {
     name: 'Postman',
