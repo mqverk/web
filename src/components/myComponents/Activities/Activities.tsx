@@ -62,7 +62,7 @@ const ActivityCard = ({
 
   const baseStyles = cn(
     // Base Layout
-    'group relative flex flex-col p-3 rounded-lg border transition-all duration-300 overflow-hidden backdrop-blur-sm',
+    'group relative flex flex-col p-3 sm:p-4 rounded-xl border transition-all duration-300 overflow-hidden backdrop-blur-sm',
     // Light Mode Styles (Clean White)
     'bg-white border-zinc-200 hover:border-zinc-300 hover:shadow-sm',
     // Dark Mode Styles (Glassmorphism Dark)
@@ -143,11 +143,10 @@ export default function Activities() {
   }, [resolvedTheme, mounted]);
 
   return (
-    <section className="mt-16 space-y-4">
-      <div className="flex items-center gap-3 mb-5">
-        <Zap className="h-4 w-4 text-primary" />
-        <h2 className="text-base font-semibold tracking-tight text-foreground">Live Activity</h2>
-        <div className="h-px bg-gradient-to-r from-border/60 to-transparent flex-1" />
+    <section className="mt-24 space-y-6">
+      <div className="flex items-center gap-3 mb-6">
+        <h2 className="text-lg font-semibold tracking-tight text-foreground/90">Activity Feed</h2>
+        <div className="h-px bg-border/40 flex-1" />
       </div>
 
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
@@ -258,15 +257,15 @@ export default function Activities() {
 
             <div className="overflow-hidden rounded-lg">
               {!mounted ? (
-                <div className="h-[110px] animate-pulse rounded-lg bg-zinc-200 dark:bg-zinc-800" />
+                <div className="h-[120px] animate-pulse rounded-lg bg-zinc-200 dark:bg-zinc-800" />
               ) : !imageError ? (
                 <img
                   src={graphUrl}
-                  className="w-full h-auto opacity-90 group-hover:opacity-100 transition-opacity duration-300"
+                  className="w-full h-auto rounded-lg opacity-80 group-hover:opacity-100 transition-opacity duration-500 saturate-0 group-hover:saturate-100"
                   alt="GitHub Contributions"
                 />
               ) : (
-                <div className="h-[110px] flex flex-col items-center justify-center text-center text-muted-foreground space-y-2 bg-muted/5 rounded-lg border border-dashed border-border/30">
+                <div className="h-[120px] flex flex-col items-center justify-center text-center text-muted-foreground space-y-2 bg-muted/5 rounded-lg border border-dashed border-border/30">
                   <Github className="h-6 w-6 opacity-20" />
                   <p className="text-[10px] font-mono">Graph unavailable</p>
                 </div>
