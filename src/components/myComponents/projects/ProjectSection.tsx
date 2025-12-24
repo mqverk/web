@@ -78,7 +78,7 @@ export default function ProjectGrid() {
 
   return (
     <>
-      <div className="space-y-4">
+      <div className="space-y-3 max-w-2xl mx-auto">
         {projects.map((project, index) => {
           return (
             <motion.div
@@ -87,19 +87,19 @@ export default function ProjectGrid() {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.4, delay: index * 0.05 }}
-              className="group relative flex flex-col p-6 rounded-2xl bg-zinc-50 dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-800 cursor-pointer hover:border-zinc-300 dark:hover:border-zinc-700 hover:shadow-md transition-all active:scale-[0.99]"
+              className="group relative flex flex-col p-4 rounded-xl bg-zinc-50 dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-800 cursor-pointer hover:border-zinc-300 dark:hover:border-zinc-700 hover:shadow-md transition-all active:scale-[0.99]"
             >
               <div className="flex items-start justify-between gap-4">
                 <div className="flex-1">
-                  <div className="flex items-baseline gap-3 mb-2">
-                    <h3 className="text-lg font-bold text-zinc-900 dark:text-zinc-100">
+                  <div className="flex items-baseline gap-3 mb-1">
+                    <h3 className="text-base font-bold text-zinc-900 dark:text-zinc-100">
                       {project.title}
                     </h3>
                     <span className="text-xs text-zinc-500 dark:text-zinc-500 font-mono">
                       {project.createdAt}
                     </span>
                   </div>
-                  <p className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed mb-4">
+                  <p className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed mb-3">
                     {project.description}
                   </p>
                   <div className="flex flex-wrap gap-2">
@@ -113,8 +113,8 @@ export default function ProjectGrid() {
                     ))}
                   </div>
                 </div>
-                <div className="shrink-0 pt-1">
-                  <ArrowUpRight className="h-5 w-5 text-zinc-400 dark:text-zinc-600 group-hover:text-zinc-600 dark:group-hover:text-zinc-400 transition-colors" />
+                <div className="shrink-0 pt-0.5">
+                  <ArrowUpRight className="h-4 w-4 text-zinc-400 dark:text-zinc-600 group-hover:text-zinc-600 dark:group-hover:text-zinc-400 transition-colors" />
                 </div>
               </div>
             </motion.div>
