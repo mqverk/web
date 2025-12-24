@@ -2,8 +2,7 @@
 
 import { lazy, Suspense, useState } from 'react';
 import dynamic from 'next/dynamic';
-import { Copy, Check, Github, Instagram, Terminal, MessageCircle } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Copy, Check, Terminal } from 'lucide-react';
 
 // Dynamically import heavy animation libraries
 const Typewriter = dynamic(() => import('typewriter-effect'), {
@@ -92,55 +91,6 @@ export default function HomeContent() {
                 )}
               </div>
             </button>
-
-            {/* Social Links */}
-            <div className="flex items-center gap-2">
-              <Button
-                variant="ghost"
-                size="icon"
-                className="text-muted-foreground hover:text-foreground transition-all duration-300 hover:bg-foreground/10 hover:backdrop-blur-sm rounded-full"
-                asChild
-              >
-                <a
-                  href="https://github.com/MaverickVilasara"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  title="GitHub"
-                >
-                  <Github className="h-5 w-5 stroke-[1.5]" />
-                </a>
-              </Button>
-              <Button
-                variant="ghost"
-                size="icon"
-                className="text-muted-foreground hover:text-foreground transition-all duration-300 hover:bg-foreground/10 hover:backdrop-blur-sm rounded-full"
-                asChild
-              >
-                <a
-                  href="https://instagram.com/dev_maverick"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  title="Instagram"
-                >
-                  <Instagram className="h-5 w-5 stroke-[1.5]" />
-                </a>
-              </Button>
-              <Button
-                variant="ghost"
-                size="icon"
-                className="text-muted-foreground hover:text-foreground transition-all duration-300 hover:bg-foreground/10 hover:backdrop-blur-sm rounded-full"
-                asChild
-              >
-                <a
-                  href="https://discord.com/users/786926252811485186"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  title="Discord"
-                >
-                  <MessageCircle className="h-5 w-5 stroke-[1.5]" />
-                </a>
-              </Button>
-            </div>
           </div>
         </main>
 
