@@ -47,9 +47,9 @@ export default function Navbar() {
   }, [isDesktopDropdownOpen]);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-center px-4 py-4 pointer-events-none">
+    <header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-center px-4 py-6 pointer-events-none">
       {/* Pill-shaped navbar container */}
-      <div className="pointer-events-auto flex items-center justify-between px-6 py-3 bg-background/40 backdrop-blur-md border border-border/20 rounded-full shadow-lg hover:border-border/40 transition-all duration-300">
+      <div className="pointer-events-auto flex items-center justify-between px-8 py-4 bg-background/40 backdrop-blur-md border border-border/20 rounded-full shadow-lg hover:border-border/40 transition-all duration-300">
         {/* Left logo */}
         <Link
           className="relative transition-all duration-300 hover:rotate-12"
@@ -98,8 +98,10 @@ export default function Navbar() {
             {isDesktopDropdownOpen && (
               <div
                 ref={dropdownRef}
-                className="absolute top-full right-0 mt-2 bg-background/40 backdrop-blur-md border border-border/20 rounded-xl p-2 shadow-lg z-20 min-w-[140px]"
+                className="absolute top-full left-1/2 -translate-x-1/2 mt-3 bg-background/40 backdrop-blur-md border border-border/20 rounded-xl p-4 shadow-lg z-20 min-w-[140px]"
               >
+                {/* Arrow pointer */}
+                <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-b-4 border-l-transparent border-r-transparent border-b-border/20" />
                 {dropdownNavItems.map(({ name, href }) => {
                   const isActive = pathname === href;
                   return (
