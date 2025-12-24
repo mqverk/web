@@ -6,4 +6,4 @@ Allow: /
 Disallow: /api/
 
 # Sitemap location
-Sitemap: https://maverick.live/sitemap.xml
+Sitemap: https://mqverk.is-a.dev/sitemap.xml

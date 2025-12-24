@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import HomeContent from '@/components/myComponents/HomeContent';
 
 export const metadata: Metadata = {
-  title: 'Maverick - Full Stack Developer',
+  title: 'mqverk // home',
   description:
     'Full Stack Developer from India specializing in React, Next.js, and TypeScript. Find me on GitHub as MaverickVilasara. Building scalable web applications with modern technologies.',
   openGraph: {

@@ -2,7 +2,7 @@ import { Guestbook } from '@/components/myComponents/Contact';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Guestbook — Manpreet Singh',
+  title: 'mqverk // guestbook',
   description:
     'Leave a message in my digital guestbook. Share your thoughts, feedback, or just say hello! Find me on GitHub as MannuVilasara.',
   keywords: [

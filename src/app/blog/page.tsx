@@ -3,7 +3,7 @@ import { BlogPosts } from '@/components/myComponents/stats';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Blog — Maverick',
+  title: 'mqverk // blog',
   description:
     'Read articles about web development, programming, and technology. Learn about React, Next.js, TypeScript, and modern software development practices.',
   openGraph: {

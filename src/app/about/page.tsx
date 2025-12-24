@@ -4,7 +4,7 @@ import { webdev, tools, database, devops } from '@/data/techstack';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'About Me — Maverick',
+  title: 'mqverk // about',
   description:
     'Learn more about Maverick, a Full Stack Developer passionate about building scalable web applications with modern technologies like React, Next.js, and TypeScript.',
   openGraph: {
