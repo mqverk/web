@@ -11,6 +11,7 @@ import {
   FileCode,
   Loader2,
 } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 interface CommitDiffModalProps {
   isOpen: boolean;
@@ -90,8 +91,24 @@ export function CommitDiffModal({
   const totalDeletions = files.reduce((acc, file) => acc + file.deletions, 0);
 
   return (
-    <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4 animate-in fade-in duration-200">
-      <div className="bg-background border border-border rounded-xl shadow-2xl max-w-5xl w-full h-[85vh] flex flex-col overflow-hidden">
+    <AnimatePresence>
+      {isOpen && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.2 }}
+          className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4"
+          onClick={onClose}
+        >
+          <motion.div
+            initial={{ scale: 0.95, opacity: 0, y: 20 }}
+            animate={{ scale: 1, opacity: 1, y: 0 }}
+            exit={{ scale: 0.95, opacity: 0, y: 20 }}
+            transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+            onClick={(e) => e.stopPropagation()}
+            className="bg-background border border-border rounded-xl shadow-2xl max-w-5xl w-full h-[85vh] flex flex-col overflow-hidden"
+          >
         {/* Header Section */}
         <div className="flex items-start justify-between p-5 border-b border-border bg-muted/20 shrink-0">
           <div className="flex-1 min-w-0 pr-4">
@@ -265,7 +282,9 @@ export function CommitDiffModal({
             </div>
           )}
         </div>
-      </div>
-    </div>
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 }

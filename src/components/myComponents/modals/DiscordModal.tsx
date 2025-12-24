@@ -15,6 +15,7 @@ import {
   BadgeCheck,
 } from 'lucide-react';
 import Image from 'next/image';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import { DiscordActivity, DiscordModalProps } from '@/types/types';
 
@@ -222,8 +223,24 @@ export function DiscordModal({ isOpen, onClose, data }: DiscordModalProps) {
   };
 
   return (
-    <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4 animate-in fade-in duration-200">
-      <div className="bg-background border border-border rounded-xl shadow-2xl max-w-md w-full overflow-hidden relative flex flex-col">
+    <AnimatePresence>
+      {isOpen && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.2 }}
+          className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4"
+          onClick={onClose}
+        >
+          <motion.div
+            initial={{ scale: 0.95, opacity: 0, y: 20 }}
+            animate={{ scale: 1, opacity: 1, y: 0 }}
+            exit={{ scale: 0.95, opacity: 0, y: 20 }}
+            transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+            onClick={(e) => e.stopPropagation()}
+            className="bg-background border border-border rounded-xl shadow-2xl max-w-md w-full overflow-hidden relative flex flex-col"
+          >
         {/* Top Banner - MONOCHROME */}
         {/* Changed from Blue Gradient to solid Muted background */}
         <div className="h-28 bg-muted border-b border-border w-full relative pattern-grid-lg">
@@ -448,7 +465,9 @@ export function DiscordModal({ isOpen, onClose, data }: DiscordModalProps) {
             View Full Profile
           </a>
         </div>
-      </div>
-    </div>
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 }
