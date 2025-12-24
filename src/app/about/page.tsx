@@ -8,17 +8,17 @@ export const metadata: Metadata = {
   description:
     'Learn more about Maverick, a Full Stack Developer passionate about building scalable web applications with modern technologies like React, Next.js, and TypeScript.',
   openGraph: {
-    title: 'About Me — Maverick',
+    title: 'mqverk // about',
     description:
       'Learn more about Maverick, a Full Stack Developer passionate about building scalable web applications',
-    url: 'https://mannu.live/about',
-    siteName: 'Maverick Portfolio',
+    url: 'https://mqverk.me/about',
+    siteName: 'mqverk Portfolio',
     images: [
       {
-        url: 'https://mannu.live/og?title=About%20Me%20%E2%80%94%20Manpreet%20Singh&description=Learn%20more%20about%20Manpreet%20Singh%2C%20a%20Full%20Stack%20Developer',
+        url: 'https://mqverk.me/og?title=About%20%E2%80%94%20mqverk&description=Learn%20more%20about%20a%20Full%20Stack%20Developer',
         width: 1200,
         height: 630,
-        alt: 'About Maverick',
+        alt: 'About mqverk',
       },
     ],
     locale: 'en_US',
@@ -26,14 +26,14 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'About Me — Manpreet Singh',
-    description: 'Learn more about Manpreet Singh, a Full Stack Developer.',
+    title: 'mqverk // about',
+    description: 'Learn more about a Full Stack Developer.',
     images: [
-      'https://mannu.live/og?title=About%20Me%20%E2%80%94%20Manpreet%20Singh&description=Learn%20more%20about%20Manpreet%20Singh%2C%20a%20Full%20Stack%20Developer',
+      'https://mqverk.me/og?title=About%20%E2%80%94%20mqverk&description=Learn%20more%20about%20a%20Full%20Stack%20Developer',
     ],
   },
   alternates: {
-    canonical: 'https://mannu.live/about',
+    canonical: 'https://mqverk.me/about',
   },
 };
 
@@ -46,13 +46,13 @@ export default function page() {
         '@type': 'ListItem',
         position: 1,
         name: 'Home',
-        item: 'https://mannu.live',
+        item: 'https://mqverk.me',
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: 'About',
-        item: 'https://mannu.live/about',
+        item: 'https://mqverk.me/about',
       },
     ],
   };
@@ -63,49 +63,66 @@ export default function page() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
-      <div className="flex flex-col">
-        <main className="grow px-4 max-w-3xl mx-auto py-8">
-          <h1 className="text-4xl font-bold mb-4">About Me</h1>
-          <p className="text-lg text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
-            I am a Full Stack Developer with a passion for building scalable and efficient web
-            applications. My expertise lies in both frontend and backend development, allowing me to
-            create seamless user experiences and robust systems.
+      <div className="max-w-3xl mx-auto px-4 py-12">
+        {/* Header */}
+        <div className="mb-12">
+          <h1 className="text-4xl sm:text-5xl font-bold mb-6">About</h1>
+          <p className="text-lg text-muted-foreground leading-relaxed">
+            I'm a full stack developer passionate about building scalable web applications with
+            modern technologies. I specialize in frontend and backend development, creating seamless
+            user experiences paired with robust systems.
           </p>
-          <p className="text-lg text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
-            I enjoy working with the latest technologies and am always eager to learn new skills. I
-            believe in the power of collaboration and strive to contribute positively to any team I
-            am part of.
-          </p>
-        </main>
-        <section className="mt-2 border-t pt-8">
-          <h2 className="text-2xl font-semibold mb-4">🛠 Technologies and Tools</h2>
-          <p className="text-lg text-muted-foreground mono mb-4 leading-relaxed">
-            Web - Development 🌐
-          </p>
-          <TechStack techStack={webdev} />
-          <p className="text-lg text-muted-foreground mono mb-4 leading-relaxed mt-6">
-            Tools and Platforms 🛠️
-          </p>
-          <TechStack techStack={tools} />
-          <p className="text-lg text-muted-foreground mono mb-4 leading-relaxed mt-6">
-            Database and Storage 📦
-          </p>
-          <TechStack techStack={database} />
-          <p className="text-lg text-muted-foreground mono mb-4 leading-relaxed mt-6">
-            DevOps and Cloud ☁️
-          </p>
-          <TechStack techStack={devops} />
+        </div>
+
+        {/* Tech Stack Section */}
+        <section className="mb-16">
+          <h2 className="text-2xl font-bold mb-8">Tech Stack</h2>
+          <div className="space-y-8">
+            <div>
+              <h3 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground mb-4">
+                Web Development
+              </h3>
+              <TechStack techStack={webdev} />
+            </div>
+
+            <div>
+              <h3 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground mb-4">
+                Tools & Platforms
+              </h3>
+              <TechStack techStack={tools} />
+            </div>
+
+            <div>
+              <h3 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground mb-4">
+                Databases & Storage
+              </h3>
+              <TechStack techStack={database} />
+            </div>
+
+            <div>
+              <h3 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground mb-4">
+                DevOps & Cloud
+              </h3>
+              <TechStack techStack={devops} />
+            </div>
+          </div>
         </section>
-        <section className="mt-8 border-t pt-8">
-          <h2 className="text-2xl font-semibold mb-4">GitHub Contributions</h2>
+
+        {/* GitHub Contributions */}
+        <section className="mb-16 border-t pt-12">
+          <h2 className="text-2xl font-bold mb-8">Activity</h2>
           <GitHub />
         </section>
-        <section className="mt-8 border-t pt-8">
-          <h2 className="text-2xl font-semibold mb-4">Interests</h2>
-          <p className="text-lg text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
-            In my free time, I enjoy exploring new technologies, contributing to open-source
-            projects, and staying updated with the latest trends in web development. I also love to
-            share my knowledge through blogging and mentoring aspiring developers.
+
+        {/* Interests */}
+        <section className="border-t pt-12">
+          <h2 className="text-2xl font-bold mb-6">Interests</h2>
+          <p className="text-muted-foreground leading-relaxed">
+            Beyond coding, I'm passionate about exploring emerging technologies, contributing to
+            open-source projects, and staying current with industry trends. I enjoy sharing
+            knowledge through technical writing and mentoring aspiring developers. When I'm not
+            coding, you'll find me diving into new frameworks, experimenting with side projects, or
+            discussing software architecture.
           </p>
         </section>
       </div>
