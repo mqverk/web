@@ -121,28 +121,32 @@ export default function page() {
             <div>
               <h3 className="text-lg font-semibold mb-2">OS Development</h3>
               <p className="text-muted-foreground leading-relaxed">
-                Deep diving into kernel internals, memory management, and building operating systems from scratch.
+                Deep diving into kernel internals, memory management, and building operating systems
+                from scratch.
               </p>
             </div>
-            
+
             <div>
               <h3 className="text-lg font-semibold mb-2">Cyber Security</h3>
               <p className="text-muted-foreground leading-relaxed">
-                Exploring vulnerabilities, penetration testing, and securing systems against modern threats.
+                Exploring vulnerabilities, penetration testing, and securing systems against modern
+                threats.
               </p>
             </div>
-            
+
             <div>
               <h3 className="text-lg font-semibold mb-2">Machine Learning</h3>
               <p className="text-muted-foreground leading-relaxed">
-                Building models and exploring AI architectures. Enthusiastic about bringing intelligence to edge devices.
+                Building models and exploring AI architectures. Enthusiastic about bringing
+                intelligence to edge devices.
               </p>
             </div>
-            
+
             <div>
               <h3 className="text-lg font-semibold mb-2">FOSS, AOSP & Linux</h3>
               <p className="text-muted-foreground leading-relaxed">
-                Contributing to open-source projects, customizing Android Open Source Project, and exploring the depths of Linux ecosystems.
+                Contributing to open-source projects, customizing Android Open Source Project, and
+                exploring the depths of Linux ecosystems.
               </p>
             </div>
           </div>
