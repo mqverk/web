@@ -146,7 +146,9 @@ export default function Activities() {
     <section className="mt-12 space-y-8">
       <div className="space-y-3">
         <h2 className="text-3xl font-bold tracking-tight">What I'm up to</h2>
-        <p className="text-muted-foreground text-sm max-w-md">Real-time snapshot of my activity—currently reading, listening to, and building.</p>
+        <p className="text-muted-foreground text-sm max-w-md">
+          Real-time snapshot of my activity—currently reading, listening to, and building.
+        </p>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -182,7 +184,9 @@ export default function Activities() {
 
         <ActivityCard icon={BookOpen} label="Reading" actionIcon={false} className="min-h-[120px]">
           <span className="italic block mt-1" title="LOTM >.<">
-            White Nights<br /><b>by Dostoevsky</b>
+            White Nights
+            <br />
+            <b>by Dostoevsky</b>
           </span>
         </ActivityCard>
 
@@ -210,22 +214,12 @@ export default function Activities() {
           </div>
         </ActivityCard>
 
-        <ActivityCard
-          href="/guestbook"
-          icon={PenTool}
-          label="Guestbook"
-          className="min-h-[100px]"
-        >
+        <ActivityCard href="/guestbook" icon={PenTool} label="Guestbook" className="min-h-[100px]">
           <div className="line-clamp-2 mt-1">Sign my guestbook ✨</div>
         </ActivityCard>
 
         {isDesktop && (
-          <ActivityCard
-            icon={Cat}
-            label="Oneko"
-            onClick={toggleOneko}
-            className="min-h-[100px]"
-          >
+          <ActivityCard icon={Cat} label="Oneko" onClick={toggleOneko} className="min-h-[100px]">
             <div className="flex items-center gap-2 mt-1">
               <span
                 className={cn(

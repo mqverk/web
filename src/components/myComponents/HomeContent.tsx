@@ -79,12 +79,12 @@ export default function HomeContent() {
             {/* Introduction */}
             <div className="space-y-4 mb-8">
               <p className="text-base sm:text-lg text-foreground/80 leading-relaxed max-w-2xl">
-                I build scalable web applications with modern technologies. Passionate about clean code, 
-                great user experiences, and solving real-world problems through software.
+                I build scalable web applications with modern technologies. Passionate about clean
+                code, great user experiences, and solving real-world problems through software.
               </p>
               <p className="text-sm text-muted-foreground leading-relaxed max-w-2xl">
-                Full Stack Developer specializing in React, Next.js, and TypeScript. Currently exploring 
-                OS development, cybersecurity, and machine learning.
+                Full Stack Developer specializing in React, Next.js, and TypeScript. Currently
+                exploring OS development, cybersecurity, and machine learning.
               </p>
             </div>
 
@@ -105,7 +105,7 @@ export default function HomeContent() {
                   )}
                 </div>
               </button>
-              
+
               <Link
                 href="/projects"
                 className="flex items-center gap-2 px-4 py-2.5 rounded-lg border border-border bg-foreground/5 hover:bg-foreground/10 transition-all duration-200 text-foreground/80 hover:text-foreground font-medium text-sm hover:shadow-sm"
@@ -136,7 +136,9 @@ export default function HomeContent() {
         <section className="mt-16 border-t pt-12 px-4 max-w-4xl mx-auto w-full">
           <div className="mb-8">
             <h2 className="text-2xl font-bold mb-2">Let's Connect</h2>
-            <p className="text-muted-foreground">Have a question or want to collaborate? Drop me a message.</p>
+            <p className="text-muted-foreground">
+              Have a question or want to collaborate? Drop me a message.
+            </p>
           </div>
 
           <Suspense fallback={<div className="h-32 animate-pulse bg-muted rounded-lg" />}>
