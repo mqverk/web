@@ -1,8 +1,8 @@
 'use client';
 
-import { lazy, Suspense, useState } from 'react';
+import { lazy, Suspense } from 'react';
 import dynamic from 'next/dynamic';
-import { Copy, Check, Terminal, Code, Briefcase, BookOpen } from 'lucide-react';
+import { Briefcase, BookOpen, Mail } from 'lucide-react';
 import Link from 'next/link';
 
 // Dynamically import heavy animation libraries
@@ -16,14 +16,6 @@ const Activities = lazy(() => import('@/components/myComponents/Activities/Activ
 const DiscordMessageBox = lazy(() => import('@/components/myComponents/Contact/MessageBox'));
 
 export default function HomeContent() {
-  const [copied, setCopied] = useState(false);
-
-  const handleCopy = async () => {
-    await navigator.clipboard.writeText('npx hello-maverick');
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
-
   const faqSchema = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
@@ -54,9 +46,9 @@ export default function HomeContent() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <div className="flex flex-col">
-        <main className="grow px-4 max-w-4xl mx-auto py-8">
+        <main className="grow px-4 max-w-4xl mx-auto py-8 w-full">
           {/* Hero Section */}
-          <div className="mb-12">
+          <div>
             <div className="mb-6">
               <h1 className="text-5xl sm:text-6xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70">
                 Maverick
@@ -89,23 +81,7 @@ export default function HomeContent() {
             </div>
 
             {/* CTA Buttons */}
-            <div className="flex flex-wrap gap-3 mb-8">
-              <button
-                onClick={handleCopy}
-                className="group cursor-pointer flex items-center gap-3 px-4 py-2.5 rounded-lg border border-border bg-muted/30 hover:bg-muted/60 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 hover:shadow-sm"
-                aria-label="Copy npx command"
-              >
-                <Terminal className="h-4 w-4 text-muted-foreground group-hover:text-foreground transition-colors" />
-                <code className="font-mono text-sm text-foreground">npx hello-maverick</code>
-                <div className="pl-2 border-l border-border/50 ml-1">
-                  {copied ? (
-                    <Check className="h-3.5 w-3.5 text-green-500 animate-in zoom-in" />
-                  ) : (
-                    <Copy className="h-3.5 w-3.5 text-muted-foreground group-hover:text-foreground transition-colors" />
-                  )}
-                </div>
-              </button>
-
+            <div className="flex flex-wrap gap-3 mb-6">
               <Link
                 href="/projects"
                 className="flex items-center gap-2 px-4 py-2.5 rounded-lg border border-border bg-foreground/5 hover:bg-foreground/10 transition-all duration-200 text-foreground/80 hover:text-foreground font-medium text-sm hover:shadow-sm"
@@ -122,6 +98,9 @@ export default function HomeContent() {
                 Read Blog
               </Link>
             </div>
+
+            {/* Divider */}
+            <div className="h-px bg-border/50 my-6" />
           </div>
         </main>
 
@@ -133,17 +112,23 @@ export default function HomeContent() {
         </div>
 
         {/* Contact Section */}
-        <section className="mt-16 border-t pt-12 px-4 max-w-4xl mx-auto w-full">
+        <section className="px-4 max-w-4xl mx-auto w-full mt-16">
           <div className="mb-8">
-            <h2 className="text-2xl font-bold mb-2">Let's Connect</h2>
-            <p className="text-muted-foreground">
-              Have a question or want to collaborate? Drop me a message.
-            </p>
+            <div className="flex items-center gap-3 mb-4">
+              <Mail className="h-6 w-6 text-foreground/60" />
+              <h2 className="text-3xl font-bold">Get In Touch</h2>
+            </div>
+            <p className="text-muted-foreground max-w-md">Have a question, idea, or opportunity? I'd love to hear from you. Send me a message and I'll get back to you as soon as possible.</p>
           </div>
 
-          <Suspense fallback={<div className="h-32 animate-pulse bg-muted rounded-lg" />}>
-            <DiscordMessageBox />
-          </Suspense>
+          <div className="relative">
+            <div className="absolute inset-0 bg-gradient-to-r from-foreground/5 to-transparent rounded-2xl pointer-events-none" />
+            <div className="relative border border-border/50 rounded-2xl p-8 bg-gradient-to-br from-foreground/[0.02] to-transparent backdrop-blur-sm">
+              <Suspense fallback={<div className="h-32 animate-pulse bg-muted rounded-lg" />}>
+                <DiscordMessageBox />
+              </Suspense>
+            </div>
+          </div>
         </section>
 
         {/* Footer Spacing */}
