@@ -55,6 +55,21 @@ const projects: Project[] = [
     ],
     badge: ['Node.js', 'JavaScript', 'CLI', 'ASCII'],
   },
+  {
+    id: 4,
+    title: 'calculator',
+    href: 'https://github.com/mqverk/calculator',
+    createdAt: '19-12-2025',
+    description:
+      'A feature-rich web-based scientific calculator built with vanilla HTML, CSS, and JavaScript. Supports multiple calculation modes including basic, scientific, advanced, and programmer modes with an intuitive, responsive interface.',
+    features: [
+      'Multiple calculation modes (basic, scientific, advanced, programmer)',
+      'Responsive web design',
+      'Real-time calculations',
+      'Comprehensive mathematical functions',
+    ],
+    badge: ['JavaScript', 'HTML', 'CSS', 'Web'],
+  },
 ];
 
 export { projects };
