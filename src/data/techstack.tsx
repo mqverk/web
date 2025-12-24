@@ -1,4 +1,4 @@
-import { FaJs, FaReact, FaGithub, FaAws } from 'react-icons/fa';
+import { FaJs, FaReact, FaGithub, FaAws, FaVue } from 'react-icons/fa';
 import {
   SiNextdotjs,
   SiTailwindcss,
@@ -12,6 +12,9 @@ import {
   SiPostgresql,
   SiOpenai,
   SiGithubactions,
+  SiFramermotion,
+  SiSass,
+  SiVite,
 } from 'react-icons/si';
 import { VscVscode } from 'react-icons/vsc';
 
@@ -26,11 +29,15 @@ export const webdev = [
     description: 'JavaScript with Types',
     icon: <SiTypescript className="text-blue-400 text-3xl" />,
   },
-
   {
     name: 'ReactJS',
     description: 'A JavaScript Library',
     icon: <FaReact className="text-sky-400 text-4xl" />,
+  },
+  {
+    name: 'NextJS',
+    description: 'React Framework',
+    icon: <SiNextdotjs className="text-foreground text-4xl" />,
   },
   {
     name: 'Tailwind CSS',
@@ -38,9 +45,19 @@ export const webdev = [
     icon: <SiTailwindcss className="text-cyan-500 dark:text-cyan-400 text-4xl" />,
   },
   {
-    name: 'NextJS',
-    description: 'React Framework',
-    icon: <SiNextdotjs className="text-foreground text-4xl" />,
+    name: 'Framer Motion',
+    description: 'Animation Library',
+    icon: <SiFramermotion className="text-gray-800 dark:text-gray-400 text-4xl" />,
+  },
+  {
+    name: 'SASS/SCSS',
+    description: 'CSS Preprocessor',
+    icon: <SiSass className="text-pink-400 text-4xl" />,
+  },
+  {
+    name: 'Vite',
+    description: 'Build Tool',
+    icon: <SiVite className="text-purple-500 text-4xl" />,
   },
   {
     name: 'ExpressJS',
