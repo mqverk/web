@@ -44,17 +44,17 @@ const ActivityCard = ({
     <>
       <div className="flex items-center justify-between mb-1.5">
         <div className="flex items-center gap-2 text-muted-foreground group-hover:text-foreground transition-colors">
-          <Icon size={12} className="shrink-0" />
-          <span className="text-[9px] font-bold uppercase tracking-widest">{label}</span>
+          <Icon size={13} className="shrink-0" />
+          <span className="text-[10px] font-semibold uppercase tracking-widest">{label}</span>
         </div>
         {actionIcon && (
           <ArrowUpRight
-            size={13}
-            className="text-muted-foreground/20 group-hover:text-foreground/60 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-200"
+            size={14}
+            className="text-muted-foreground/30 group-hover:text-foreground group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-200"
           />
         )}
       </div>
-      <div className="font-medium text-xs text-foreground/90 leading-relaxed wrap-break-word">
+      <div className="font-medium text-xs sm:text-sm text-foreground/90 leading-relaxed wrap-break-word">
         {children}
       </div>
     </>
@@ -176,25 +176,25 @@ export default function Activities() {
 
         {/* Row 2: Location, Reading, Watching, Status */}
         <ActivityCard icon={MapPin} label="Location" actionIcon={false} className="min-h-[110px]">
-          <div className="leading-tight text-[11px] mt-1">
+          <div className="leading-tight mt-1">
             <LocationTime />
           </div>
         </ActivityCard>
 
         <ActivityCard icon={BookOpen} label="Reading" actionIcon={false} className="min-h-[110px]">
-          <span className="italic block mt-1 text-[11px] truncate" title="LOTM >.<">
+          <span className="italic block mt-1 truncate" title="LOTM >.<">
             "LOTM {'>.<'}"
           </span>
         </ActivityCard>
 
         <ActivityCard icon={Monitor} label="Watching" actionIcon={false} className="min-h-[110px]">
-          <span className="italic block mt-1 text-[11px] truncate" title="Open-Source 👒">
-            "Open-Source 👒"
+          <span className="italic block mt-1 truncate" title="Open-Source...">
+            "Open-Source..."
           </span>
         </ActivityCard>
 
         <ActivityCard icon={Zap} label="Status" actionIcon={false} className="min-h-[110px]">
-          <div className="line-clamp-2 text-[11px] mt-1" title="Building 🚀">
+          <div className="line-clamp-3 mt-1" title="Building 🚀">
             Building 🚀
           </div>
         </ActivityCard>
@@ -217,7 +217,7 @@ export default function Activities() {
           label="Guestbook"
           className="col-span-1 min-h-[90px]"
         >
-          <div className="line-clamp-2 text-[11px] mt-1">Sign my guestbook ✨</div>
+          <div className="line-clamp-2 mt-1">Sign my guestbook ✨</div>
         </ActivityCard>
 
         {isDesktop && (
@@ -236,11 +236,11 @@ export default function Activities() {
               />
               <span
                 className={cn(
-                  'text-[11px] font-medium',
+                  'text-xs font-medium',
                   onekoEnabled ? 'text-foreground' : 'text-muted-foreground'
                 )}
               >
-                {onekoEnabled ? 'Enabled' : 'Disabled'}
+                {onekoEnabled ? 'On' : 'Off'}
               </span>
             </div>
           </ActivityCard>
