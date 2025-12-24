@@ -58,7 +58,7 @@ export function NowPlayingModal({ isOpen, onClose, data }: NowPlayingModalProps)
               </div>
               <button
                 onClick={onClose}
-                className="p-2 hover:bg-foreground/8 rounded-lg transition-colors text-foreground/60 hover:text-foreground"
+                className="p-2 hover:bg-foreground/10 rounded-full transition-all duration-200 text-foreground/60 hover:text-foreground hover:shadow-sm"
                 title="Close modal"
               >
                 <X size={20} />
@@ -158,7 +158,7 @@ export function NowPlayingModal({ isOpen, onClose, data }: NowPlayingModalProps)
                     href={data.songUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-2 w-full px-6 py-3 bg-gradient-to-r from-foreground/10 to-foreground/5 hover:from-foreground/15 hover:to-foreground/10 text-foreground font-medium rounded-xl transition-all active:scale-[0.98] border border-border/30 hover:border-border/50"
+                    className="flex items-center justify-center gap-2 w-full px-6 py-3 bg-gradient-to-r from-foreground/10 to-foreground/5 hover:from-foreground/15 hover:to-foreground/10 text-foreground font-medium rounded-xl transition-all duration-300 active:scale-[0.98] border border-border/30 hover:border-border/40 hover:shadow-md"
                   >
                     <ExternalLink size={16} />
                     <span>Open on {isSpotify ? 'Spotify' : 'Last.fm'}</span>

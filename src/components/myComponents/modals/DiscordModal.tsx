@@ -248,7 +248,7 @@ export function DiscordModal({ isOpen, onClose, data }: DiscordModalProps) {
             <div className="h-28 bg-gradient-to-r from-foreground/5 via-foreground/[0.02] to-background border-b border-border/20 w-full relative">
               <button
                 onClick={onClose}
-                className="absolute top-4 right-4 p-2 bg-background/80 hover:bg-background text-foreground rounded-lg transition-colors z-10 border border-border/50"
+                className="absolute top-4 right-4 p-2 bg-background/60 hover:bg-foreground/10 text-foreground/60 hover:text-foreground rounded-full transition-all duration-200 z-10 border border-border/50 hover:border-border/70 hover:shadow-sm"
                 title="Close modal"
               >
                 <X size={18} />
@@ -462,7 +462,7 @@ export function DiscordModal({ isOpen, onClose, data }: DiscordModalProps) {
                 href={`https://discord.com/users/${user.id}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 w-full px-4 py-3 bg-gradient-to-r from-foreground/10 to-foreground/5 hover:from-foreground/15 hover:to-foreground/10 text-foreground font-medium rounded-xl transition-all active:scale-[0.98] border border-border/30 hover:border-border/50"
+                className="flex items-center justify-center gap-2 w-full px-4 py-3 bg-gradient-to-r from-foreground/10 to-foreground/5 hover:from-foreground/15 hover:to-foreground/10 text-foreground font-medium rounded-xl transition-all duration-300 active:scale-[0.98] border border-border/30 hover:border-border/40 hover:shadow-md"
               >
                 <ExternalLink size={16} />
                 View Full Profile
