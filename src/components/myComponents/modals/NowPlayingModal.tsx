@@ -158,7 +158,7 @@ export function NowPlayingModal({ isOpen, onClose, data }: NowPlayingModalProps)
                     href={data.songUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-2 w-full px-6 py-3 bg-gradient-to-r from-foreground/10 to-foreground/5 hover:from-foreground/15 hover:to-foreground/10 text-foreground font-medium rounded-xl transition-all duration-300 active:scale-[0.98] border border-border/30 hover:border-border/40 hover:shadow-md"
+                    className="flex items-center justify-center gap-2 w-full px-6 py-3 bg-white text-black font-medium rounded-xl transition-all duration-300 active:scale-[0.98] border border-white hover:border-white/80 hover:bg-white/90 hover:shadow-lg"
                   >
                     <ExternalLink size={16} />
                     <span>Open on {isSpotify ? 'Spotify' : 'Last.fm'}</span>
