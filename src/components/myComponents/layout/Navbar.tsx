@@ -47,57 +47,59 @@ export default function Navbar() {
   }, [isDesktopDropdownOpen]);
 
   return (
-    <header className="flex items-center justify-between mb-12 px-4 mono relative">
-      {/* Left logo */}
-      <Link
-        className="relative z-10 transition-all duration-300 hover:rotate-12"
-        href="/"
-        aria-label="Home"
-      >
-        <Coffee
-          className={`w-4 h-4 transition-colors duration-300 ${isHomePage ? 'text-orange-500' : 'text-foreground hover:text-foreground/60'}`}
-        />
-      </Link>
+    <header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-center px-4 py-4 pointer-events-none">
+      {/* Pill-shaped navbar container */}
+      <div className="pointer-events-auto flex items-center justify-between px-6 py-3 bg-background/40 backdrop-blur-md border border-border/20 rounded-full shadow-lg hover:border-border/40 transition-all duration-300">
+        {/* Left logo */}
+        <Link
+          className="relative transition-all duration-300 hover:rotate-12"
+          href="/"
+          aria-label="Home"
+        >
+          <Coffee
+            className={`w-4 h-4 transition-colors duration-300 ${isHomePage ? 'text-orange-500' : 'text-foreground hover:text-foreground/60'}`}
+          />
+        </Link>
 
-      {/* Desktop nav links + theme switch */}
-      <div className="hidden md:flex items-center space-x-6">
-        {/* Main Nav Links */}
-        {mainNavItems.map(({ name, href }) => {
-          const isActive = pathname === href;
-          return (
-            <Link
-              key={href}
-              href={href}
-              data-href={href}
-              className={`relative z-10 text-sm font-medium transition-all duration-300 ${
-                isActive
-                  ? 'text-foreground decoration-2'
-                  : 'text-foreground/70 hover:text-foreground'
-              }`}
+        {/* Desktop nav links + theme switch */}
+        <div className="hidden md:flex items-center space-x-1 mx-4">
+          {/* Main Nav Links */}
+          {mainNavItems.map(({ name, href }) => {
+            const isActive = pathname === href;
+            return (
+              <Link
+                key={href}
+                href={href}
+                data-href={href}
+                className={`relative px-4 py-1.5 text-sm font-medium rounded-full transition-all duration-300 ${
+                  isActive
+                    ? 'text-foreground bg-foreground/10'
+                    : 'text-foreground/70 hover:text-foreground hover:bg-foreground/5'
+                }`}
+              >
+                {name}
+              </Link>
+            );
+          })}
+
+          {/* Desktop dropdown for additional items */}
+          <div className="relative">
+            <button
+              ref={buttonRef}
+              onClick={() => setIsDesktopDropdownOpen(!isDesktopDropdownOpen)}
+              className={`relative px-4 py-1.5 text-sm font-medium rounded-full transition-all duration-300 flex items-center ${isDesktopDropdownOpen ? 'text-foreground bg-foreground/10' : 'text-foreground/70 hover:text-foreground hover:bg-foreground/5'}`}
+              aria-label="More options"
             >
-              {name}
-            </Link>
-          );
-        })}
+              <ChevronDown
+                className={`w-4 h-4 transition-transform ${isDesktopDropdownOpen ? 'rotate-180' : ''}`}
+              />
+            </button>
 
-        {/* Desktop dropdown for additional items */}
-        <div className="relative">
-          <button
-            ref={buttonRef}
-            onClick={() => setIsDesktopDropdownOpen(!isDesktopDropdownOpen)}
-            className="relative z-10 p-1 text-sm font-medium transition-all duration-300 text-foreground/70 hover:text-foreground flex items-center"
-            aria-label="More options"
-          >
-            <ChevronDown
-              className={`w-4 h-4 transition-transform ${isDesktopDropdownOpen ? 'rotate-180' : ''}`}
-            />
-          </button>
-
-          {isDesktopDropdownOpen && (
-            <div
-              ref={dropdownRef}
-              className="absolute top-full right-0 mt-2 bg-background border border-border rounded-md p-4 shadow-lg z-20 min-w-[120px]"
-            >
+            {isDesktopDropdownOpen && (
+              <div
+                ref={dropdownRef}
+                className="absolute top-full right-0 mt-2 bg-background/40 backdrop-blur-md border border-border/20 rounded-xl p-2 shadow-lg z-20 min-w-[140px]"
+              >
               {dropdownNavItems.map(({ name, href }) => {
                 const isActive = pathname === href;
                 return (
@@ -105,8 +107,8 @@ export default function Navbar() {
                     key={href}
                     href={href}
                     data-href={href}
-                    className={`block py-2 text-sm font-medium transition-all duration-300 ${
-                      isActive ? 'text-foreground' : 'text-foreground hover:text-foreground/60'
+                    className={`block px-4 py-2 text-sm font-medium rounded-lg transition-all duration-300 ${
+                      isActive ? 'text-foreground bg-foreground/10' : 'text-foreground/70 hover:text-foreground hover:bg-foreground/5'
                     }`}
                     onClick={() => setIsDesktopDropdownOpen(false)}
                   >
@@ -122,10 +124,10 @@ export default function Navbar() {
       </div>
 
       {/* Mobile menu button */}
-      <div className="md:hidden flex items-center space-x-4">
+      <div className="md:hidden flex items-center space-x-4 pointer-events-auto">
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="relative z-10 p-2 transition-transform"
+          className="relative p-2 transition-transform"
           aria-label="Toggle menu"
         >
           <ChevronDown className={`w-5 h-5 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
@@ -135,7 +137,7 @@ export default function Navbar() {
 
       {/* Mobile dropdown */}
       {isOpen && (
-        <div className="md:hidden absolute top-full right-0 mt-2 bg-background border border-border rounded-md p-4 shadow-lg z-20">
+        <div className="md:hidden absolute top-full left-4 right-4 mt-2 bg-background/40 backdrop-blur-md border border-border/20 rounded-xl p-3 shadow-lg z-20">
           {[...mainNavItems, ...dropdownNavItems].map(({ name, href }) => {
             const isActive = pathname === href;
             return (
@@ -143,8 +145,8 @@ export default function Navbar() {
                 key={href}
                 href={href}
                 data-href={href}
-                className={`block py-2 text-sm font-medium transition-all duration-300 ${
-                  isActive ? 'text-foreground' : 'text-foreground hover:text-foreground/60'
+                className={`block px-4 py-2 text-sm font-medium rounded-lg transition-all duration-300 ${
+                  isActive ? 'text-foreground bg-foreground/10' : 'text-foreground/70 hover:text-foreground hover:bg-foreground/5'
                 }`}
                 onClick={() => setIsOpen(false)}
               >
@@ -154,6 +156,7 @@ export default function Navbar() {
           })}
         </div>
       )}
+    </div>
     </header>
   );
 }
