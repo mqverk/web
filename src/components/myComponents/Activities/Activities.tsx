@@ -188,7 +188,7 @@ export default function Activities() {
 
         <ActivityCard icon={Monitor} label="Watching" actionIcon={false} className="min-h-[110px]">
           <span className="italic block mt-1 truncate" title="Open-Source...">
-            "Open-Source..."
+            "Open-Source...
           </span>
         </ActivityCard>
 
