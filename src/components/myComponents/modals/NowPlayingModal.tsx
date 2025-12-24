@@ -59,7 +59,6 @@ export function NowPlayingModal({ isOpen, onClose, data }: NowPlayingModalProps)
               <button
                 onClick={onClose}
                 className="p-2 hover:bg-foreground/10 rounded-full transition-all duration-200 text-foreground/60 hover:text-foreground hover:shadow-sm"
-                title="Close modal"
               >
                 <X size={20} />
               </button>

@@ -249,7 +249,6 @@ export function DiscordModal({ isOpen, onClose, data }: DiscordModalProps) {
               <button
                 onClick={onClose}
                 className="absolute top-4 right-4 p-2 bg-background/60 hover:bg-foreground/10 text-foreground/60 hover:text-foreground rounded-full transition-all duration-200 z-10 border border-border/50 hover:border-border/70 hover:shadow-sm"
-                title="Close modal"
               >
                 <X size={18} />
               </button>
