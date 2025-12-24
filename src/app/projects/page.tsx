@@ -4,7 +4,7 @@ import ProjectSection from '@/components/myComponents/projects/ProjectSection';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Projects — Maverick',
+  title: 'mqverk // projects',
   description:
     'Explore my portfolio of web applications, creative experiments, and open-source contributions built with modern technologies.',
   openGraph: {

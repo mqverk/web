@@ -1,8 +1,8 @@
 export const metadata = {
   metadataBase: new URL('https://maverick.live'),
   title: {
-    default: 'Maverick — Full Stack Developer & Designer',
-    template: '%s | Maverick',
+    default: 'mqverk // home',
+    template: '%s',
   },
   description:
     'Maverick — a passionate full stack developer & creative designer. Find me on GitHub as MaverickVilasara. Featuring web apps, UI experiments, and open source contributions.',
