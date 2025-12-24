@@ -87,11 +87,11 @@ export default function ProjectGrid() {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.4, delay: index * 0.05 }}
-              className="group relative flex flex-col p-4 rounded-lg bg-zinc-50 dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-800 cursor-pointer hover:border-zinc-300 dark:hover:border-zinc-700 hover:shadow-md transition-all active:scale-[0.99]"
+              className="group relative flex flex-col p-5 rounded-lg bg-zinc-50 dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-800 cursor-pointer hover:border-zinc-300 dark:hover:border-zinc-700 hover:shadow-md transition-all active:scale-[0.99]"
             >
               <div className="flex items-start justify-between gap-3">
                 <div className="flex-1 min-w-0">
-                  <div className="flex items-baseline gap-2 mb-2">
+                  <div className="flex items-baseline gap-2 mb-3">
                     <h3 className="text-sm font-bold text-zinc-900 dark:text-zinc-100 truncate">
                       {project.title}
                     </h3>
@@ -99,7 +99,7 @@ export default function ProjectGrid() {
                       {project.createdAt}
                     </span>
                   </div>
-                  <p className="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed mb-2.5 line-clamp-2">
+                  <p className="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed mb-3.5 line-clamp-2">
                     {project.description}
                   </p>
                   <div className="flex flex-wrap gap-1.5">
@@ -113,7 +113,7 @@ export default function ProjectGrid() {
                     ))}
                   </div>
                 </div>
-                <div className="shrink-0 pt-0">
+                <div className="shrink-0 pt-0.5">
                   <ArrowUpRight className="h-4 w-4 text-zinc-400 dark:text-zinc-600 group-hover:text-zinc-600 dark:group-hover:text-zinc-400 transition-colors" />
                 </div>
               </div>
