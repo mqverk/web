@@ -59,6 +59,7 @@ const projects: Project[] = [
     id: 4,
     title: 'calculator',
     href: 'https://github.com/mqverk/calculator',
+    live: 'https://calculator-mauve-five-45.vercel.app',
     createdAt: '19-12-2025',
     description:
       'A feature-rich web-based scientific calculator built with vanilla HTML, CSS, and JavaScript. Supports multiple calculation modes including basic, scientific, advanced, and programmer modes with an intuitive, responsive interface.',
