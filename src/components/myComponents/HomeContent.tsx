@@ -112,24 +112,22 @@ export default function HomeContent() {
         </div>
 
         {/* Contact Section */}
-        <section className="px-4 max-w-4xl mx-auto w-full mt-16">
-          <div className="mb-8">
-            <div className="flex items-center gap-3 mb-4">
-              <Mail className="h-6 w-6 text-foreground/60" />
-              <h2 className="text-3xl font-bold">Get In Touch</h2>
+        <section className="px-4 max-w-4xl mx-auto w-full mt-20 mb-12">
+          <div className="space-y-6">
+            <div className="space-y-3">
+              <h2 className="text-4xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70">Let's Connect</h2>
+              <p className="text-foreground/60 max-w-xl leading-relaxed">
+                Have an idea, question, or just want to chat? I'm always open to connecting with interesting people. Drop me a message below.
+              </p>
             </div>
-            <p className="text-muted-foreground max-w-md">
-              Have a question, idea, or opportunity? I'd love to hear from you. Send me a message
-              and I'll get back to you as soon as possible.
-            </p>
-          </div>
 
-          <div className="relative">
-            <div className="absolute inset-0 bg-gradient-to-r from-foreground/5 to-transparent rounded-2xl pointer-events-none" />
-            <div className="relative border border-border/50 rounded-2xl p-8 bg-gradient-to-br from-foreground/[0.02] to-transparent backdrop-blur-sm">
-              <Suspense fallback={<div className="h-32 animate-pulse bg-muted rounded-lg" />}>
-                <DiscordMessageBox />
-              </Suspense>
+            <div className="relative group">
+              <div className="absolute inset-0 bg-gradient-to-r from-foreground/10 via-transparent to-transparent rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="relative border border-border/30 rounded-2xl p-8 bg-gradient-to-br from-foreground/[0.03] to-transparent hover:border-border/50 transition-all duration-300">
+                <Suspense fallback={<div className="h-32 animate-pulse bg-muted rounded-lg" />}>
+                  <DiscordMessageBox />
+                </Suspense>
+              </div>
             </div>
           </div>
         </section>

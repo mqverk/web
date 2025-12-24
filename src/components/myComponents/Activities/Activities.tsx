@@ -42,19 +42,21 @@ const ActivityCard = ({
 }) => {
   const content = (
     <>
-      <div className="flex items-center justify-between mb-1.5">
-        <div className="flex items-center gap-2 text-muted-foreground group-hover:text-foreground transition-colors">
-          <Icon size={13} className="shrink-0" />
-          <span className="text-[10px] font-semibold uppercase tracking-widest">{label}</span>
+      <div className="flex items-center justify-between mb-3">
+        <div className="flex items-center gap-2">
+          <div className="p-1.5 rounded-lg bg-foreground/8 group-hover:bg-foreground/12 transition-colors">
+            <Icon size={14} className="shrink-0 text-foreground/70 group-hover:text-foreground/90 transition-colors" />
+          </div>
+          <span className="text-[11px] font-semibold uppercase tracking-widest text-foreground/60 group-hover:text-foreground/80 transition-colors">{label}</span>
         </div>
         {actionIcon && (
           <ArrowUpRight
             size={14}
-            className="text-muted-foreground/30 group-hover:text-foreground group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-200"
+            className="text-foreground/30 group-hover:text-foreground/60 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-200 shrink-0"
           />
         )}
       </div>
-      <div className="font-medium text-xs sm:text-sm text-foreground/90 leading-relaxed wrap-break-word">
+      <div className="font-medium text-sm text-foreground/85 leading-snug wrap-break-word flex-1">
         {children}
       </div>
     </>
@@ -62,13 +64,13 @@ const ActivityCard = ({
 
   const baseStyles = cn(
     // Base Layout
-    'group relative flex flex-col p-3 sm:p-4 rounded-xl border transition-all duration-300 overflow-hidden backdrop-blur-sm',
-    // Light Mode Styles (Clean White)
-    'bg-white border-zinc-200 hover:border-zinc-300 hover:shadow-sm',
-    // Dark Mode Styles (Glassmorphism Dark)
-    'dark:bg-zinc-900/40 dark:border-zinc-800/50 dark:hover:bg-zinc-900/60 dark:hover:border-zinc-700/50',
+    'group relative flex flex-col p-4 sm:p-4 rounded-xl border transition-all duration-300 overflow-hidden',
+    // Light Mode Styles
+    'bg-gradient-to-br from-zinc-50/80 to-zinc-50/40 border-zinc-200/60 hover:border-zinc-300/80 hover:from-zinc-50 hover:to-zinc-50/60 hover:shadow-sm hover:shadow-zinc-900/5',
+    // Dark Mode Styles
+    'dark:bg-gradient-to-br dark:from-zinc-900/50 dark:to-zinc-900/20 dark:border-zinc-800/40 dark:hover:from-zinc-900/70 dark:hover:to-zinc-900/40 dark:hover:border-zinc-700/60 dark:hover:shadow-lg dark:hover:shadow-black/20',
     // Interactive states
-    (onClick || href) && 'cursor-pointer active:scale-[0.99]',
+    (onClick || href) && 'cursor-pointer active:scale-[0.98]',
     className
   );
 
@@ -144,10 +146,10 @@ export default function Activities() {
 
   return (
     <section className="mt-12 space-y-8">
-      <div className="space-y-3">
-        <h2 className="text-3xl font-bold tracking-tight">What I'm up to</h2>
-        <p className="text-muted-foreground text-sm max-w-md">
-          Real-time snapshot of my activity—currently reading, listening to, and building.
+      <div className="space-y-2">
+        <h2 className="text-4xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70">What I'm up to</h2>
+        <p className="text-foreground/60 text-sm max-w-xl leading-relaxed">
+          Real-time snapshot of my current activity—what I'm listening to, reading, and working on right now.
         </p>
       </div>
 
@@ -241,10 +243,12 @@ export default function Activities() {
 
         {/* Row 4: Contribution Graph */}
         <div className="col-span-1 sm:col-span-2 lg:col-span-4 relative group">
-          <div className="p-4 rounded-xl border transition-all duration-300 backdrop-blur-sm overflow-hidden bg-white border-zinc-200 hover:border-zinc-300 dark:bg-zinc-900/30 dark:border-zinc-800/50 dark:hover:border-zinc-700">
+          <div className="p-4 rounded-xl border transition-all duration-300 overflow-hidden bg-gradient-to-br from-zinc-50/80 to-zinc-50/40 border-zinc-200/60 hover:border-zinc-300/80 hover:from-zinc-50 hover:to-zinc-50/60 hover:shadow-sm hover:shadow-zinc-900/5 dark:bg-gradient-to-br dark:from-zinc-900/50 dark:to-zinc-900/20 dark:border-zinc-800/40 dark:hover:from-zinc-900/70 dark:hover:to-zinc-900/40 dark:hover:border-zinc-700/60 dark:hover:shadow-lg dark:hover:shadow-black/20">
             <div className="flex items-center gap-2 mb-4">
-              <Github size={13} className="text-muted-foreground" />
-              <span className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">
+              <div className="p-1.5 rounded-lg bg-foreground/8 group-hover:bg-foreground/12 transition-colors">
+                <Github size={14} className="text-foreground/70 group-hover:text-foreground/90 transition-colors" />
+              </div>
+              <span className="text-[11px] font-semibold uppercase tracking-widest text-foreground/60 group-hover:text-foreground/80 transition-colors">
                 GitHub Contributions
               </span>
             </div>
