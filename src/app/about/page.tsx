@@ -117,13 +117,35 @@ export default function page() {
         {/* Interests */}
         <section className="border-t pt-12">
           <h2 className="text-2xl font-bold mb-6">Interests</h2>
-          <p className="text-muted-foreground leading-relaxed">
-            Beyond coding, I'm passionate about exploring emerging technologies, contributing to
-            open-source projects, and staying current with industry trends. I enjoy sharing
-            knowledge through technical writing and mentoring aspiring developers. When I'm not
-            coding, you'll find me diving into new frameworks, experimenting with side projects, or
-            discussing software architecture.
-          </p>
+          <div className="space-y-6">
+            <div>
+              <h3 className="text-lg font-semibold mb-2">OS Development</h3>
+              <p className="text-muted-foreground leading-relaxed">
+                Deep diving into kernel internals, memory management, and building operating systems from scratch.
+              </p>
+            </div>
+            
+            <div>
+              <h3 className="text-lg font-semibold mb-2">Cyber Security</h3>
+              <p className="text-muted-foreground leading-relaxed">
+                Exploring vulnerabilities, penetration testing, and securing systems against modern threats.
+              </p>
+            </div>
+            
+            <div>
+              <h3 className="text-lg font-semibold mb-2">Machine Learning</h3>
+              <p className="text-muted-foreground leading-relaxed">
+                Building models and exploring AI architectures. Enthusiastic about bringing intelligence to edge devices.
+              </p>
+            </div>
+            
+            <div>
+              <h3 className="text-lg font-semibold mb-2">FOSS, AOSP & Linux</h3>
+              <p className="text-muted-foreground leading-relaxed">
+                Contributing to open-source projects, customizing Android Open Source Project, and exploring the depths of Linux ecosystems.
+              </p>
+            </div>
+          </div>
         </section>
       </div>
     </>
