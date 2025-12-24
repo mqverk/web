@@ -25,7 +25,7 @@ export default function LocationTime() {
 
   return (
     <div className="flex flex-col text-xs sm:text-sm text-foreground/90">
-      IST <br />
+      India - IST <br />
       {timeString}
     </div>
   );

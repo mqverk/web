@@ -78,70 +78,43 @@ export default function ProjectGrid() {
 
   return (
     <>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div className="space-y-4">
         {projects.map((project, index) => {
-          const { Icon, gradient } = getProjectTheme(
-            project.badge,
-            project.title,
-            project.description
-          );
-
           return (
             <motion.div
               key={project.id}
               onClick={() => setSelectedId(project.id)}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.4, delay: index * 0.05 }}
-              className="group relative flex flex-col h-[400px] overflow-hidden rounded-3xl bg-zinc-50 dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-800 cursor-pointer hover:border-zinc-300 dark:hover:border-zinc-700 hover:shadow-md transition-all active:scale-[0.99]"
+              className="group relative flex flex-col p-6 rounded-2xl bg-zinc-50 dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-800 cursor-pointer hover:border-zinc-300 dark:hover:border-zinc-700 hover:shadow-md transition-all active:scale-[0.99]"
             >
-              {/* Image Area */}
-              <div className="relative h-64 w-full overflow-hidden bg-zinc-200 dark:bg-zinc-800">
-                <div className="h-full w-full">
-                  {project.image ? (
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                  ) : (
-                    // Dynamic Fallback Background
-                    <div
-                      className={cn(
-                        'h-full w-full flex items-center justify-center bg-gradient-to-br transition-transform duration-500 group-hover:scale-105',
-                        gradient
-                      )}
-                    >
-                      <Icon className="h-16 w-16 text-white/90 drop-shadow-md" strokeWidth={1.5} />
-                    </div>
-                  )}
-                </div>
-
-                <div className="absolute top-4 right-4 p-2 rounded-full bg-white/10 backdrop-blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 border border-white/20">
-                  <ArrowUpRight className="h-5 w-5 text-white drop-shadow-sm" />
-                </div>
-              </div>
-
-              {/* Content Area */}
-              <div className="p-6 flex flex-col flex-grow">
-                <div>
-                  <h3 className="text-xl font-bold text-zinc-900 dark:text-zinc-100 mb-2">
-                    {project.title}
-                  </h3>
-                  <p className="text-sm text-zinc-600 dark:text-zinc-400 line-clamp-2 leading-relaxed">
+              <div className="flex items-start justify-between gap-4">
+                <div className="flex-1">
+                  <div className="flex items-baseline gap-3 mb-2">
+                    <h3 className="text-lg font-bold text-zinc-900 dark:text-zinc-100">
+                      {project.title}
+                    </h3>
+                    <span className="text-xs text-zinc-500 dark:text-zinc-500 font-mono">
+                      {project.createdAt}
+                    </span>
+                  </div>
+                  <p className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed mb-4">
                     {project.description}
                   </p>
+                  <div className="flex flex-wrap gap-2">
+                    {project.badge.map((tag) => (
+                      <span
+                        key={tag}
+                        className="text-[11px] uppercase tracking-wider text-zinc-600 dark:text-zinc-400 font-medium border border-zinc-200 dark:border-zinc-800 px-2.5 py-1 rounded-md"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-
-                <div className="mt-auto pt-4 flex gap-2 overflow-hidden mask-linear-fade">
-                  {project.badge.slice(0, 3).map((tag) => (
-                    <span
-                      key={tag}
-                      className="text-[10px] uppercase tracking-wider text-zinc-500 font-medium border border-zinc-200 dark:border-zinc-800 px-2 py-1 rounded-md"
-                    >
-                      {tag}
-                    </span>
-                  ))}
+                <div className="shrink-0 pt-1">
+                  <ArrowUpRight className="h-5 w-5 text-zinc-400 dark:text-zinc-600 group-hover:text-zinc-600 dark:group-hover:text-zinc-400 transition-colors" />
                 </div>
               </div>
             </motion.div>
@@ -186,122 +159,86 @@ export default function ProjectGrid() {
               </button>
 
               <div className="overflow-y-auto h-full [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
-                {/* Hero Image Section */}
-                <div className="relative h-[400px] w-full shrink-0 bg-zinc-900">
-                  {(() => {
-                    const { Icon, gradient } = getProjectTheme(
-                      selectedProject.badge,
-                      selectedProject.title,
-                      selectedProject.description
-                    );
-
-                    return selectedProject.image ? (
-                      <img
-                        src={selectedProject.image}
-                        alt={selectedProject.title}
-                        className="h-full w-full object-cover opacity-90"
-                      />
-                    ) : (
-                      <div
-                        className={cn(
-                          'h-full w-full flex items-center justify-center bg-gradient-to-br',
-                          gradient
-                        )}
-                      >
-                        <Icon className="h-32 w-32 text-white/80 drop-shadow-xl" strokeWidth={1} />
-                      </div>
-                    );
-                  })()}
-
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
-
-                  <div className="absolute bottom-0 left-0 w-full p-8 sm:p-12">
-                    <motion.div
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.1 }}
-                    >
-                      <h2 className="text-3xl sm:text-5xl font-extrabold text-white mb-4">
+                <div className="p-8 sm:p-12">
+                  <div className="max-w-4xl mx-auto space-y-8">
+                    <div>
+                      <h2 className="text-3xl sm:text-4xl font-extrabold text-zinc-900 dark:text-zinc-100 mb-3">
                         {selectedProject.title}
                       </h2>
-                    </motion.div>
-                    <div className="flex items-center gap-4 text-zinc-300 text-sm font-mono">
-                      <span className="flex items-center gap-2">
-                        <Calendar size={14} /> {selectedProject.createdAt}
-                      </span>
+                      <p className="text-sm text-zinc-500 dark:text-zinc-500 font-mono mb-6">
+                        Created: {selectedProject.createdAt}
+                      </p>
                     </div>
-                  </div>
-                </div>
 
-                <div className="p-8 sm:p-12">
-                  <div className="max-w-4xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-12">
-                    <div className="lg:col-span-2 space-y-10">
-                      <div>
-                        <h4 className="text-sm font-bold uppercase tracking-wider text-zinc-900 dark:text-zinc-100 mb-4 flex items-center gap-2">
-                          <Layers size={16} /> Overview
-                        </h4>
-                        <p className="text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed font-light">
-                          {selectedProject.description}
-                        </p>
-                      </div>
-
-                      {selectedProject.features && (
-                        <div className="pt-6 border-t border-zinc-100 dark:border-zinc-800">
-                          <h4 className="text-sm font-bold uppercase tracking-wider text-zinc-900 dark:text-zinc-100 mb-6">
-                            Key Features
+                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+                      <div className="lg:col-span-2 space-y-10">
+                        <div>
+                          <h4 className="text-sm font-bold uppercase tracking-wider text-zinc-900 dark:text-zinc-100 mb-4 flex items-center gap-2">
+                            <Layers size={16} /> Overview
                           </h4>
-                          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                            {selectedProject.features.map((feature, i) => (
-                              <li
-                                key={i}
-                                className="flex items-start gap-3 text-zinc-600 dark:text-zinc-400 text-sm"
-                              >
-                                <div className="mt-1.5 h-1.5 w-1.5 rounded-full bg-zinc-900 dark:bg-zinc-100 shrink-0" />
-                                {feature}
-                              </li>
-                            ))}
-                          </ul>
+                          <p className="text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed font-light">
+                            {selectedProject.description}
+                          </p>
                         </div>
-                      )}
-                    </div>
 
-                    <div className="space-y-8 lg:border-l lg:border-zinc-100 lg:dark:border-zinc-800 lg:pl-12">
-                      <div className="flex flex-col gap-3">
-                        {selectedProject.live && (
-                          <a
-                            href={selectedProject.live}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex items-center justify-center gap-2 w-full py-3.5 rounded-xl bg-zinc-900 dark:bg-zinc-100 text-zinc-100 dark:text-zinc-900 font-bold hover:opacity-90 transition-all shadow-md hover:shadow-lg active:scale-[0.98]"
-                          >
-                            <ExternalLink size={18} /> Visit Live Site
-                          </a>
-                        )}
-                        {selectedProject.href && (
-                          <a
-                            href={selectedProject.href}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex items-center justify-center gap-2 w-full py-3.5 rounded-xl border border-zinc-200 dark:border-zinc-800 text-zinc-900 dark:text-zinc-100 font-medium hover:bg-zinc-50 dark:hover:bg-zinc-900 transition-colors active:scale-[0.98]"
-                          >
-                            <Github size={18} /> Source Code
-                          </a>
+                        {selectedProject.features && (
+                          <div className="pt-6 border-t border-zinc-100 dark:border-zinc-800">
+                            <h4 className="text-sm font-bold uppercase tracking-wider text-zinc-900 dark:text-zinc-100 mb-6">
+                              Key Features
+                            </h4>
+                            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                              {selectedProject.features.map((feature, i) => (
+                                <li
+                                  key={i}
+                                  className="flex items-start gap-3 text-zinc-600 dark:text-zinc-400 text-sm"
+                                >
+                                  <div className="mt-1.5 h-1.5 w-1.5 rounded-full bg-zinc-900 dark:bg-zinc-100 shrink-0" />
+                                  {feature}
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
                         )}
                       </div>
 
-                      <div>
-                        <h4 className="text-xs font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-500 mb-4">
-                          Technologies
-                        </h4>
-                        <div className="flex flex-wrap gap-2">
-                          {selectedProject.badge.map((tech) => (
-                            <span
-                              key={tech}
-                              className="px-3 py-1.5 rounded-lg bg-zinc-100 dark:bg-zinc-900 text-zinc-600 dark:text-zinc-300 text-xs font-medium border border-zinc-200 dark:border-zinc-800"
+                      <div className="space-y-8 lg:border-l lg:border-zinc-100 lg:dark:border-zinc-800 lg:pl-12">
+                        <div className="flex flex-col gap-3">
+                          {selectedProject.live && (
+                            <a
+                              href={selectedProject.live}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex items-center justify-center gap-2 w-full py-3.5 rounded-xl bg-zinc-900 dark:bg-zinc-100 text-zinc-100 dark:text-zinc-900 font-bold hover:opacity-90 transition-all shadow-md hover:shadow-lg active:scale-[0.98]"
                             >
-                              {tech}
-                            </span>
-                          ))}
+                              <ExternalLink size={18} /> Visit Live Site
+                            </a>
+                          )}
+                          {selectedProject.href && (
+                            <a
+                              href={selectedProject.href}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex items-center justify-center gap-2 w-full py-3.5 rounded-xl border border-zinc-200 dark:border-zinc-800 text-zinc-900 dark:text-zinc-100 font-medium hover:bg-zinc-50 dark:hover:bg-zinc-900 transition-colors active:scale-[0.98]"
+                            >
+                              <Github size={18} /> Source Code
+                            </a>
+                          )}
+                        </div>
+
+                        <div>
+                          <h4 className="text-xs font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-500 mb-4">
+                            Technologies
+                          </h4>
+                          <div className="flex flex-wrap gap-2">
+                            {selectedProject.badge.map((tech) => (
+                              <span
+                                key={tech}
+                                className="px-3 py-1.5 rounded-lg bg-zinc-100 dark:bg-zinc-900 text-zinc-600 dark:text-zinc-300 text-xs font-medium border border-zinc-200 dark:border-zinc-800"
+                              >
+                                {tech}
+                              </span>
+                            ))}
+                          </div>
                         </div>
                       </div>
                     </div>

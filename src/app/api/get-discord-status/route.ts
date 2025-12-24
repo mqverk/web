@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 
 export async function GET() {
-  const DISCORD_USER_ID = '786926252811485186';
+  const DISCORD_USER_ID = '1451934649239736371';
 
   try {
     const res = await fetch(`https://api.lanyard.rest/v1/users/${DISCORD_USER_ID}`);
