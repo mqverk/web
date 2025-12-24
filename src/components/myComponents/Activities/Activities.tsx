@@ -143,16 +143,16 @@ export default function Activities() {
   }, [resolvedTheme, mounted]);
 
   return (
-    <section className="mt-24 space-y-6">
-      <div className="flex items-center gap-3 mb-6">
-        <h2 className="text-lg font-semibold tracking-tight text-foreground/90">Activity Feed</h2>
-        <div className="h-px bg-border/40 flex-1" />
+    <section className="mt-12 space-y-8">
+      <div className="space-y-3">
+        <h2 className="text-3xl font-bold tracking-tight">What I'm up to</h2>
+        <p className="text-muted-foreground text-sm max-w-md">Real-time snapshot of my activity—currently reading, listening to, and building.</p>
       </div>
 
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {/* Row 1: Music & Discord */}
         <ActivityCard
-          className="col-span-2 min-h-[90px]"
+          className="sm:col-span-2 min-h-[100px]"
           icon={Music}
           label="Now Playing"
           onClick={() => window.dispatchEvent(new CustomEvent('open-now-playing-modal'))}
@@ -163,7 +163,7 @@ export default function Activities() {
         </ActivityCard>
 
         <ActivityCard
-          className="col-span-2 min-h-[90px]"
+          className="sm:col-span-2 min-h-[100px]"
           icon={MessageSquare}
           label="Discord"
           onClick={() => window.dispatchEvent(new CustomEvent('open-discord-modal'))}
@@ -174,25 +174,25 @@ export default function Activities() {
         </ActivityCard>
 
         {/* Row 2: Location, Reading, Watching, Status */}
-        <ActivityCard icon={MapPin} label="Location" actionIcon={false} className="min-h-[110px]">
+        <ActivityCard icon={MapPin} label="Location" actionIcon={false} className="min-h-[120px]">
           <div className="leading-tight mt-1">
             <LocationTime />
           </div>
         </ActivityCard>
 
-        <ActivityCard icon={BookOpen} label="Reading" actionIcon={false} className="min-h-[110px]">
-          <span className="italic block mt-1 truncate" title="LOTM >.<">
-            "LOTM {'>.<'}"
+        <ActivityCard icon={BookOpen} label="Reading" actionIcon={false} className="min-h-[120px]">
+          <span className="italic block mt-1" title="LOTM >.<">
+            White Nights<br /><b>by Dostoevsky</b>
           </span>
         </ActivityCard>
 
-        <ActivityCard icon={Monitor} label="Watching" actionIcon={false} className="min-h-[110px]">
+        <ActivityCard icon={Monitor} label="Watching" actionIcon={false} className="min-h-[120px]">
           <span className="italic block mt-1 truncate" title="Open-Source...">
             "Open-Source...
           </span>
         </ActivityCard>
 
-        <ActivityCard icon={Zap} label="Status" actionIcon={false} className="min-h-[110px]">
+        <ActivityCard icon={Zap} label="Status" actionIcon={false} className="min-h-[120px]">
           <div className="line-clamp-3 mt-1" title="Building 🚀">
             Building 🚀
           </div>
@@ -200,7 +200,7 @@ export default function Activities() {
 
         {/* Row 3: Git, Guestbook, Cat (Desktop) */}
         <ActivityCard
-          className="col-span-2 min-h-[90px]"
+          className="sm:col-span-2 min-h-[100px]"
           icon={GitCommit}
           label="Latest Commit"
           onClick={() => window.dispatchEvent(new CustomEvent('open-commit-modal'))}
@@ -214,17 +214,17 @@ export default function Activities() {
           href="/guestbook"
           icon={PenTool}
           label="Guestbook"
-          className="col-span-1 min-h-[90px]"
+          className="min-h-[100px]"
         >
           <div className="line-clamp-2 mt-1">Sign my guestbook ✨</div>
-        </ActivityCard>
+        </ActivityCard>>
 
         {isDesktop && (
           <ActivityCard
             icon={Cat}
             label="Oneko"
             onClick={toggleOneko}
-            className="col-span-1 min-h-[90px]"
+            className="min-h-[100px]"
           >
             <div className="flex items-center gap-2 mt-1">
               <span
@@ -246,9 +246,9 @@ export default function Activities() {
         )}
 
         {/* Row 4: Contribution Graph */}
-        <div className="col-span-2 lg:col-span-4 relative group">
-          <div className="p-3 rounded-xl border transition-all duration-300 backdrop-blur-sm overflow-hidden bg-white border-zinc-200 hover:border-zinc-300 dark:bg-zinc-900/30 dark:border-zinc-800/50 dark:hover:border-zinc-700">
-            <div className="flex items-center gap-2 mb-3">
+        <div className="col-span-1 sm:col-span-2 lg:col-span-4 relative group">
+          <div className="p-4 rounded-xl border transition-all duration-300 backdrop-blur-sm overflow-hidden bg-white border-zinc-200 hover:border-zinc-300 dark:bg-zinc-900/30 dark:border-zinc-800/50 dark:hover:border-zinc-700">
+            <div className="flex items-center gap-2 mb-4">
               <Github size={13} className="text-muted-foreground" />
               <span className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">
                 GitHub Contributions
