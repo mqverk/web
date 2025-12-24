@@ -73,7 +73,7 @@ Here's the magic:
   /* Tell the <ul> to span 3 columns and 2 rows */
   grid-column: span 3;
   grid-row: span 2;
-  
+
   /* Create a new grid that inherits the parent's template */
   display: grid;
   grid-template-columns: subgrid;
@@ -87,7 +87,7 @@ Let's unpack this:
 2. We apply `display: grid` to create a new child grid
 3. The `subgrid` keyword ties both grids together, letting each `<li>` occupy its own cell in the parent grid structure
 
-**Important:** You're technically creating a new grid when you use subgrid, but it inherits the template from the parent. There's only one grid *structure*, shared by multiple grid containers.
+**Important:** You're technically creating a new grid when you use subgrid, but it inherits the template from the parent. There's only one grid _structure_, shared by multiple grid containers.
 
 This setup means you can even apply a different `gap` to the subgrid if needed, while still maintaining alignment with the parent grid.
 
@@ -169,7 +169,8 @@ This won't work:
   grid-template-columns: 1fr 1fr;
 }
 
-.card, .card ul {
+.card,
+.card ul {
   display: grid;
   grid-template-rows: subgrid; /* ❌ Missing row spans! */
 }
