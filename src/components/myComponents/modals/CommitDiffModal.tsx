@@ -109,179 +109,182 @@ export function CommitDiffModal({
             onClick={(e) => e.stopPropagation()}
             className="bg-background border border-border rounded-xl shadow-2xl max-w-5xl w-full h-[85vh] flex flex-col overflow-hidden"
           >
-        {/* Header Section */}
-        <div className="flex items-start justify-between p-5 border-b border-border bg-muted/20 shrink-0">
-          <div className="flex-1 min-w-0 pr-4">
-            <div className="flex items-center gap-3 mb-2">
-              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-muted text-xs font-mono text-foreground/80 border border-border">
-                <GitCommit size={14} />
-                {commitSha.substring(0, 7)}
-              </span>
-              <span className="text-xs text-muted-foreground flex items-center gap-1">
-                <span className="text-green-600 font-medium">+{totalAdditions}</span>
-                <span className="text-muted-foreground">/</span>
-                <span className="text-red-600 font-medium">-{totalDeletions}</span>
-              </span>
-            </div>
-            <h3 className="text-lg font-semibold leading-tight truncate" title={commitMessage}>
-              {commitMessage}
-            </h3>
-          </div>
+            {/* Header Section */}
+            <div className="flex items-start justify-between p-5 border-b border-border bg-muted/20 shrink-0">
+              <div className="flex-1 min-w-0 pr-4">
+                <div className="flex items-center gap-3 mb-2">
+                  <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-muted text-xs font-mono text-foreground/80 border border-border">
+                    <GitCommit size={14} />
+                    {commitSha.substring(0, 7)}
+                  </span>
+                  <span className="text-xs text-muted-foreground flex items-center gap-1">
+                    <span className="text-green-600 font-medium">+{totalAdditions}</span>
+                    <span className="text-muted-foreground">/</span>
+                    <span className="text-red-600 font-medium">-{totalDeletions}</span>
+                  </span>
+                </div>
+                <h3 className="text-lg font-semibold leading-tight truncate" title={commitMessage}>
+                  {commitMessage}
+                </h3>
+              </div>
 
-          <div className="flex items-center gap-2 shrink-0">
-            {commitUrl && (
-              <a
-                href={commitUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2 hover:bg-muted rounded-md transition-colors text-muted-foreground hover:text-foreground border border-transparent hover:border-border"
-                title="View on GitHub"
-              >
-                <Github size={20} />
-              </a>
-            )}
-            <button
-              onClick={onClose}
-              className="p-2 hover:bg-muted rounded-md transition-colors text-muted-foreground hover:text-foreground"
-              title="Close modal"
-            >
-              <X size={20} />
-            </button>
-          </div>
-        </div>
-
-        {/* Content Section */}
-        <div className="flex-1 overflow-y-auto bg-muted/5">
-          {loading ? (
-            <div className="h-full flex flex-col items-center justify-center text-muted-foreground gap-3">
-              <Loader2 size={32} className="animate-spin text-primary" />
-              <span className="text-sm font-medium">Loading commit details...</span>
-            </div>
-          ) : error ? (
-            <div className="h-full flex flex-col items-center justify-center text-red-500 gap-2">
-              <FileDiff size={32} />
-              <p className="font-medium">Error loading diff</p>
-              <p className="text-sm text-muted-foreground">{error}</p>
-            </div>
-          ) : (
-            <div className="p-4 space-y-3">
-              {/* File Accordion List */}
-              {files.map((file, index) => {
-                const isExpanded = expandedFiles[file.filename];
-                const currentDiff = fileDiffs[file.filename];
-
-                return (
-                  <div
-                    key={index}
-                    className="border border-border rounded-lg bg-background shadow-sm overflow-hidden transition-all duration-200"
+              <div className="flex items-center gap-2 shrink-0">
+                {commitUrl && (
+                  <a
+                    href={commitUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-2 hover:bg-muted rounded-md transition-colors text-muted-foreground hover:text-foreground border border-transparent hover:border-border"
+                    title="View on GitHub"
                   >
-                    {/* Accordion Header - Clickable */}
-                    <button
-                      onClick={() => toggleFile(file.filename)}
-                      className={`w-full px-4 py-3 flex items-center justify-between hover:bg-muted/50 transition-colors text-left group ${isExpanded ? 'bg-muted/30 border-b border-border' : ''}`}
-                    >
-                      <div className="flex items-center gap-3 min-w-0">
-                        {isExpanded ? (
-                          <ChevronDown size={16} className="text-muted-foreground shrink-0" />
-                        ) : (
-                          <ChevronRight size={16} className="text-muted-foreground shrink-0" />
-                        )}
-
-                        <span
-                          className={`w-2 h-2 rounded-full shrink-0 ${
-                            file.status === 'added'
-                              ? 'bg-green-500'
-                              : file.status === 'removed'
-                                ? 'bg-red-500'
-                                : 'bg-yellow-500'
-                          }`}
-                        />
-
-                        <span className="font-mono text-sm font-medium truncate text-foreground/90 group-hover:text-primary transition-colors">
-                          {file.filename}
-                        </span>
-                      </div>
-
-                      <div className="flex items-center gap-3 text-xs font-medium shrink-0 ml-4">
-                        {file.additions > 0 && (
-                          <span className="text-green-600">+{file.additions}</span>
-                        )}
-                        {file.deletions > 0 && (
-                          <span className="text-red-600">-{file.deletions}</span>
-                        )}
-                      </div>
-                    </button>
-
-                    {/* Accordion Content - Slides open */}
-                    {isExpanded && (
-                      <div className="animate-in slide-in-from-top-2 duration-200">
-                        {currentDiff ? (
-                          <div className="bg-[#0d1117] overflow-x-auto">
-                            <pre className="font-mono text-xs leading-[1.6] p-4 text-gray-300 min-w-max">
-                              {currentDiff.split('\n').map((line, i) => {
-                                // Diff Parsing Logic
-                                if (line.startsWith('diff --git') || line.startsWith('index ')) {
-                                  // Hide redundant header info inside the accordion
-                                  return null;
-                                }
-
-                                if (line.startsWith('@@')) {
-                                  return (
-                                    <div
-                                      key={i}
-                                      className="text-blue-400 bg-blue-500/10 py-1 my-1 px-2 rounded border-l-2 border-blue-500"
-                                    >
-                                      {line}
-                                    </div>
-                                  );
-                                }
-                                if (line.startsWith('+') && !line.startsWith('+++')) {
-                                  return (
-                                    <div
-                                      key={i}
-                                      className="bg-green-500/10 text-green-400 block w-full px-2 border-l-2 border-green-500"
-                                    >
-                                      {line}
-                                    </div>
-                                  );
-                                }
-                                if (line.startsWith('-') && !line.startsWith('---')) {
-                                  return (
-                                    <div
-                                      key={i}
-                                      className="bg-red-500/10 text-red-400 block w-full px-2 border-l-2 border-red-500"
-                                    >
-                                      {line}
-                                    </div>
-                                  );
-                                }
-                                if (line.startsWith('+++') || line.startsWith('---')) {
-                                  // Skip file markers as we already know the file
-                                  return null;
-                                }
-
-                                return (
-                                  <div key={i} className="px-2.5 opacity-60">
-                                    {line}
-                                  </div>
-                                );
-                              })}
-                            </pre>
-                          </div>
-                        ) : (
-                          <div className="p-8 text-center text-muted-foreground text-sm flex flex-col items-center gap-2">
-                            <FileCode size={24} className="opacity-50" />
-                            <span>Binary file or no text changes detected.</span>
-                          </div>
-                        )}
-                      </div>
-                    )}
-                  </div>
-                );
-              })}
+                    <Github size={20} />
+                  </a>
+                )}
+                <button
+                  onClick={onClose}
+                  className="p-2 hover:bg-muted rounded-md transition-colors text-muted-foreground hover:text-foreground"
+                  title="Close modal"
+                >
+                  <X size={20} />
+                </button>
+              </div>
             </div>
-          )}
-        </div>
+
+            {/* Content Section */}
+            <div className="flex-1 overflow-y-auto bg-muted/5">
+              {loading ? (
+                <div className="h-full flex flex-col items-center justify-center text-muted-foreground gap-3">
+                  <Loader2 size={32} className="animate-spin text-primary" />
+                  <span className="text-sm font-medium">Loading commit details...</span>
+                </div>
+              ) : error ? (
+                <div className="h-full flex flex-col items-center justify-center text-red-500 gap-2">
+                  <FileDiff size={32} />
+                  <p className="font-medium">Error loading diff</p>
+                  <p className="text-sm text-muted-foreground">{error}</p>
+                </div>
+              ) : (
+                <div className="p-4 space-y-3">
+                  {/* File Accordion List */}
+                  {files.map((file, index) => {
+                    const isExpanded = expandedFiles[file.filename];
+                    const currentDiff = fileDiffs[file.filename];
+
+                    return (
+                      <div
+                        key={index}
+                        className="border border-border rounded-lg bg-background shadow-sm overflow-hidden transition-all duration-200"
+                      >
+                        {/* Accordion Header - Clickable */}
+                        <button
+                          onClick={() => toggleFile(file.filename)}
+                          className={`w-full px-4 py-3 flex items-center justify-between hover:bg-muted/50 transition-colors text-left group ${isExpanded ? 'bg-muted/30 border-b border-border' : ''}`}
+                        >
+                          <div className="flex items-center gap-3 min-w-0">
+                            {isExpanded ? (
+                              <ChevronDown size={16} className="text-muted-foreground shrink-0" />
+                            ) : (
+                              <ChevronRight size={16} className="text-muted-foreground shrink-0" />
+                            )}
+
+                            <span
+                              className={`w-2 h-2 rounded-full shrink-0 ${
+                                file.status === 'added'
+                                  ? 'bg-green-500'
+                                  : file.status === 'removed'
+                                    ? 'bg-red-500'
+                                    : 'bg-yellow-500'
+                              }`}
+                            />
+
+                            <span className="font-mono text-sm font-medium truncate text-foreground/90 group-hover:text-primary transition-colors">
+                              {file.filename}
+                            </span>
+                          </div>
+
+                          <div className="flex items-center gap-3 text-xs font-medium shrink-0 ml-4">
+                            {file.additions > 0 && (
+                              <span className="text-green-600">+{file.additions}</span>
+                            )}
+                            {file.deletions > 0 && (
+                              <span className="text-red-600">-{file.deletions}</span>
+                            )}
+                          </div>
+                        </button>
+
+                        {/* Accordion Content - Slides open */}
+                        {isExpanded && (
+                          <div className="animate-in slide-in-from-top-2 duration-200">
+                            {currentDiff ? (
+                              <div className="bg-[#0d1117] overflow-x-auto">
+                                <pre className="font-mono text-xs leading-[1.6] p-4 text-gray-300 min-w-max">
+                                  {currentDiff.split('\n').map((line, i) => {
+                                    // Diff Parsing Logic
+                                    if (
+                                      line.startsWith('diff --git') ||
+                                      line.startsWith('index ')
+                                    ) {
+                                      // Hide redundant header info inside the accordion
+                                      return null;
+                                    }
+
+                                    if (line.startsWith('@@')) {
+                                      return (
+                                        <div
+                                          key={i}
+                                          className="text-blue-400 bg-blue-500/10 py-1 my-1 px-2 rounded border-l-2 border-blue-500"
+                                        >
+                                          {line}
+                                        </div>
+                                      );
+                                    }
+                                    if (line.startsWith('+') && !line.startsWith('+++')) {
+                                      return (
+                                        <div
+                                          key={i}
+                                          className="bg-green-500/10 text-green-400 block w-full px-2 border-l-2 border-green-500"
+                                        >
+                                          {line}
+                                        </div>
+                                      );
+                                    }
+                                    if (line.startsWith('-') && !line.startsWith('---')) {
+                                      return (
+                                        <div
+                                          key={i}
+                                          className="bg-red-500/10 text-red-400 block w-full px-2 border-l-2 border-red-500"
+                                        >
+                                          {line}
+                                        </div>
+                                      );
+                                    }
+                                    if (line.startsWith('+++') || line.startsWith('---')) {
+                                      // Skip file markers as we already know the file
+                                      return null;
+                                    }
+
+                                    return (
+                                      <div key={i} className="px-2.5 opacity-60">
+                                        {line}
+                                      </div>
+                                    );
+                                  })}
+                                </pre>
+                              </div>
+                            ) : (
+                              <div className="p-8 text-center text-muted-foreground text-sm flex flex-col items-center gap-2">
+                                <FileCode size={24} className="opacity-50" />
+                                <span>Binary file or no text changes detected.</span>
+                              </div>
+                            )}
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
+            </div>
           </motion.div>
         </motion.div>
       )}
