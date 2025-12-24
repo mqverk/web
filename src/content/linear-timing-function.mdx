@@ -1,0 +1,180 @@
+---
+title: 'Springs and Bounces in Native CSS'
+publishedAt: '2025-10-28'
+summary: 'The magic of the linear() timing function that enables spring physics and natural motion in pure CSS.'
+---
+
+When creating animations, we decide how to transition between states using timing functions. Historically, we've used Bézier curves like `ease-in`, `ease-out`, and `ease-in-out`. They're great for basic motion, but there are certain things they just can't do.
+
+Springs. Bounces. Elastic motion. These natural-feeling animations have always required JavaScript libraries, which means dealing with main-thread performance issues and bundle size concerns.
+
+Modern CSS has given us a new superpower: the `linear()` timing function. Despite its confusing name (it's not the same as the `linear` preset!), this function lets you create springs, bounces, and complex easing curves entirely in native CSS.
+
+## The linear() Function
+
+The core idea is surprisingly simple: instead of mathematically-derived Bézier curves, we can draw our own easing curve by specifying a set of points on a cartesian plane.
+
+Here's an example that approximates an "ease" curve using 11 points:
+
+```css
+.block {
+  transition: transform 500ms linear(0, 0.1, 0.25, 0.5, 0.68, 0.8, 0.88, 0.94, 0.98, 0.995, 1);
+}
+```
+
+This looks like a curve, but it's actually a bunch of straight line segments connecting the dots—like those "connect the dots" drawings where a shape emerges from straight lines. That's why it's called `linear()`: unlike Bézier curves (which are actual mathematical curves), the `linear()` function only draws straight lines between provided points.
+
+Each number represents a ratio of transition progress, where 0 is the start and 1 is the end. You can pass as many numbers as you want, and they'll be evenly spaced across the duration.
+
+### Browser Support
+
+As of October 2025, browser support sits around 88%. It's been available in all major browsers since December 2023, which means most users can experience these effects.
+
+## Emulating Spring Physics
+
+We can use `linear()` to emulate spring physics by capturing data from a real modeled spring. Let's try a springy motion that overshoots and bounces back.
+
+Here's a hand-traced attempt with 11 values:
+
+```css
+linear(0, 1.25, 1, 0.9, 1.04, 0.99, 1.005, 0.996, 1.001, 0.999, 1);
+```
+
+Notice the values go above 1? Like Bézier curves, `linear()` allows overshooting the target. That second value `1.25` means we've overshot by 25%.
+
+But 11 values aren't enough. The animation looks robotic, jerking between discrete points rather than smoothly oscillating like a real spring.
+
+**The solution?** More points. With 50+ data points, the simulation becomes convincing. The element appears to move naturally, not mechanically.
+
+### Generating Values Dynamically
+
+You're not supposed to write these values by hand. Use tools that calculate them for you:
+
+**[Linear() Easing Generator](https://linear-easing-generator.netlify.app/)** by Jake Archibald and Adam Argyle - Pre-loaded with spring math, highly optimized output
+
+**[Easing Wizard](https://easingwizard.com/)** - The most comprehensive tool with springs, bounces, wiggles, and visual testing
+
+These tools use an advanced syntax where certain points also have time percentages:
+
+```css
+.thing {
+  transition: transform 1500ms linear(
+    0,
+    0.013 0.6%,
+    0.05 1.2%,
+    0.2 2.5%,
+    /* bunch of points omitted */
+    0.971 47.2%,
+    1.012 59.1%,
+    0.995 70.8%,
+    1
+  );
+}
+```
+
+Instead of evenly-spaced values, points are positioned strategically. This achieves the same curve with fewer points (though each point now requires two pieces of info instead of one).
+
+## Limitations
+
+The `linear()` function is powerful, but it has trade-offs.
+
+### 1. Still Time-Based
+
+JavaScript spring libraries don't use durations. You configure physical properties (stiffness, damping, mass), and the animation takes however long the physics dictates.
+
+CSS transitions require a duration:
+
+```css
+.elem {
+  transition: transform linear(...) 1200ms;
+}
+```
+
+Tools solve this by deriving a duration based on when the spring settles. But this means you can't model zero-friction springs (which would oscillate forever). There's no such thing as an infinite-duration transition.
+
+Springs aren't meant to be time-based, so this feels like stuffing a square peg into a round hole.
+
+### 2. Interrupts
+
+One of the hardest problems in web animation is handling interrupts. What happens when an element is updated mid-transition?
+
+Compare CSS `linear()` springs to JavaScript spring libraries when interrupted:
+
+- **JavaScript springs** take current inertia into account. The element slows down before changing direction, feeling natural.
+- **CSS transitions** turn around instantly, as if hitting a wall. The spring feels tight and quick instead of loose and smooth.
+
+Why? CSS transitions have [special logic for handling interrupts](https://www.w3.org/TR/css-transitions-1/#reversing). There's a "reversing shortening factor" that proportionally reduces duration. A 1600ms spring might re-run at 400ms.
+
+This looks fine with Bézier curves, but when emulating physics, you can't just speed it up and expect it to feel natural. It's like taking a recording of someone walking leisurely, speeding it up 2x, and trying to pass it off as jogging. The speed might match, but it won't look natural.
+
+### 3. Performance
+
+To convincingly simulate springs, you need 40+ data points. Does this impact performance or balloon CSS bundles?
+
+**Framerate testing:** I compared `linear(0, 1)` against a `linear()` string with 100+ values. Both ran equally smoothly, even on low-end hardware. No detectable difference.
+
+**Bundle size testing:** I added 3 maximum-accuracy springs (averaging 75 values each) to a real application:
+
+- **Before:** 63.3kB CSS (10.2kB gzipped)
+- **After:** 67.1kB CSS (11.5kB gzipped)
+- **Increase:** ~1.3kB gzipped
+
+On a typical 3G connection (2mb/s), that's 5ms (0.005 seconds) of download time. Completely imperceptible.
+
+**Pro tip:** Use CSS variables to reuse the same `linear()` string in multiple places. Avoid copy-pasting large strings dozens of times.
+
+## Using linear() Effectively
+
+Rather than sprinkling `linear()` values across your codebase, store common timing functions as globally-available CSS variables. Treat them like design tokens.
+
+Here's the pattern I use:
+
+```css
+html {
+  --spring-smooth: cubic-bezier(...);
+  --spring-smooth-time: 1000ms;
+  
+  @supports (animation-timing-function: linear(0, 1)) {
+    /* stiffness: 235, damping: 10 */
+    /* prettier-ignore */
+    --spring-smooth: linear(...);
+  }
+}
+
+/* Usage */
+@media (prefers-reduced-motion: no-preference) {
+  .thing {
+    transition: transform var(--spring-smooth) var(--spring-smooth-time);
+  }
+}
+```
+
+For older browsers without `linear()` support, provide a Bézier curve fallback. You can mimic springs somewhat by overshooting with Béziers—not as smooth, but decent.
+
+The `@supports` rule overwrites `--spring-smooth` with the actual `linear()` value in supported browsers. I include stiffness/damping in a comment so I can recreate the string later if needed. The `prettier-ignore` comment stops the formatter from putting each point on its own line.
+
+**Why not duplicate the transition declaration?** That doesn't work with CSS variables. The browser only checks if `var(--spring-smooth)` is valid syntax, not whether the underlying `linear()` feature is supported.
+
+Using `@supports` to overwrite the variable definition means you only need one declaration per animation. A single `@supports` rule replaces potentially hundreds of individual fallbacks.
+
+### The 80/20 Rule
+
+Store a handful of `linear()` timing functions in your design system alongside colors and font weights. This keeps bundle sizes down and ensures consistent animation feel.
+
+But sometimes none of the existing options work, and you need a custom spring. Follow the 80/20 rule: as long as 80% of transitions use design tokens, you're good. If custom timing functions creep above 20%, your design tokens need work.
+
+## Key Takeaways
+
+- `linear()` lets you create springs, bounces, and complex easing curves in pure CSS
+- Specify points on a graph; the browser connects them with straight lines
+- You need 40-50+ points for convincing spring simulation
+- Use tools like Linear() Easing Generator and Easing Wizard to generate values
+- Performance impact is negligible (framerate and bundle size)
+- Store timing functions as CSS variables with Bézier fallbacks
+- Respect `prefers-reduced-motion` for accessibility
+- Interrupts don't feel as natural as JavaScript spring libraries
+- Browser support is strong but not universal (88%+ as of late 2025)
+
+The `linear()` function isn't perfect—it's still time-based, interrupts feel awkward, and you can't model infinite springs. But for most use cases, it's a massive upgrade from static Bézier curves, and it keeps your animations running on the compositor thread for buttery smooth performance.
+
+Native CSS springs are finally here. Time to make things bounce.
