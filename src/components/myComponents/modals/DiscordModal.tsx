@@ -248,7 +248,7 @@ export function DiscordModal({ isOpen, onClose, data }: DiscordModalProps) {
             <div className="h-28 bg-gradient-to-r from-foreground/5 via-foreground/[0.02] to-background border-b border-border/20 w-full relative">
               <button
                 onClick={onClose}
-                className="absolute top-4 right-4 p-2 bg-background/60 hover:bg-foreground/10 text-foreground/60 hover:text-foreground rounded-full transition-all duration-200 z-10 border border-border/50 hover:border-border/70 hover:shadow-sm"
+                className="absolute top-4 right-4 p-2 bg-background/60 hover:bg-foreground/10 text-foreground/60 hover:text-foreground rounded-full transition-all duration-200 z-10 hover:shadow-sm"
               >
                 <X size={18} />
               </button>
