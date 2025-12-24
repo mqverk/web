@@ -118,7 +118,10 @@ export default function HomeContent() {
               <Mail className="h-6 w-6 text-foreground/60" />
               <h2 className="text-3xl font-bold">Get In Touch</h2>
             </div>
-            <p className="text-muted-foreground max-w-md">Have a question, idea, or opportunity? I'd love to hear from you. Send me a message and I'll get back to you as soon as possible.</p>
+            <p className="text-muted-foreground max-w-md">
+              Have a question, idea, or opportunity? I'd love to hear from you. Send me a message
+              and I'll get back to you as soon as possible.
+            </p>
           </div>
 
           <div className="relative">
