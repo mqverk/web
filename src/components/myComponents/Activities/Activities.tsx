@@ -45,9 +45,14 @@ const ActivityCard = ({
       <div className="flex items-center justify-between mb-3">
         <div className="flex items-center gap-2">
           <div className="p-1.5 rounded-lg bg-foreground/8 group-hover:bg-foreground/12 transition-colors">
-            <Icon size={14} className="shrink-0 text-foreground/70 group-hover:text-foreground/90 transition-colors" />
+            <Icon
+              size={14}
+              className="shrink-0 text-foreground/70 group-hover:text-foreground/90 transition-colors"
+            />
           </div>
-          <span className="text-[11px] font-semibold uppercase tracking-widest text-foreground/60 group-hover:text-foreground/80 transition-colors">{label}</span>
+          <span className="text-[11px] font-semibold uppercase tracking-widest text-foreground/60 group-hover:text-foreground/80 transition-colors">
+            {label}
+          </span>
         </div>
         {actionIcon && (
           <ArrowUpRight
@@ -147,9 +152,12 @@ export default function Activities() {
   return (
     <section className="mt-12 space-y-8">
       <div className="space-y-2">
-        <h2 className="text-4xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70">What I'm up to</h2>
+        <h2 className="text-4xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70">
+          What I'm up to
+        </h2>
         <p className="text-foreground/60 text-sm max-w-xl leading-relaxed">
-          Real-time snapshot of my current activity—what I'm listening to, reading, and working on right now.
+          Real-time snapshot of my current activity—what I'm listening to, reading, and working on
+          right now.
         </p>
       </div>
 
@@ -246,7 +254,10 @@ export default function Activities() {
           <div className="p-4 rounded-xl border transition-all duration-300 overflow-hidden bg-gradient-to-br from-zinc-50/80 to-zinc-50/40 border-zinc-200/60 hover:border-zinc-300/80 hover:from-zinc-50 hover:to-zinc-50/60 hover:shadow-sm hover:shadow-zinc-900/5 dark:bg-gradient-to-br dark:from-zinc-900/50 dark:to-zinc-900/20 dark:border-zinc-800/40 dark:hover:from-zinc-900/70 dark:hover:to-zinc-900/40 dark:hover:border-zinc-700/60 dark:hover:shadow-lg dark:hover:shadow-black/20">
             <div className="flex items-center gap-2 mb-4">
               <div className="p-1.5 rounded-lg bg-foreground/8 group-hover:bg-foreground/12 transition-colors">
-                <Github size={14} className="text-foreground/70 group-hover:text-foreground/90 transition-colors" />
+                <Github
+                  size={14}
+                  className="text-foreground/70 group-hover:text-foreground/90 transition-colors"
+                />
               </div>
               <span className="text-[11px] font-semibold uppercase tracking-widest text-foreground/60 group-hover:text-foreground/80 transition-colors">
                 GitHub Contributions

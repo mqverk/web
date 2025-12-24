@@ -115,9 +115,12 @@ export default function HomeContent() {
         <section className="px-4 max-w-4xl mx-auto w-full mt-20 mb-12">
           <div className="space-y-6">
             <div className="space-y-3">
-              <h2 className="text-4xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70">Let's Connect</h2>
+              <h2 className="text-4xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70">
+                Let's Connect
+              </h2>
               <p className="text-foreground/60 max-w-xl leading-relaxed">
-                Have an idea, question, or just want to chat? I'm always open to connecting with interesting people. Drop me a message below.
+                Have an idea, question, or just want to chat? I'm always open to connecting with
+                interesting people. Drop me a message below.
               </p>
             </div>
 
