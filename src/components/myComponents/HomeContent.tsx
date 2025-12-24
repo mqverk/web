@@ -2,8 +2,7 @@
 
 import { lazy, Suspense, useState } from 'react';
 import dynamic from 'next/dynamic';
-import { Copy, Check, Github, Instagram, Terminal } from 'lucide-react';
-import { FaDiscord } from 'react-icons/fa';
+import { Copy, Check, Github, Instagram, Terminal, MessageCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 // Dynamically import heavy animation libraries
@@ -99,7 +98,7 @@ export default function HomeContent() {
               <Button
                 variant="ghost"
                 size="icon"
-                className="text-muted-foreground hover:text-foreground"
+                className="text-muted-foreground hover:text-foreground transition-all duration-300 hover:scale-110"
                 asChild
               >
                 <a
@@ -114,7 +113,7 @@ export default function HomeContent() {
               <Button
                 variant="ghost"
                 size="icon"
-                className="text-muted-foreground hover:text-foreground"
+                className="text-muted-foreground hover:text-foreground transition-all duration-300 hover:scale-110"
                 asChild
               >
                 <a
@@ -129,7 +128,7 @@ export default function HomeContent() {
               <Button
                 variant="ghost"
                 size="icon"
-                className="text-muted-foreground hover:text-foreground"
+                className="text-muted-foreground hover:text-foreground transition-all duration-300 hover:scale-110"
                 asChild
               >
                 <a
@@ -138,7 +137,7 @@ export default function HomeContent() {
                   rel="noopener noreferrer"
                   title="Discord"
                 >
-                  <FaDiscord className="h-5 w-5" />
+                  <MessageCircle className="h-5 w-5" />
                 </a>
               </Button>
             </div>
