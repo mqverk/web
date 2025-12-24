@@ -1,0 +1,263 @@
+---
+title: 'Brand New Layouts with CSS Subgrid'
+publishedAt: '2025-11-25'
+summary: 'CSS Subgrid unlocks powerful layout capabilities that were previously impossible, allowing grid templates to extend through nested elements.'
+---
+
+When CSS Grid first dropped, it came with a frustrating limitation: only direct children could participate in the grid layout. Subgrid changes everything. It lets you extend the grid structure down through nested elements, opening up layout possibilities that were genuinely impossible before.
+
+When I first heard about subgrid, I thought it was just a convenience feature—a way to clean up some awkward workarounds. Turns out, subgrid is way more powerful than that. Let's explore what's possible.
+
+## The Fundamentals
+
+Imagine you're building a portfolio layout with a header spanning two rows and a collection of artwork thumbnails:
+
+```html
+<div class="grid">
+  <header>
+    <h1>My Portfolio</h1>
+    <p>A small selection of works created using Blender...</p>
+  </header>
+  <img src="/img/thumb-sneakers.jpg" />
+  <img src="/img/thumb-rocket.jpg" />
+  <img src="/img/thumb-fish.jpg" />
+  <!-- more images -->
+</div>
+```
+
+```css
+.grid {
+  display: grid;
+  grid-template-columns: 35% 1fr 1fr 1fr;
+}
+
+.grid header {
+  grid-row: 1 / 3;
+}
+```
+
+This works fine, but there's a semantic problem. Those images should really be grouped in a list (`<ul>`), not scattered as direct children of the grid container. Screen readers and search engines would benefit from proper markup.
+
+### The Problem with Proper Markup
+
+Add a `<ul>` wrapper and watch the layout break:
+
+```html
+<div class="grid">
+  <header>...</header>
+  <ul>
+    <li><img src="/img/thumb-sneakers.jpg" /></li>
+    <li><img src="/img/thumb-rocket.jpg" /></li>
+    <!-- more images -->
+  </ul>
+</div>
+```
+
+Now all images get crammed into a single grid cell because the `<ul>` is the grid child, not the individual `<li>` elements. The grid doesn't see those images anymore.
+
+### Subgrid to the Rescue
+
+Here's the magic:
+
+```css
+.grid {
+  display: grid;
+  grid-template-columns: 35% 1fr 1fr 1fr;
+}
+
+.grid header {
+  grid-row: 1 / 3;
+}
+
+.grid ul {
+  /* Tell the <ul> to span 3 columns and 2 rows */
+  grid-column: span 3;
+  grid-row: span 2;
+  
+  /* Create a new grid that inherits the parent's template */
+  display: grid;
+  grid-template-columns: subgrid;
+  grid-template-rows: subgrid;
+}
+```
+
+Let's unpack this:
+
+1. We tell the `<ul>` which portion of the parent grid it should occupy using `grid-column: span 3` and `grid-row: span 2`
+2. We apply `display: grid` to create a new child grid
+3. The `subgrid` keyword ties both grids together, letting each `<li>` occupy its own cell in the parent grid structure
+
+**Important:** You're technically creating a new grid when you use subgrid, but it inherits the template from the parent. There's only one grid *structure*, shared by multiple grid containers.
+
+This setup means you can even apply a different `gap` to the subgrid if needed, while still maintaining alignment with the parent grid.
+
+## New Layout Possibilities
+
+Here's where subgrid gets really interesting. Consider this artist portfolio card design where each card has an image and text content side-by-side. Without subgrid, if you put multiple cards in a grid, they'll each calculate their column widths independently:
+
+```css
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.grid article {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+}
+```
+
+The problem? Some headings are longer than others. "Bret's Dead Fish" fits comfortably in a narrow column, but "Infinite Supercomputer" needs more space. Since each card does its own calculation, image widths vary across cards. It looks messy.
+
+### The Subgrid Solution
+
+```css
+.grid {
+  display: grid;
+  /* Instead of 2 columns, we define 4: image, text, image, text */
+  grid-template-columns: repeat(2, 2fr 1fr);
+}
+
+.grid article {
+  /* Each article spans 2 columns */
+  grid-column: span 2;
+  display: grid;
+  grid-template-columns: subgrid;
+}
+```
+
+Now the parent grid has four columns total, and each article inherits a two-column slice. The grid can dynamically react to content across all cards. All the image columns stay the same width because they're all sharing the same grid template.
+
+This is where subgrid truly shines: **siblings can become responsive to each other** in a way that hasn't been possible until now.
+
+## Subgrid Gotchas
+
+### Gotcha 1: Reserving Space for Rows
+
+When sharing rows with subgrid, you must explicitly reserve the space. This is the most common mistake.
+
+Imagine pricing cards where features need to align across both cards:
+
+```html
+<div class="grid">
+  <div class="card">
+    <h2>Pro Package</h2>
+    <ul>
+      <li>Up to 4 team accounts.</li>
+      <li>Basic workflows.</li>
+      <li>Connect with Slack™.</li>
+      <li>Up to 3 knowledge bases...</li>
+      <li>Limited AI assistant...</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h2>Enterprise Package</h2>
+    <ul>
+      <li>Unlimited team accounts.</li>
+      <li>Advanced workflows.</li>
+      <!-- more items -->
+    </ul>
+  </div>
+</div>
+```
+
+This won't work:
+
+```css
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.card, .card ul {
+  display: grid;
+  grid-template-rows: subgrid; /* ❌ Missing row spans! */
+}
+```
+
+Everything gets crushed into one row. You need to explicitly reserve the rows:
+
+```css
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.card {
+  grid-row: span 6; /* 1 heading + 5 list items */
+  display: grid;
+  grid-template-rows: subgrid;
+}
+
+.card ul {
+  grid-row: span 5; /* 5 list items */
+  display: grid;
+  grid-template-rows: subgrid;
+}
+```
+
+**Dynamic data workaround:** If you don't know how many rows you'll need, you can use a large number like `span 99`. Unused rows stack at the bottom with 0px height. The downside? You lose the ability to use `gap` effectively.
+
+### Gotcha 2: Line Numbers Reset
+
+When you create a subgrid, the line numbers get reset. If your subgrid spans columns 2-5 of the parent, those internally become columns 1-4 in the subgrid.
+
+```css
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.subgrid {
+  grid-column: 2 / 5; /* Parent lines 2-5 */
+  display: grid;
+  grid-template-columns: subgrid;
+}
+
+.child {
+  grid-column: 2; /* This is line 2 of the SUBGRID (line 3 of parent) */
+}
+```
+
+Think of line numbers as indices, not unique IDs. Every grid's first line is index 1, even when inheriting from a parent.
+
+**Good news:** Named grid areas still work! If your parent defines `grid-template-areas`, descendants in the subgrid can still access those area names.
+
+### Gotcha 3: Fluid Grids Don't Work
+
+The famous fluid grid snippet doesn't play well with subgrid patterns:
+
+```css
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+}
+```
+
+This dynamically adjusts columns based on viewport size, but subgrid requires explicit column counts for many patterns. You'll need to use media queries instead of fluid design for subgrid layouts.
+
+### Gotcha 4: Browser Support Fallbacks
+
+Subgrid hit all major browsers in 2023, but still hasn't reached 90% support. Use feature queries for fallbacks:
+
+```css
+@supports not (grid-template-columns: subgrid) {
+  .grid article {
+    grid-template-columns: 1fr;
+    grid-template-rows: 140px 1fr;
+  }
+}
+```
+
+For the portfolio card example, stacking images vertically in the fallback works better than trying to replicate the exact layout. The goal isn't similarity—it's producing the best experience possible with available features.
+
+## Key Takeaways
+
+- Subgrid extends grid templates through nested elements
+- Use `display: grid` + `grid-template-columns: subgrid` to inherit parent columns
+- Explicitly reserve row space with `grid-row: span N`
+- Line numbers reset in subgrids, but named areas work
+- Siblings can align with each other across nested structures
+- Perfect for card layouts, pricing tables, and complex multi-layered grids
+
+CSS Subgrid solves problems that were genuinely impossible before. While it might seem intimidating, you don't need to re-architect your entire project. The most powerful applications of subgrid can be adopted incrementally, one component at a time.
