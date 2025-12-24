@@ -71,6 +71,24 @@ const projects: Project[] = [
     ],
     badge: ['JavaScript', 'HTML', 'CSS', 'Web'],
   },
+  {
+    id: 5,
+    title: 'Portfolio',
+    href: 'https://github.com/mqverk/web',
+    live: 'https://mqverk.me/',
+    createdAt: '20-12-2025',
+    description:
+      'My personal portfolio website showcasing projects, skills, and experiences. Built with Next.js 15, TypeScript, and Tailwind CSS, featuring a modern responsive design, dynamic content rendering, and smooth animations.',
+    features: [
+      'Modern responsive design with Tailwind CSS',
+      'Next.js 15 with App Router',
+      'TypeScript for type safety',
+      'Dynamic project showcase',
+      'Real-time activity feeds',
+      'Dark mode support',
+    ],
+    badge: ['Next.js', 'TypeScript', 'Tailwind CSS', 'React', 'Framer Motion'],
+  },
 ];
 
 export { projects };
