@@ -97,7 +97,7 @@ export function CommitDiffModal({
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.15, ease: "easeOut" }}
+          transition={{ duration: 0.15, ease: 'easeOut' }}
           className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4"
           onClick={onClose}
         >
@@ -105,9 +105,9 @@ export function CommitDiffModal({
             initial={{ scale: 0.96, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.96, opacity: 0 }}
-            transition={{ 
+            transition={{
               duration: 0.2,
-              ease: [0.16, 1, 0.3, 1]
+              ease: [0.16, 1, 0.3, 1],
             }}
             onClick={(e) => e.stopPropagation()}
             className="bg-background border border-border rounded-xl shadow-2xl max-w-5xl w-full h-[85vh] flex flex-col overflow-hidden"
