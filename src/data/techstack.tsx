@@ -9,7 +9,7 @@ import {
   SiArchlinux,
   SiExpress,
   SiMongodb,
-  SiPostgresql,
+  SiRedis,
   SiOpenai,
   SiGithubactions,
   SiSass,
@@ -131,9 +131,9 @@ export const database = [
     icon: <SiMongodb className="text-green-500 text-4xl" />,
   },
   {
-    name: 'PostgreSQL',
-    description: 'Relational Database',
-    icon: <SiPostgresql className="text-blue-400 text-4xl" />,
+    name: 'Redis',
+    description: 'In-Memory Data Store',
+    icon: <SiRedis className="text-red-500 text-4xl" />,
   },
 ];
 
