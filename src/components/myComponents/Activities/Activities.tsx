@@ -217,7 +217,7 @@ export default function Activities() {
           className="min-h-[100px]"
         >
           <div className="line-clamp-2 mt-1">Sign my guestbook ✨</div>
-        </ActivityCard>>
+        </ActivityCard>
 
         {isDesktop && (
           <ActivityCard
