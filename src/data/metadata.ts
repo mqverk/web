@@ -49,12 +49,12 @@ export const metadata = {
   openGraph: {
     title: 'Maverick — Full Stack Developer & Designer',
     description:
-      'Explore the projects by Maverick — web apps, creative experiments & open source work. Find me on GitHub as MaverickVilasara.',
+      'Explore the projects by Maverick — web apps, creative experiments & open source work. Find me on GitHub as mqverk.',
     url: 'https://maverick.live',
     siteName: 'Maverick — Full Stack Developer & Designer',
     images: [
       {
-        url: 'https://mannu.live/og.png', // replace with your OG image URL
+        url: 'https://maverick.live/og?title=Maverick',
         width: 1200,
         height: 630,
         alt: 'Maverick — Full Stack Developer & Designer',
@@ -65,17 +65,17 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Manpreet Singh — Full Stack Developer & Designer',
+    title: 'Maverick — Full Stack Developer & Designer',
     description:
-      'Explore the projects by Manpreet Singh — web apps, creative experiments & open source work. Find me on GitHub as MannuVilasara.',
-    site: '@dev_mannuu', // replace with your Twitter handle if you have one
-    creator: '@dev_mannuu',
-    images: ['https://mannu.live/og.png'], // same OG image
+      'Explore the projects by Maverick — web apps, creative experiments & open source work. Find me on GitHub as mqverk.',
+    site: '@dev_maverick',
+    creator: '@dev_maverick',
+    images: ['https://maverick.live/og?title=Maverick'],
   },
   alternates: {
-    canonical: 'https://mannu.live',
+    canonical: 'https://maverick.live',
     types: {
-      'application/rss+xml': 'https://mannu.live/rss',
+      'application/rss+xml': 'https://maverick.live/rss',
     },
   },
   // verification: {
