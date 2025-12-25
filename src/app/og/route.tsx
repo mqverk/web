@@ -7,8 +7,7 @@ export const runtime = 'edge';
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const title = searchParams.get('title') || 'Portfolio';
-  const description =
-    searchParams.get('description') || 'FOSS, ASOP and Linux Enthusiast.';
+  const description = searchParams.get('description') || 'FOSS, ASOP and Linux Enthusiast.';
 
   return new ImageResponse(
     <div
@@ -26,7 +25,14 @@ export async function GET(request: Request) {
       }}
     >
       {/* TOP SECTION */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '40px' }}>
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'flex-start',
+          gap: '40px',
+        }}
+      >
         <div style={{ display: 'flex', flexDirection: 'column', gap: '28px', flex: 1 }}>
           {/* NAME & USERNAME */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
@@ -71,7 +77,14 @@ export async function GET(request: Request) {
           >
             {/* Portfolio Link */}
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+              >
                 <circle cx="12" cy="12" r="10" />
                 <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
                 <path d="M2 12h20" />
@@ -81,7 +94,14 @@ export async function GET(request: Request) {
 
             {/* Location */}
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+              >
                 <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
                 <circle cx="12" cy="10" r="3" />
               </svg>
@@ -104,7 +124,8 @@ export async function GET(request: Request) {
               width: 200,
               height: 200,
               borderRadius: '50%',
-              background: 'linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%)',
+              background:
+                'linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%)',
               border: '2px solid rgba(255,255,255,0.2)',
               overflow: 'hidden',
               boxShadow: '0 20px 60px rgba(0,0,0,0.5)',
@@ -129,7 +150,8 @@ export async function GET(request: Request) {
       <div
         style={{
           height: '1px',
-          background: 'linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.2) 50%, transparent 100%)',
+          background:
+            'linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.2) 50%, transparent 100%)',
           margin: '32px 0',
         }}
       />
@@ -170,7 +192,8 @@ export async function GET(request: Request) {
             fontSize: 36,
             fontWeight: 800,
             color: '#000',
-            background: 'linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.85) 100%)',
+            background:
+              'linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.85) 100%)',
             border: '2px solid rgba(255,255,255,0.4)',
             padding: '16px 40px',
             borderRadius: '9999px',
