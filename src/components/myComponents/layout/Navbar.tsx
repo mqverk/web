@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { ChevronDown, Coffee } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { SwitchTheme } from './themeSwitch';
 
 const mainNavItems = [
@@ -93,29 +94,35 @@ export default function Navbar() {
             />
           </button>
 
-          {isDesktopDropdownOpen && (
-            <div
-              ref={dropdownRef}
-              className="absolute top-full right-0 mt-2 bg-background border border-border rounded-md p-4 shadow-lg z-20 min-w-[120px]"
-            >
-              {dropdownNavItems.map(({ name, href }) => {
-                const isActive = pathname === href;
-                return (
-                  <Link
-                    key={href}
-                    href={href}
-                    data-href={href}
-                    className={`block py-2 text-sm font-medium transition-all duration-300 ${
-                      isActive ? 'text-foreground' : 'text-foreground hover:text-foreground/60'
-                    }`}
-                    onClick={() => setIsDesktopDropdownOpen(false)}
-                  >
-                    {name}
-                  </Link>
-                );
-              })}
-            </div>
-          )}
+          <AnimatePresence>
+            {isDesktopDropdownOpen && (
+              <motion.div
+                ref={dropdownRef}
+                initial={{ opacity: 0, scale: 0.95, y: -10 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.95, y: -10 }}
+                transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                className="absolute top-full right-0 mt-2 bg-background border border-border rounded-md p-4 shadow-lg z-20 min-w-[120px] origin-top-right"
+              >
+                {dropdownNavItems.map(({ name, href }) => {
+                  const isActive = pathname === href;
+                  return (
+                    <Link
+                      key={href}
+                      href={href}
+                      data-href={href}
+                      className={`block py-2 text-sm font-medium transition-all duration-300 ${
+                        isActive ? 'text-foreground' : 'text-foreground hover:text-foreground/60'
+                      }`}
+                      onClick={() => setIsDesktopDropdownOpen(false)}
+                    >
+                      {name}
+                    </Link>
+                  );
+                })}
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
 
         <SwitchTheme />
@@ -134,26 +141,34 @@ export default function Navbar() {
       </div>
 
       {/* Mobile dropdown */}
-      {isOpen && (
-        <div className="md:hidden absolute top-full right-0 mt-2 bg-background border border-border rounded-md p-4 shadow-lg z-20">
-          {[...mainNavItems, ...dropdownNavItems].map(({ name, href }) => {
-            const isActive = pathname === href;
-            return (
-              <Link
-                key={href}
-                href={href}
-                data-href={href}
-                className={`block py-2 text-sm font-medium transition-all duration-300 ${
-                  isActive ? 'text-foreground' : 'text-foreground hover:text-foreground/60'
-                }`}
-                onClick={() => setIsOpen(false)}
-              >
-                {name}
-              </Link>
-            );
-          })}
-        </div>
-      )}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95, y: -10 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.95, y: -10 }}
+            transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className="md:hidden absolute top-full right-0 mt-2 bg-background border border-border rounded-md p-4 shadow-lg z-20 origin-top-right"
+          >
+            {[...mainNavItems, ...dropdownNavItems].map(({ name, href }) => {
+              const isActive = pathname === href;
+              return (
+                <Link
+                  key={href}
+                  href={href}
+                  data-href={href}
+                  className={`block py-2 text-sm font-medium transition-all duration-300 ${
+                    isActive ? 'text-foreground' : 'text-foreground hover:text-foreground/60'
+                  }`}
+                  onClick={() => setIsOpen(false)}
+                >
+                  {name}
+                </Link>
+              );
+            })}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }
