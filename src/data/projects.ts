@@ -50,7 +50,7 @@ const projects: Project[] = [
     href: 'https://github.com/mqverk/mget',
     createdAt: '27-12-2025',
     description:
-      'A high-performance, multi-threaded file downloader written in Go. Efficiently downloads files with parallel connections, progress tracking, and robust error handling. Designed for speed and reliability.',
+      'A high-performance, multi-threaded file downloader written in C. Efficiently downloads files with parallel connections, progress tracking, and robust error handling. Designed for speed and reliability.',
     features: [
       'Multi-threaded downloading',
       'Progress tracking and statistics',
@@ -58,7 +58,7 @@ const projects: Project[] = [
       'Robust error handling',
       'Command-line interface',
     ],
-    badge: ['Go', 'Download', 'CLI', 'Performance'],
+    badge: ['C', 'Download', 'CLI', 'Performance'],
   },
   {
     id: 4,
