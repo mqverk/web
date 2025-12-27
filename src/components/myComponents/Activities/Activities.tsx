@@ -224,7 +224,12 @@ export default function Activities() {
           </div>
         </ActivityCard>
 
-        <ActivityCard href="/guestbook" icon={PenTool} label="Guestbook" className="lg:col-span-2 min-h-[100px]">
+        <ActivityCard
+          href="/guestbook"
+          icon={PenTool}
+          label="Guestbook"
+          className="lg:col-span-2 min-h-[100px]"
+        >
           <div className="line-clamp-2 mt-1">Sign my guestbook ✨</div>
         </ActivityCard>
 
