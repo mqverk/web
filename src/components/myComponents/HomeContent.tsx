@@ -71,12 +71,13 @@ export default function HomeContent() {
             {/* Introduction */}
             <div className="space-y-4 mb-8">
               <p className="text-base sm:text-lg text-foreground/80 leading-relaxed max-w-2xl">
-                I build scalable web applications with modern technologies. Passionate about clean
-                code, great user experiences, and solving real-world problems through software.
+                I'm deeply passionate about OS Development, CyberSecurity, and Machine Learning.
+                I love diving into low-level systems, building secure applications, and exploring
+                the frontiers of artificial intelligence.
               </p>
               <p className="text-sm text-muted-foreground leading-relaxed max-w-2xl">
-                Full Stack Developer specializing in React, Next.js, and TypeScript. Currently
-                exploring OS development, cybersecurity, and machine learning.
+                Full Stack Developer with a focus on systems programming, security hardening, and
+                ML applications. Always learning, always building.
               </p>
             </div>
 

@@ -224,30 +224,9 @@ export default function Activities() {
           </div>
         </ActivityCard>
 
-        <ActivityCard href="/guestbook" icon={PenTool} label="Guestbook" className="min-h-[100px]">
+        <ActivityCard href="/guestbook" icon={PenTool} label="Guestbook" className="lg:col-span-2 min-h-[100px]">
           <div className="line-clamp-2 mt-1">Sign my guestbook ✨</div>
         </ActivityCard>
-
-        {isDesktop && (
-          <ActivityCard icon={Cat} label="Oneko" onClick={toggleOneko} className="min-h-[100px]">
-            <div className="flex items-center gap-2 mt-1">
-              <span
-                className={cn(
-                  'w-1.5 h-1.5 rounded-full ring-2 ring-background/50',
-                  onekoEnabled ? 'bg-green-500' : 'bg-zinc-400'
-                )}
-              />
-              <span
-                className={cn(
-                  'text-xs font-medium',
-                  onekoEnabled ? 'text-foreground' : 'text-muted-foreground'
-                )}
-              >
-                {onekoEnabled ? 'On' : 'Off'}
-              </span>
-            </div>
-          </ActivityCard>
-        )}
 
         {/* Row 4: Contribution Graph */}
         <div className="col-span-1 sm:col-span-2 lg:col-span-4 relative group">

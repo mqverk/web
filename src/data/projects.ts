@@ -46,6 +46,22 @@ const projects: Project[] = [
   },
   {
     id: 3,
+    title: 'mget',
+    href: 'https://github.com/mqverk/mget',
+    createdAt: '27-12-2025',
+    description:
+      'A high-performance, multi-threaded file downloader written in Go. Efficiently downloads files with parallel connections, progress tracking, and robust error handling. Designed for speed and reliability.',
+    features: [
+      'Multi-threaded downloading',
+      'Progress tracking and statistics',
+      'Parallel connections',
+      'Robust error handling',
+      'Command-line interface',
+    ],
+    badge: ['Go', 'Download', 'CLI', 'Performance'],
+  },
+  {
+    id: 4,
     title: 'mqverk',
     href: 'https://github.com/mqverk/mqverk',
     createdAt: '17-04-2025',
@@ -59,7 +75,7 @@ const projects: Project[] = [
     badge: ['Config', 'GitHub', 'Setup'],
   },
   {
-    id: 4,
+    id: 5,
     title: 'hi-mqverk',
     href: 'https://github.com/mqverk/hi-mqverk',
     createdAt: '02-12-2025',
@@ -74,7 +90,7 @@ const projects: Project[] = [
     badge: ['Node.js', 'JavaScript', 'CLI', 'ASCII'],
   },
   {
-    id: 5,
+    id: 6,
     title: 'calculator',
     href: 'https://github.com/mqverk/calculator',
     live: 'https://calculator-mauve-five-45.vercel.app',
