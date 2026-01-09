@@ -141,7 +141,7 @@ main ul {
 }
 
 .name {
-  /* text-transform: none; */
+  text-transform: none;
   font-family: "UnifrakturMaguntia", cursive;
   /* font-weight: 400; */
   /* font-style: normal; */
@@ -149,13 +149,14 @@ main ul {
   /* top: 40px; */
   /* left: 50%; */
   /* transform: translate(-50%, 0); */
-  font-size: clamp(50px, 20vw, 300px);
+  font-size: clamp(40px, 15vw, 220px);
   width: 100%;
   height: 10px;
   display: flex;
   justify-content: center;
   gap: 10px;
   align-items: flex-start;
+  letter-spacing: 10px;
   /* color: transparent; */
   /* z-index: 10; */
   pointer-events: none;
@@ -166,6 +167,8 @@ main ul {
 
 #namel {
   color: black;
+  gap: 10px;
+  letter-spacing: 10px;
   /* -webkit-text-stroke-width: 2px; */
   /* -webkit-text-stroke-color: rgb(0, 0, 0); */
 }

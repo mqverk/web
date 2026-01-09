@@ -24,7 +24,7 @@ gsap.ticker.lagSmoothing(0);
 
 document.querySelector(
   ".footer-text"
-).innerHTML = `&copy; Made by: Hasanur Rahman ${new Date().getFullYear()}`;
+).innerHTML = `&copy; Made by: Maverick ${new Date().getFullYear()}`;
 
 gsap.to(".screen", {
   scrollTrigger: {
