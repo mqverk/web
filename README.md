@@ -1,7 +1,7 @@
-# Hasanur Rahman – Portfolio
+# mqverk – Portfolio
 
-A minimal, animated personal portfolio website built with modern web technologies.  
-This site showcases my skills in **Embedded Systems**, **Fullstack Web Development**, and **low-level programming**.
+A minimal, animated personal portfolio site built with modern web tools.  
+Highlights work across **FOSS**, **AOSP/Linux**, and **fullstack web**.
 
 ![Portfolio Screenshot](./public/portfolio.png) <!-- optional: add a screenshot of your site -->
 
@@ -9,26 +9,26 @@ This site showcases my skills in **Embedded Systems**, **Fullstack Web Developme
 
 ## About Me
 
-- **Name:** Hasanur Rahman
-- **Age:** 17
-- **Location:** Dhaka, Bangladesh
-- **Focus:** Embedded Systems & Fullstack Web Development
-- **Passion:** Low-level programming
+- **Name:** Maverick (mqverk)
+- **Age:** [redacted]
+- **Location:** [redacted]
+- **Focus:** FOSS, AOSP/Linux, Web
+- **Passion:** Systems, embedded, and lean web builds
 - **Status:** Available for work
 
 ### Connect
 
-- [GitHub](https://github.com/hasan-bro-coder)
-<!-- - [LinkedIn](https://linkedin.com/in/yourusername) -->
-- [Email](mailto:hasanur.professional@gmail.com)
+- [GitHub](https://github.com/mqverk)
+- [LinkedIn](https://linkedin.com/in/mqverk)
+- [Email](mailto:mqverk@proton.me)
 
 ---
 
 ## Tech Stack
 
 - **Frontend:** HTML, CSS (Tailwind), JavaScript
-- **Animations & Effects:** GSAP / custom micro-animations , lenis (smooth scroll)
-- **Deployment:** GitHub Pages
+- **Animation & Motion:** GSAP, Three.js, lenis, custom micro-interactions
+- **Tooling/Deploy:** npm scripts, GitHub Pages
 
 ---
 
@@ -36,7 +36,7 @@ This site showcases my skills in **Embedded Systems**, **Fullstack Web Developme
 
 ```bash
 # Clone the repository
-git clone https://github.com/hasan-bro-coder/Portfolio.git
+git clone https://github.com/mqverk/web.git
 
 npm install
 
