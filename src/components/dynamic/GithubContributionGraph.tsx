@@ -209,7 +209,8 @@ export const GithubContributionGraph = ({
                     key={d}
                     className={`aspect-square rounded-[2px] border border-zinc-700/30 ${
                       day ? `${LEVEL_COLORS[day.level]} cursor-pointer` : "bg-transparent"
-                    } transition-colors duration-200`}
+                    } transition-colors duration-200 relative group`}
+                    style={{ minWidth: '12px', minHeight: '12px' }}
                     initial={{ scale: 0, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
                     transition={{ 
@@ -225,12 +226,15 @@ export const GithubContributionGraph = ({
                         : `${day.count} commit${day.count !== 1 ? "s" : ""} on ${formatDate(day.date)}`;
                       setTooltip({ 
                         x: rect.left + rect.width / 2, 
-                        y: rect.top, 
+                        y: rect.top - 5, 
                         text: label 
                       });
                     }}
                     onMouseLeave={() => setTooltip(null)}
-                  />
+                  >
+                    {/* Invisible hover area expansion */}
+                    <div className="absolute inset-[-2px]" />
+                  </motion.div>
                 ))}
               </div>
             ))}
@@ -247,15 +251,15 @@ export const GithubContributionGraph = ({
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 5, scale: 0.9 }}
             transition={{ duration: 0.15, ease: "easeOut" }}
-            className="fixed z-50 px-3 py-2 text-xs text-zinc-200 bg-zinc-800/95 border border-zinc-600/50 rounded-lg shadow-xl backdrop-blur-sm pointer-events-none whitespace-nowrap"
+            className="fixed z-[9999] px-3 py-2 text-xs font-medium text-zinc-100 bg-zinc-900/95 border border-zinc-600/80 rounded-lg shadow-xl backdrop-blur-md pointer-events-none whitespace-nowrap"
             style={{
               left: tooltip.x,
-              top: tooltip.y - 45,
+              top: tooltip.y - 50,
               transform: "translateX(-50%)",
             }}
           >
             {tooltip.text}
-            <div className="absolute bottom-[-4px] left-1/2 transform -translate-x-1/2 w-2 h-2 bg-zinc-800/95 border-r border-b border-zinc-600/50 rotate-45" />
+            <div className="absolute bottom-[-5px] left-1/2 transform -translate-x-1/2 w-2.5 h-2.5 bg-zinc-900/95 border-r border-b border-zinc-600/80 rotate-45" />
           </motion.div>
         )}
       </AnimatePresence>
