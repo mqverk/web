@@ -74,6 +74,10 @@ export interface LastfmArtist {
     url: string;
 }
 
+export interface LastfmTopTrack extends LastfmTrack {
+    playcount: string;
+}
+
 export interface LastfmData {
     nowPlaying?: LastfmTrack | null;
     recentTrack?: LastfmTrack | null;
