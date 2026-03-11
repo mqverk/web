@@ -143,7 +143,7 @@ export const GithubContributionGraph = ({
       {/* Header */}
       <div className="flex items-center justify-between mb-4">
         <div className="text-sm font-medium text-zinc-300">
-          <span className="text-emerald-400 font-semibold">{total.toLocaleString()}</span> contributions in last 6 months
+          <span className="text-emerald-400 font-semibold">{total.toLocaleString()}</span> commits in last 6 months
         </div>
         
         {/* Legend */}
@@ -207,9 +207,9 @@ export const GithubContributionGraph = ({
                 {week.days.map((day, d) => (
                   <motion.div
                     key={d}
-                    className={`aspect-square rounded-sm border border-zinc-700/30 ${
+                    className={`aspect-square rounded-[2px] border border-zinc-700/30 ${
                       day ? `${LEVEL_COLORS[day.level]} cursor-pointer` : "bg-transparent"
-                    } transition-all duration-200 hover:scale-110 hover:border-zinc-500/50`}
+                    } transition-colors duration-200`}
                     initial={{ scale: 0, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
                     transition={{ 
@@ -217,17 +217,12 @@ export const GithubContributionGraph = ({
                       duration: 0.2,
                       ease: "easeOut"
                     }}
-                    whileHover={{ 
-                      scale: 1.15,
-                      zIndex: 10,
-                      transition: { duration: 0.1 }
-                    }}
                     onMouseEnter={(e) => {
                       if (!day) return;
                       const rect = e.currentTarget.getBoundingClientRect();
                       const label = day.count === 0
-                        ? `No contributions on ${formatDate(day.date)}`
-                        : `${day.count} contribution${day.count !== 1 ? "s" : ""} on ${formatDate(day.date)}`;
+                        ? `No commits on ${formatDate(day.date)}`
+                        : `${day.count} commit${day.count !== 1 ? "s" : ""} on ${formatDate(day.date)}`;
                       setTooltip({ 
                         x: rect.left + rect.width / 2, 
                         y: rect.top, 
