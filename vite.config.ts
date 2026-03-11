@@ -97,12 +97,66 @@ function lastfmDevApi(): Plugin {
     };
 }
 
+function githubContributionsDevApi(): Plugin {
+    return {
+        name: 'github-contributions-dev-api',
+        configureServer(server) {
+            server.middlewares.use('/api/github-contributions', async (req, res) => {
+                res.setHeader('Content-Type', 'application/json');
+                try {
+                    const env = loadEnv('', process.cwd(), '');
+                    const url = new URL(req.url || '', 'http://localhost');
+                    const username = url.searchParams.get('username') || env.VITE_GITHUB_USERNAME || 'mqverk';
+
+                    const response = await fetch(`https://github.com/users/${encodeURIComponent(username)}/contributions`, {
+                        headers: { 'Accept': 'text/html' },
+                    });
+
+                    if (!response.ok) {
+                        res.end(JSON.stringify({ contributions: [], total: 0, error: 'Failed to fetch' }));
+                        return;
+                    }
+
+                    const html = await response.text();
+                    interface ContributionDay { date: string; count: number; level: number; }
+                    const contributions: ContributionDay[] = [];
+                    let total = 0;
+
+                    const cellRegex = /data-date="(\d{4}-\d{2}-\d{2})"[^>]*data-level="(\d)"/g;
+                    let match;
+                    while ((match = cellRegex.exec(html)) !== null) {
+                        const date = match[1];
+                        const level = parseInt(match[2], 10);
+                        const countRegex = new RegExp(`(\\d+)\\s+contribution[s]?\\s+on\\s+\\w+\\s+${parseInt(date.split('-')[2], 10)}`, 'i');
+                        const around = html.substring(Math.max(0, match.index - 200), match.index + 300);
+                        const countMatch = countRegex.exec(around);
+                        const count = countMatch ? parseInt(countMatch[1], 10) : (level > 0 ? level : 0);
+                        contributions.push({ date, count, level });
+                        total += count;
+                    }
+
+                    if (total === 0) {
+                        const totalRegex = /([\d,]+)\s+contributions?\s+in\s+the\s+last\s+year/i;
+                        const totalMatch = totalRegex.exec(html);
+                        if (totalMatch) total = parseInt(totalMatch[1].replace(/,/g, ''), 10);
+                    }
+
+                    res.end(JSON.stringify({ contributions, total }));
+                } catch (error: any) {
+                    res.end(JSON.stringify({ contributions: [], total: 0, error: error?.message || 'Dev API error' }));
+                }
+            });
+        },
+    };
+}
+
 // https://vite.dev/config/
 export default defineConfig({
     plugins: [
         react(),
         tailwindcss(),
         lastfmDevApi(),
+        githubContributionsDevApi(),
     ],
     define: {
         'process.env': {}
