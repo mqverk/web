@@ -81,6 +81,7 @@ export interface LastfmTopTrack extends LastfmTrack {
 export interface LastfmData {
     nowPlaying?: LastfmTrack | null;
     recentTrack?: LastfmTrack | null;
+    topTrack?: LastfmTopTrack | null;
     topArtist?: LastfmArtist | null;
     error?: string;
 }
