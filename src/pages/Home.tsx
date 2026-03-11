@@ -10,7 +10,7 @@ const SkillsSection = lazy(() => import("@/components/sections/SkillsSection").t
 import { ProjectsSection } from "@/components/sections/ProjectsSection";
 const ArticleFeedSection = lazy(() => import("@/components/sections/ArticleFeedSection").then(m => ({ default: m.ArticleFeedSection })));
 const QuoteSection = lazy(() => import("@/components/sections/QuoteSection").then(m => ({ default: m.QuoteSection })));
-const SpotifyCard = lazy(() => import("@/components/dynamic/SpotifyCard").then(m => ({ default: m.SpotifyCard })));
+const LastfmCard = lazy(() => import("@/components/dynamic/LastfmCard").then(m => ({ default: m.LastfmCard })));
 const GithubCard = lazy(() => import("@/components/dynamic/GithubCard").then(m => ({ default: m.GithubCard })));
 
 const FallbackLoader = () => <div className="p-6 md:p-10 text-zinc-600 text-sm animate-pulse">Loading...</div>;
@@ -64,7 +64,7 @@ export const Home = () => {
       <Section delay={0.6}>
         <Suspense fallback={<FallbackLoader />}>
           <div className="p-6 md:p-10 grid grid-cols-1 md:grid-cols-2 gap-6">
-            <SpotifyCard />
+            <LastfmCard />
             <GithubCard username={import.meta.env.VITE_GITHUB_USERNAME || "mqverk"} />
           </div>
         </Suspense>
