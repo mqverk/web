@@ -60,53 +60,36 @@ export const fetchMediumPosts = async (username: string) => {
     }
 };
 
-export interface SpotifyTopData {
-    topTrack?: {
-        songName: string;
-        artistName: string;
-        albumArt: string;
-        url: string;
-    };
-    topArtist?: {
-        name: string;
-        genres: string;
-        image: string;
-        url: string;
-    };
+export interface LastfmTrack {
+    songName: string;
+    artistName: string;
+    albumArt: string;
+    url: string;
+}
+
+export interface LastfmArtist {
+    name: string;
+    playcount: string;
+    url: string;
+}
+
+export interface LastfmData {
+    nowPlaying?: LastfmTrack | null;
+    recentTrack?: LastfmTrack | null;
+    topArtist?: LastfmArtist | null;
     error?: string;
 }
 
-export const fetchSpotifyTop = async (): Promise<SpotifyTopData | null> => {
+export const fetchLastfmData = async (): Promise<LastfmData | null> => {
     try {
-        const response = await fetch("/api/spotify");
+        const response = await fetch("/api/lastfm");
         if (!response.ok) {
-            console.warn(`Spotify API unreachable (${response.status}). Using local mock fallback.`);
-            return {
-                topTrack: {
-                    songName: "Mock Track (Local)",
-                    artistName: "Vite Server",
-                    albumArt: "https://github.com/github.png",
-                    url: "#"
-                },
-                topArtist: {
-                    name: "Mock Artist",
-                    genres: "electronic, synthpop",
-                    image: "https://github.com/github.png",
-                    url: "#"
-                }
-            };
+            console.warn(`Last.fm API unreachable (${response.status}).`);
+            return null;
         }
-        const data = await response.json();
-        return data as SpotifyTopData;
+        return await response.json() as LastfmData;
     } catch (error) {
-        console.warn("Spotify Fetch Error (Using Mock Fallback):", error);
-        return {
-            topTrack: {
-                songName: "Disconnected",
-                artistName: "No API Configured",
-                albumArt: "https://github.com/github.png",
-                url: "#"
-            }
-        };
+        console.warn("Last.fm Fetch Error:", error);
+        return null;
     }
 };
