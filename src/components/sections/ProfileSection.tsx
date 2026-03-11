@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import profileData from "@/data/profile.json";
 import { Mail, Eye, Github, Link } from "lucide-react";
-import { GitHubCalendar } from "react-github-calendar";
+import { GithubContributionGraph } from "@/components/dynamic/GithubContributionGraph";
 import { motion } from "framer-motion";
 import { RotatingTitle } from "@/components/ui/RotatingTitle";
 
@@ -88,16 +88,8 @@ export const ProfileSection = () => {
          </div>
 
          {/* GitHub Graph */}
-         <div className="w-full mt-4 overflow-x-auto custom-scrollbar pb-2">
-           <div className="min-w-max pr-4 text-zinc-400">
-             <GitHubCalendar
-               username={import.meta.env.VITE_GITHUB_USERNAME || "mqverk"}
-               blockSize={11}
-               blockMargin={4}
-               colorScheme="dark"
-               fontSize={12}
-             />
-           </div>
+         <div className="w-full mt-4">
+           <GithubContributionGraph username={import.meta.env.VITE_GITHUB_USERNAME || "mqverk"} />
          </div>
       </div>
     </div>
