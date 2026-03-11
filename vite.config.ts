@@ -18,15 +18,16 @@ function lastfmDevApi(): Plugin {
                     const username = env.LASTFM_USERNAME || '';
 
                     if (!apiKey || !username) {
-                        res.end(JSON.stringify({ nowPlaying: null, recentTrack: null, topArtist: null, error: 'Missing LASTFM env vars' }));
+                        res.end(JSON.stringify({ nowPlaying: null, recentTrack: null, topTrack: null, topArtist: null, error: 'Missing LASTFM env vars' }));
                         return;
                     }
 
                     const lfm = (method: string, extra = '') =>
                         `${LASTFM_API_BASE}?method=${method}&user=${encodeURIComponent(username)}&api_key=${apiKey}&format=json${extra}`;
 
-                    const [recentRes, topArtistsRes] = await Promise.all([
+                    const [recentRes, topTracksRes, topArtistsRes] = await Promise.all([
                         fetch(lfm('user.getrecenttracks', '&limit=1')),
+                        fetch(lfm('user.gettoptracks', '&period=7day&limit=1')),
                         fetch(lfm('user.gettopartists', '&period=1month&limit=1')),
                     ]);
 
@@ -50,6 +51,21 @@ function lastfmDevApi(): Plugin {
                         }
                     }
 
+                    let topTrack = null;
+                    if (topTracksRes.ok) {
+                        const data = await topTracksRes.json();
+                        const t = data?.toptracks?.track?.[0];
+                        if (t) {
+                            topTrack = {
+                                songName: t.name || 'Unknown',
+                                artistName: t.artist?.name || 'Unknown',
+                                albumArt: t.image?.find((i: any) => i.size === 'extralarge')?.['#text'] || t.image?.[2]?.['#text'] || '',
+                                url: t.url || '#',
+                                playcount: t.playcount || '0',
+                            };
+                        }
+                    }
+
                     let topArtist = null;
                     if (topArtistsRes.ok) {
                         const data = await topArtistsRes.json();
@@ -63,9 +79,9 @@ function lastfmDevApi(): Plugin {
                         }
                     }
 
-                    res.end(JSON.stringify({ nowPlaying, recentTrack, topArtist }));
+                    res.end(JSON.stringify({ nowPlaying, recentTrack, topTrack, topArtist }));
                 } catch (error: any) {
-                    res.end(JSON.stringify({ nowPlaying: null, recentTrack: null, topArtist: null, error: error?.message || 'Dev API error' }));
+                    res.end(JSON.stringify({ nowPlaying: null, recentTrack: null, topTrack: null, topArtist: null, error: error?.message || 'Dev API error' }));
                 }
             });
         },
