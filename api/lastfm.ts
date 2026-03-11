@@ -8,14 +8,15 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const username = process.env.LASTFM_USERNAME || '';
 
     if (!apiKey || !username) {
-      return res.status(200).json({ nowPlaying: null, recentTrack: null, topArtist: null, error: 'Missing LASTFM env vars' });
+      return res.status(200).json({ nowPlaying: null, recentTrack: null, topTrack: null, topArtist: null, error: 'Missing LASTFM env vars' });
     }
 
     const lfm = (method: string, extra = '') =>
       `${LASTFM_API_BASE}?method=${method}&user=${encodeURIComponent(username)}&api_key=${apiKey}&format=json${extra}`;
 
-    const [recentRes, topArtistsRes] = await Promise.all([
+    const [recentRes, topTracksRes, topArtistsRes] = await Promise.all([
       fetch(lfm('user.getrecenttracks', '&limit=1')),
+      fetch(lfm('user.gettoptracks', '&period=7day&limit=1')),
       fetch(lfm('user.gettopartists', '&period=1month&limit=1')),
     ]);
 
@@ -39,6 +40,21 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       }
     }
 
+    let topTrack = null;
+    if (topTracksRes.ok) {
+      const data = await topTracksRes.json();
+      const t = data?.toptracks?.track?.[0];
+      if (t) {
+        topTrack = {
+          songName: t.name || 'Unknown',
+          artistName: t.artist?.name || 'Unknown',
+          albumArt: t.image?.find((i: any) => i.size === 'extralarge')?.['#text'] || t.image?.[2]?.['#text'] || '',
+          url: t.url || '#',
+          playcount: t.playcount || '0',
+        };
+      }
+    }
+
     let topArtist = null;
     if (topArtistsRes.ok) {
       const data = await topArtistsRes.json();
@@ -53,9 +69,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     }
 
     res.setHeader('Cache-Control', 'public, s-maxage=60, stale-while-revalidate=30');
-    return res.status(200).json({ nowPlaying, recentTrack, topArtist });
+    return res.status(200).json({ nowPlaying, recentTrack, topTrack, topArtist });
   } catch (error: any) {
     console.error('Last.fm API error:', error?.message || error);
-    return res.status(200).json({ nowPlaying: null, recentTrack: null, topArtist: null, error: error?.message || 'Internal Server Error' });
+    return res.status(200).json({ nowPlaying: null, recentTrack: null, topTrack: null, topArtist: null, error: error?.message || 'Internal Server Error' });
   }
 }
