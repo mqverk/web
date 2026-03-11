@@ -47,7 +47,7 @@ export const ProfileSection = () => {
         <motion.a 
           whileHover={{ scale: 1.02, y: -2 }}
           whileTap={{ scale: 0.98 }}
-          href="https://github.com/mqverk" 
+          href={`https://github.com/${import.meta.env.VITE_GITHUB_USERNAME || "mqverk"}`} 
           target="_blank" 
           rel="noopener noreferrer"
           className="flex items-center gap-2 px-4 py-2 rounded-md bg-zinc-200 text-zinc-900 font-medium text-[13px] shadow-sm cursor-pointer whitespace-nowrap"
@@ -91,7 +91,7 @@ export const ProfileSection = () => {
          <div className="w-full mt-4 overflow-x-auto custom-scrollbar pb-2">
            <div className="min-w-max pr-4 text-zinc-400">
              <GitHubCalendar
-               username="mqverk"
+               username={import.meta.env.VITE_GITHUB_USERNAME || "mqverk"}
                blockSize={11}
                blockMargin={4}
                colorScheme="dark"

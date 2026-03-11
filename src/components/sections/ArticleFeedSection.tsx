@@ -19,7 +19,7 @@ export const ArticleFeedSection = ({ limit }: ArticleFeedSectionProps) => {
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const username = "mqverk";
+        const username = import.meta.env.VITE_MEDIUM_USERNAME || "mqverk";
         const res = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@${username}`);
         const data = await res.json();
         

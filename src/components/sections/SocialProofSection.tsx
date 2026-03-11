@@ -35,7 +35,7 @@ export const SocialProofSection = () => {
         <div className="w-full overflow-x-auto pb-4 -mb-4 snap-x">
           <div className="min-w-fit pr-4">
             <GitHubCalendar
-              username="mqverk"
+              username={import.meta.env.VITE_GITHUB_USERNAME || "mqverk"}
               blockSize={11}
               blockMargin={4}
               colorScheme="dark"

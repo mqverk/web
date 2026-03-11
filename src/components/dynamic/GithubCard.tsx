@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { fetchGithubData, GithubUser, GithubRepo } from "@/lib/api";
 import { Github, Star, GitFork, BookOpen } from "lucide-react";
 
-export const GithubCard = ({ username = "mqverk" }: { username?: string }) => {
+export const GithubCard = ({ username = import.meta.env.VITE_GITHUB_USERNAME || "mqverk" }: { username?: string }) => {
   const [data, setData] = useState<{ user: GithubUser; repos: GithubRepo[] } | null>(null);
   const [loading, setLoading] = useState(true);
 

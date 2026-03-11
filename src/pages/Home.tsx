@@ -65,7 +65,7 @@ export const Home = () => {
         <Suspense fallback={<FallbackLoader />}>
           <div className="p-6 md:p-10 grid grid-cols-1 md:grid-cols-2 gap-6">
             <SpotifyCard />
-            <GithubCard username="mqverk" />
+            <GithubCard username={import.meta.env.VITE_GITHUB_USERNAME || "mqverk"} />
           </div>
         </Suspense>
       </Section>
