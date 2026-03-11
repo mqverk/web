@@ -115,41 +115,115 @@ function githubContributionsDevApi(): Plugin {
                     const env = loadEnv('', process.cwd(), '');
                     const url = new URL(req.url || '', 'http://localhost');
                     const username = url.searchParams.get('username') || env.VITE_GITHUB_USERNAME || 'mqverk';
+                    const token = env.GITHUB_TOKEN;
 
-                    const response = await fetch(`https://github.com/users/${encodeURIComponent(username)}/contributions`, {
-                        headers: { 'Accept': 'text/html' },
-                    });
+                    interface ContributionDay { date: string; count: number; level: number; }
 
-                    if (!response.ok) {
-                        res.end(JSON.stringify({ contributions: [], total: 0, error: 'Failed to fetch' }));
+                    if (!token) {
+                        console.warn('No GITHUB_TOKEN provided, using fallback scraping method');
+                        // Fallback to original scraping method
+                        const response = await fetch(`https://github.com/users/${encodeURIComponent(username)}/contributions`, {
+                            headers: { 'Accept': 'text/html' },
+                        });
+
+                        if (!response.ok) {
+                            res.end(JSON.stringify({ contributions: [], total: 0, error: 'Failed to fetch' }));
+                            return;
+                        }
+
+                        const html = await response.text();
+                        const contributions: ContributionDay[] = [];
+                        let total = 0;
+
+                        const cellRegex = /data-date="(\d{4}-\d{2}-\d{2})"[^>]*data-level="(\d)"/g;
+                        let match;
+                        while ((match = cellRegex.exec(html)) !== null) {
+                            const date = match[1];
+                            const level = parseInt(match[2], 10);
+                            const countRegex = new RegExp(`(\\d+)\\s+contribution[s]?\\s+on\\s+\\w+\\s+${parseInt(date.split('-')[2], 10)}`, 'i');
+                            const around = html.substring(Math.max(0, match.index - 200), match.index + 300);
+                            const countMatch = countRegex.exec(around);
+                            const count = countMatch ? parseInt(countMatch[1], 10) : (level > 0 ? level : 0);
+                            contributions.push({ date, count, level });
+                            total += count;
+                        }
+
+                        res.end(JSON.stringify({ contributions, total }));
                         return;
                     }
 
-                    const html = await response.text();
-                    interface ContributionDay { date: string; count: number; level: number; }
+                    // Use GitHub GraphQL API for accurate data
+                    const query = `
+                      query($username: String!) {
+                        user(login: $username) {
+                          contributionsCollection {
+                            contributionCalendar {
+                              totalContributions
+                              weeks {
+                                contributionDays {
+                                  date
+                                  contributionCount
+                                  contributionLevel
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    `;
+
+                    const response = await fetch('https://api.github.com/graphql', {
+                        method: 'POST',
+                        headers: {
+                            'Authorization': `Bearer ${token}`,
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            query,
+                            variables: { username },
+                        }),
+                    });
+
+                    if (!response.ok) {
+                        throw new Error(`GitHub API error: ${response.status}`);
+                    }
+
+                    const data = await response.json();
+                    
+                    if (!data.data?.user) {
+                        throw new Error('User not found');
+                    }
+
                     const contributions: ContributionDay[] = [];
-                    let total = 0;
+                    const calendar = data.data.user.contributionsCollection.contributionCalendar;
 
-                    const cellRegex = /data-date="(\d{4}-\d{2}-\d{2})"[^>]*data-level="(\d)"/g;
-                    let match;
-                    while ((match = cellRegex.exec(html)) !== null) {
-                        const date = match[1];
-                        const level = parseInt(match[2], 10);
-                        const countRegex = new RegExp(`(\\d+)\\s+contribution[s]?\\s+on\\s+\\w+\\s+${parseInt(date.split('-')[2], 10)}`, 'i');
-                        const around = html.substring(Math.max(0, match.index - 200), match.index + 300);
-                        const countMatch = countRegex.exec(around);
-                        const count = countMatch ? parseInt(countMatch[1], 10) : (level > 0 ? level : 0);
-                        contributions.push({ date, count, level });
-                        total += count;
+                    // Convert GitHub's contribution level strings to numbers
+                    function getLevelFromString(level: string): number {
+                        switch (level) {
+                            case 'NONE': return 0;
+                            case 'FIRST_QUARTILE': return 1;
+                            case 'SECOND_QUARTILE': return 2;
+                            case 'THIRD_QUARTILE': return 3;
+                            case 'FOURTH_QUARTILE': return 4;
+                            default: return 0;
+                        }
                     }
 
-                    if (total === 0) {
-                        const totalRegex = /([\d,]+)\s+contributions?\s+in\s+the\s+last\s+year/i;
-                        const totalMatch = totalRegex.exec(html);
-                        if (totalMatch) total = parseInt(totalMatch[1].replace(/,/g, ''), 10);
+                    for (const week of calendar.weeks) {
+                        for (const day of week.contributionDays) {
+                            contributions.push({
+                                date: day.date,
+                                count: day.contributionCount,
+                                level: getLevelFromString(day.contributionLevel),
+                            });
+                        }
                     }
 
-                    res.end(JSON.stringify({ contributions, total }));
+                    res.end(JSON.stringify({ 
+                        contributions, 
+                        total: calendar.totalContributions 
+                    }));
+
                 } catch (error: any) {
                     res.end(JSON.stringify({ contributions: [], total: 0, error: error?.message || 'Dev API error' }));
                 }
