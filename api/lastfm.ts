@@ -54,10 +54,18 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       const data = await topTracksRes.json();
       const t = data?.toptracks?.track?.[0];
       if (t) {
+        let albumArt = '';
+        try {
+          const infoRes = await fetch(lfm('track.getinfo', `&artist=${encodeURIComponent(t.artist?.name || '')}&track=${encodeURIComponent(t.name || '')}`));
+          if (infoRes.ok) {
+            const infoData = await infoRes.json();
+            albumArt = infoData?.track?.album?.image?.find((i: any) => i.size === 'extralarge')?.['#text'] || '';
+          }
+        } catch { /* fallback below */ }
         topTrack = {
           songName: t.name || 'Unknown',
           artistName: t.artist?.name || 'Unknown',
-          albumArt: t.image?.find((i: any) => i.size === 'extralarge')?.['#text'] || t.image?.[2]?.['#text'] || '',
+          albumArt: albumArt || t.image?.find((i: any) => i.size === 'extralarge')?.['#text'] || '',
           url: t.url || '#',
           playcount: t.playcount || '0',
         };
