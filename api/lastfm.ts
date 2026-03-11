@@ -77,7 +77,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       }
     }
 
-    res.setHeader('Cache-Control', 'public, s-maxage=60, stale-while-revalidate=30');
+    res.setHeader('Cache-Control', 'public, s-maxage=5, stale-while-revalidate=5');
     return res.status(200).json({ nowPlaying, recentTrack, topTrack, topArtist });
   } catch (error: any) {
     console.error('Last.fm API error:', error?.message || error);
