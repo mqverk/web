@@ -37,7 +37,7 @@ function lastfmDevApi(): Plugin {
                         const data = await recentRes.json();
                         const track = data?.recenttracks?.track?.[0];
                         if (track) {
-                            const formatted = {
+                            const formatted: Record<string, any> = {
                                 songName: track.name || 'Unknown',
                                 artistName: track.artist?.['#text'] || track.artist?.name || 'Unknown',
                                 albumArt: track.image?.find((i: any) => i.size === 'extralarge')?.['#text'] || track.image?.[2]?.['#text'] || '',
@@ -45,6 +45,15 @@ function lastfmDevApi(): Plugin {
                             };
                             if (track['@attr']?.nowplaying === 'true') {
                                 nowPlaying = formatted;
+                                // Fetch track duration
+                                try {
+                                    const infoRes = await fetch(lfm('track.getinfo', `&artist=${encodeURIComponent(formatted.artistName)}&track=${encodeURIComponent(formatted.songName)}`));
+                                    if (infoRes.ok) {
+                                        const infoData = await infoRes.json();
+                                        const dur = parseInt(infoData?.track?.duration || '0', 10);
+                                        if (dur > 0) nowPlaying.duration = dur;
+                                    }
+                                } catch { /* duration is optional */ }
                             } else {
                                 recentTrack = formatted;
                             }
