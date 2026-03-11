@@ -1,0 +1,102 @@
+[
+    {
+        "id": 1,
+        "title": "SwiftSSH",
+        "description": "A lightweight, modular SSH-2 clone with client and server written in Rust. Focuses on clean architecture and security.",
+        "tech": ["Rust", "SSH-2", "Networking"],
+        "github": "https://github.com/mqverk/SwiftSSH",
+        "live": "",
+        "coverImage": "",
+        "video": ""
+    },
+    {
+        "id": 2,
+        "title": "zap",
+        "description": "A zero-config CLI that wraps vcpkg and CMake, letting you scaffold, manage dependencies, and build C++ projects in seconds.",
+        "tech": ["C++", "CMake", "vcpkg"],
+        "github": "https://github.com/mqverk/zap",
+        "live": "",
+        "coverImage": "",
+        "video": ""
+    },
+    {
+        "id": 3,
+        "title": "cypher",
+        "description": "A modular toolkit for scanning publicly available GitHub repositories and identifying exposed API keys, tokens, and secrets.",
+        "tech": ["Python", "GitHub API", "Regex"],
+        "github": "https://github.com/mqverk/cypher",
+        "live": "",
+        "coverImage": "",
+        "video": ""
+    },
+    {
+        "id": 4,
+        "title": "reqx",
+        "description": "A fast web app for testing API request latency, reliability, and performance.",
+        "tech": ["Next.js 16", "TypeScript", "React 19", "Tailwind CSS 4", "shadcn/ui", "Axios", "Framer Motion"],
+        "github": "https://github.com/mqverk/reqx",
+        "live": "https://reqx.mqverk.me/",
+        "coverImage": "",
+        "video": ""
+    },
+    {
+        "id": 5,
+        "title": "shlx",
+        "description": "A fast, collaborative live terminal sharing tool for the web.",
+        "tech": ["Go", "SvelteKit", "WebSockets", "xterm.js", "PTY"],
+        "github": "https://github.com/mqverk/shlx",
+        "live": "",
+        "coverImage": "",
+        "video": ""
+    },
+    {
+        "id": 6,
+        "title": "mfetch",
+        "description": "A minimal, ultra-fast system information tool for your terminal.",
+        "tech": ["Shell", "Linux"],
+        "github": "https://github.com/mqverk/mfetch",
+        "live": "",
+        "coverImage": "",
+        "video": ""
+    },
+    {
+        "id": 7,
+        "title": "retina",
+        "description": "Real-time ASCII art camera that transforms your webcam feed into glowing terminal aesthetics. Built with React and Canvas API.",
+        "tech": ["React 18", "TypeScript", "Vite", "Canvas API", "Tailwind CSS", "Lucide React"],
+        "github": "https://github.com/mqverk/retina",
+        "live": "https://retina-zeta.vercel.app/",
+        "coverImage": "",
+        "video": ""
+    },
+    {
+        "id": 8,
+        "title": "mget",
+        "description": "A fast CLI tool to download Modrinth plugins directly from the terminal.",
+        "tech": ["C", "Modrinth API", "CLI"],
+        "github": "https://github.com/mqverk/mget",
+        "live": "https://mget.mqverk.me/",
+        "coverImage": "",
+        "video": ""
+    },
+    {
+        "id": 9,
+        "title": "commit-canvas",
+        "description": "Draw images on your GitHub contribution graph using commits.",
+        "tech": ["HTML", "JavaScript", "Git"],
+        "github": "https://github.com/mqverk/commit-canvas",
+        "live": "",
+        "coverImage": "",
+        "video": ""
+    },
+    {
+        "id": 10,
+        "title": "calculator",
+        "description": "A web-based scientific calculator built with vanilla HTML, CSS, and JavaScript, supporting basic, scientific, advanced, and programmer calculation modes.",
+        "tech": ["JavaScript", "HTML", "CSS"],
+        "github": "https://github.com/mqverk/calculator",
+        "live": "https://calculator-mauve-five-45.vercel.app/",
+        "coverImage": "",
+        "video": ""
+    }
+]

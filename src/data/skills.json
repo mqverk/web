@@ -1,0 +1,32 @@
+{
+    "programmingLanguages": [
+        "Python",
+        "JavaScript",
+        "Java",
+        "Kotlin",
+        "C",
+        "C++",
+        "C#"
+    ],
+    "frontendTechnologies": [
+        "Svelte",
+        "HTML / CSS"
+    ],
+    "backendTechnologies": [
+        "Node.js"
+    ],
+    "databases": [],
+    "devOpsAndTools": [
+        "Git / GitHub",
+        "Linux (Arch)",
+        "Neovim",
+        "VS Code",
+        "Zsh"
+    ],
+    "coreConcepts": [
+        "CyberSecurity",
+        "OS Development",
+        "FOSS",
+        "Networking"
+    ]
+}

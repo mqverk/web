@@ -1,0 +1,16 @@
+{
+    "name": "Maverick",
+    "rotatingTitles": [
+        "Software Developer",
+        "CyberSecurity Enthusiast",
+        "FOSS Contributor",
+        "Linux Power User",
+        "OS Development Explorer"
+    ],
+    "bio": "I'm a developer interested in OS development, cybersecurity, and free & open-source software. I build tools and explore low-level systems, with a focus on security and performance.",
+    "socials": {
+        "github": "https://github.com/mqverk",
+        "discord": "mqverk",
+        "email": ""
+    }
+}
