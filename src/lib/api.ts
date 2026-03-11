@@ -65,6 +65,7 @@ export interface LastfmTrack {
     artistName: string;
     albumArt: string;
     url: string;
+    duration?: number;
 }
 
 export interface LastfmArtist {
