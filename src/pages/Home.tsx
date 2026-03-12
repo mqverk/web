@@ -5,7 +5,6 @@ import { ArrowUp } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 // Lazy load below-the-fold components
-const ExperiencesSection = lazy(() => import("@/components/sections/ExperiencesSection").then(m => ({ default: m.ExperiencesSection })));
 const SkillsSection = lazy(() => import("@/components/sections/SkillsSection").then(m => ({ default: m.SkillsSection })));
 import { ProjectsSection } from "@/components/sections/ProjectsSection";
 const ArticleFeedSection = lazy(() => import("@/components/sections/ArticleFeedSection").then(m => ({ default: m.ArticleFeedSection })));
@@ -29,15 +28,7 @@ export const Home = () => {
         <ProfileSection />
       </Section>
 
-      <Section delay={0.2}>
-        <Suspense fallback={<FallbackLoader />}>
-          <div className="p-6 md:p-10">
-            <ExperiencesSection />
-          </div>
-        </Suspense>
-      </Section>
-
-      <Section delay={0.3} bottomLabel="View All" onBottomLabelClick={() => navigate("/projects")}>
+      <Section delay={0.2} bottomLabel="View All" onBottomLabelClick={() => navigate("/projects")}>
         <Suspense fallback={<FallbackLoader />}>
           <div className="p-6 md:p-10">
             <ProjectsSection limit={4} />
@@ -45,7 +36,7 @@ export const Home = () => {
         </Suspense>
       </Section>
 
-      <Section delay={0.4} bottomLabel="View All" onBottomLabelClick={() => window.open(import.meta.env.VITE_MEDIUM_URL || "https://github.com/mqverk", "_blank")}>
+      <Section delay={0.3} bottomLabel="View All" onBottomLabelClick={() => window.open(import.meta.env.VITE_MEDIUM_URL || "https://github.com/mqverk", "_blank")}>
         <Suspense fallback={<FallbackLoader />}>
           <div className="p-6 md:p-10">
             <ArticleFeedSection limit={4} />
@@ -53,7 +44,7 @@ export const Home = () => {
         </Suspense>
       </Section>
 
-      <Section delay={0.5}>
+      <Section delay={0.4}>
         <Suspense fallback={<FallbackLoader />}>
           <div className="p-6 md:p-10">
             <SkillsSection />
@@ -61,7 +52,7 @@ export const Home = () => {
         </Suspense>
       </Section>
 
-      <Section delay={0.6}>
+      <Section delay={0.5}>
         <Suspense fallback={<FallbackLoader />}>
           <div className="p-6 md:p-10 grid grid-cols-1 md:grid-cols-2 gap-6">
             <LastfmCard />
@@ -70,13 +61,13 @@ export const Home = () => {
         </Suspense>
       </Section>
 
-      <Section delay={0.7}>
+      <Section delay={0.6}>
         <Suspense fallback={<FallbackLoader />}>
           <QuoteSection />
         </Suspense>
       </Section>
 
-      <Section crosshair className="h-40 md:h-72" delay={0.9}>
+      <Section crosshair className="h-40 md:h-72" delay={0.7}>
         <div className="absolute bottom-8 right-6 md:-right-20 z-20">
           <button
             onClick={scrollToTop}

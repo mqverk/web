@@ -1,12 +1,14 @@
 import { useState, useEffect } from "react";
 import profileData from "@/data/profile.json";
-import { Mail, Eye, Github, Link } from "lucide-react";
+import { Mail, Eye, Github, Link, Youtube, MessageSquare } from "lucide-react";
 import { GithubContributionGraph } from "@/components/dynamic/GithubContributionGraph";
 import { motion } from "framer-motion";
 import { RotatingTitle } from "@/components/ui/RotatingTitle";
 
 const socialLinks = [
-  { icon: Github, href: profileData.socials?.github || "https://github.com", label: "GitHub" }
+  { icon: Github, href: profileData.socials?.github || "https://github.com", label: "GitHub" },
+  { icon: Youtube, href: "https://youtube.com/mqverk", label: "Youtube" },
+  { icon: MessageSquare, href: "https://discord.com/users/1451934649239736371", label: "Discord" }
 ];
 
 export const ProfileSection = () => {

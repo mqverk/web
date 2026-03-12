@@ -138,7 +138,6 @@ export const GithubContributionGraph = ({
       <div className="flex items-center justify-between mb-4">
         <div className="text-sm font-medium text-zinc-300">
           <span className="text-emerald-400 font-semibold">{total.toLocaleString()}</span> commits in last 6 months
-          {tooltip && <span className="ml-4 text-red-400 text-xs">TOOLTIP ACTIVE: {tooltip.text}</span>}
         </div>
         
         {/* Legend */}
@@ -246,7 +245,7 @@ export const GithubContributionGraph = ({
       {/* Tooltip */}
       {tooltip && (
         <div
-          className="absolute z-[9999] px-3 py-2 text-sm font-bold text-yellow-400 bg-red-600 border-2 border-yellow-400 rounded-lg shadow-2xl pointer-events-none whitespace-nowrap"
+          className="absolute z-[9999] px-3 py-2 text-sm font-medium text-white bg-white/10 backdrop-blur-md border border-white/20 rounded-lg shadow-2xl pointer-events-none whitespace-nowrap"
           style={{
             left: tooltip.x,
             top: Math.max(0, tooltip.y - 50),
@@ -254,7 +253,7 @@ export const GithubContributionGraph = ({
           }}
         >
           {tooltip.text}
-          <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-yellow-400"></div>
+          <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-white/20"></div>
         </div>
       )}
     </div>
