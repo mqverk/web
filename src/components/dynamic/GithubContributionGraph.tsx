@@ -249,26 +249,18 @@ export const GithubContributionGraph = ({
       </div>
 
       {/* Tooltip */}
-      <AnimatePresence>
-        {tooltip && (
-          <motion.div
-            key="tooltip"
-            initial={{ opacity: 0, y: 5, scale: 0.9 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 5, scale: 0.9 }}
-            transition={{ duration: 0.15, ease: "easeOut" }}
-            className="fixed z-[9999] px-3 py-2 text-xs font-medium text-zinc-100 bg-zinc-900/95 border border-zinc-600/80 rounded-lg shadow-xl backdrop-blur-md pointer-events-none whitespace-nowrap"
-            style={{
-              left: tooltip.x,
-              top: tooltip.y - 50,
-              transform: "translateX(-50%)",
-            }}
-          >
-            {tooltip.text}
-            <div className="absolute bottom-[-5px] left-1/2 transform -translate-x-1/2 w-2.5 h-2.5 bg-zinc-900/95 border-r border-b border-zinc-600/80 rotate-45" />
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {tooltip && (
+        <div
+          className="fixed z-[99999] px-2 py-1 text-xs font-medium text-white bg-black border border-gray-600 rounded shadow-lg pointer-events-none whitespace-nowrap"
+          style={{
+            left: tooltip.x,
+            top: tooltip.y - 40,
+            transform: "translateX(-50%)",
+          }}
+        >
+          {tooltip.text}
+        </div>
+      )}
     </motion.div>
   );
 };
