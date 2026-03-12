@@ -198,10 +198,9 @@ export const GithubContributionGraph = ({
                 {week.days.map((day, d) => (
                   <div
                     key={d}
-                    className={`aspect-square rounded-[2px] border border-zinc-700/30 ${
-                      day ? `${LEVEL_COLORS[day.level]} cursor-pointer` : "bg-transparent"
-                    } transition-colors duration-200 relative`}
-                    style={{ minWidth: '14px', minHeight: '14px' }}
+                    className={`w-4 h-4 rounded-[3px] border border-zinc-700/50 ${
+                      day ? `${LEVEL_COLORS[day.level]} cursor-pointer hover:border-zinc-500` : "bg-transparent"
+                    } transition-all duration-200 flex items-center justify-center`}
                     onMouseEnter={(e) => {
                       if (!day) return;
                       console.log('Hover on day:', {
@@ -216,7 +215,7 @@ export const GithubContributionGraph = ({
                       console.log('Setting tooltip:', label);
                       setTooltip({ 
                         x: rect.left + rect.width / 2, 
-                        y: rect.top - 5, 
+                        y: rect.top, 
                         text: label 
                       });
                     }}
