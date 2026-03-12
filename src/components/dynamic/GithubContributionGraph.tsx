@@ -138,6 +138,7 @@ export const GithubContributionGraph = ({
       <div className="flex items-center justify-between mb-4">
         <div className="text-sm font-medium text-zinc-300">
           <span className="text-emerald-400 font-semibold">{total.toLocaleString()}</span> commits in last 6 months
+          {tooltip && <span className="ml-4 text-red-400 text-xs">TOOLTIP ACTIVE: {tooltip.text}</span>}
         </div>
         
         {/* Legend */}
@@ -217,6 +218,12 @@ export const GithubContributionGraph = ({
                           ? `No commits on ${formatDate(day.date)}`
                           : `${day.count} commit${day.count !== 1 ? "s" : ""} on ${formatDate(day.date)}`;
                         console.log('Setting tooltip:', label);
+                        console.log('Tooltip position:', {
+                          x: rect.left - containerRect.left + rect.width / 2,
+                          y: rect.top - containerRect.top,
+                          containerRect,
+                          rect
+                        });
                         setTooltip({ 
                           x: rect.left - containerRect.left + rect.width / 2, 
                           y: rect.top - containerRect.top, 
