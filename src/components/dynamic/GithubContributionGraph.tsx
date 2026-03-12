@@ -133,7 +133,7 @@ export const GithubContributionGraph = ({
   }
 
   return (
-    <div className="bg-zinc-900/30 border border-zinc-800/50 rounded-xl p-4 backdrop-blur-sm">
+    <div className="bg-zinc-900/30 border border-zinc-800/50 rounded-xl p-4 backdrop-blur-sm relative">
       {/* Header */}
       <div className="flex items-center justify-between mb-4">
         <div className="text-sm font-medium text-zinc-300">
@@ -209,16 +209,20 @@ export const GithubContributionGraph = ({
                         count: day.count,
                         level: day.level
                       });
+                      const containerRect = e.currentTarget.closest('.bg-zinc-900\\/30')?.getBoundingClientRect();
                       const rect = e.currentTarget.getBoundingClientRect();
-                      const label = day.count === 0
-                        ? `No commits on ${formatDate(day.date)}`
-                        : `${day.count} commit${day.count !== 1 ? "s" : ""} on ${formatDate(day.date)}`;
-                      console.log('Setting tooltip:', label);
-                      setTooltip({ 
-                        x: rect.left + rect.width / 2, 
-                        y: rect.top, 
-                        text: label 
-                      });
+                      
+                      if (containerRect) {
+                        const label = day.count === 0
+                          ? `No commits on ${formatDate(day.date)}`
+                          : `${day.count} commit${day.count !== 1 ? "s" : ""} on ${formatDate(day.date)}`;
+                        console.log('Setting tooltip:', label);
+                        setTooltip({ 
+                          x: rect.left - containerRect.left + rect.width / 2, 
+                          y: rect.top - containerRect.top, 
+                          text: label 
+                        });
+                      }
                     }}
                     onMouseLeave={() => {
                       console.log('Mouse leave, clearing tooltip');
@@ -235,7 +239,7 @@ export const GithubContributionGraph = ({
       {/* Tooltip */}
       {tooltip && (
         <div
-          className="fixed z-[99999] px-2 py-1 text-xs font-medium text-white bg-black border border-gray-600 rounded shadow-lg pointer-events-none whitespace-nowrap"
+          className="absolute z-[99999] px-2 py-1 text-xs font-medium text-white bg-black border border-gray-600 rounded shadow-lg pointer-events-none whitespace-nowrap"
           style={{
             left: tooltip.x,
             top: tooltip.y - 40,
