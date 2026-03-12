@@ -36,7 +36,7 @@
         "tech": ["Next.js 16", "TypeScript", "React 19", "Tailwind CSS 4", "shadcn/ui", "Axios", "Framer Motion"],
         "github": "https://github.com/mqverk/reqx",
         "live": "https://reqx.mqverk.me/",
-        "coverImage": "",
+        "coverImage": "/assets/reqx-banner.png",
         "video": ""
     },
     {
