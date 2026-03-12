@@ -1,5 +1,4 @@
 import { useEffect, useState, useCallback } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 
 interface ContributionDay {
   date: string;
@@ -134,12 +133,7 @@ export const GithubContributionGraph = ({
   }
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 8 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, ease: "easeOut" }}
-      className="bg-zinc-900/30 border border-zinc-800/50 rounded-xl p-4 backdrop-blur-sm"
-    >
+    <div className="bg-zinc-900/30 border border-zinc-800/50 rounded-xl p-4 backdrop-blur-sm">
       {/* Header */}
       <div className="flex items-center justify-between mb-4">
         <div className="text-sm font-medium text-zinc-300">
@@ -151,12 +145,9 @@ export const GithubContributionGraph = ({
           <span>Less</span>
           <div className="flex gap-0.5">
             {LEVEL_COLORS.map((color, i) => (
-              <motion.span 
+              <span 
                 key={i} 
                 className={`w-2.5 h-2.5 rounded-sm ${color} border border-zinc-700/30`}
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                transition={{ delay: i * 0.05, duration: 0.2 }}
               />
             ))}
           </div>
@@ -254,7 +245,7 @@ export const GithubContributionGraph = ({
           {tooltip.text}
         </div>
       )}
-    </motion.div>
+    </div>
   );
 };
 
