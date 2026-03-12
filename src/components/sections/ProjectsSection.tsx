@@ -1,5 +1,5 @@
 import projectsData from "@/data/projects.json";
-import { ArrowUpRight, Pin, Github, ExternalLink, X } from "lucide-react";
+import { ArrowUpRight, Github, ExternalLink, X } from "lucide-react";
 import { useState, useRef, useCallback } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -14,13 +14,10 @@ interface Project {
   tech: string[];
   github: string;
   live: string;
-  coverImage: string;
-  video: string;
 }
 
 export const ProjectsSection = ({ limit }: ProjectsSectionProps) => {
   const displayProjects = limit ? projectsData.slice(0, limit) : projectsData;
-  const [hoveredId, setHoveredId] = useState<number | null>(null);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   // Lock scroll when modal is open
@@ -36,59 +33,69 @@ export const ProjectsSection = ({ limit }: ProjectsSectionProps) => {
         <h2 className="text-lg font-semibold tracking-tight text-zinc-100">
           Projects
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {displayProjects.map((project) => (
             <motion.div
-              whileHover={{ y: -4, scale: 1.01 }}
+              whileHover={{ y: -4, scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               key={project.id}
               onClick={() => setSelectedProject(project as Project)}
-              onMouseEnter={() => setHoveredId(project.id)}
-              onMouseLeave={() => setHoveredId(null)}
-              className="group flex flex-col p-4 rounded-xl border border-zinc-900 bg-zinc-950/50 hover:bg-zinc-900 hover:border-zinc-800 transition-colors cursor-pointer"
+              className="group flex flex-col p-6 rounded-2xl border border-zinc-800/50 bg-zinc-950/30 backdrop-blur-sm hover:bg-zinc-900/40 hover:border-zinc-700 transition-all duration-300 cursor-pointer"
             >
-              {/* Media Area */}
-              <div className="w-full h-40 bg-zinc-900 rounded-lg mb-4 flex items-center justify-center relative overflow-hidden text-zinc-600 font-medium border border-zinc-800/50">
-                {project.coverImage ? (
-                  <img src={project.coverImage} alt={project.title} loading={limit ? "eager" : "lazy"} className="w-full h-full object-cover transition-opacity duration-300" style={{ opacity: hoveredId === project.id && project.video ? 0 : 1 }} />
-                ) : (
-                  <span className="text-xl font-bold uppercase tracking-wider text-zinc-50 opacity-20">Coming Soon</span>
-                )}
-                
-                {project.video && hoveredId === project.id && (
-                  <video 
-                    src={project.video}
-                    autoPlay
-                    loop 
-                    muted 
-                    playsInline
-                    className="absolute inset-0 w-full h-full object-cover"
-                  />
-                )}
-
-                <div className="absolute top-3 left-3 text-[10px] bg-zinc-950/80 backdrop-blur-sm border border-zinc-700/50 text-zinc-300 px-2 py-0.5 rounded uppercase font-semibold">
-                  Project
+              {/* Header */}
+              <div className="flex items-start justify-between mb-4">
+                <div className="flex-1">
+                  <h3 className="text-xl font-semibold text-zinc-100 mb-1 group-hover:text-white transition-colors">
+                    {project.title}
+                  </h3>
+                  {project.live && (
+                    <div className="flex items-center gap-2 text-xs text-emerald-400 font-medium">
+                      <div className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse"></div>
+                      Live
+                    </div>
+                  )}
                 </div>
-                <div className="absolute top-3 right-3 text-zinc-300 bg-zinc-950/80 backdrop-blur-sm rounded-full p-1 border border-zinc-700/50">
-                  <Pin className="h-3 w-3" />
+                <div className="text-zinc-400 group-hover:text-zinc-300 transition-colors">
+                  <ArrowUpRight className="h-5 w-5" />
                 </div>
               </div>
 
-              <div className="flex flex-col gap-2 flex-grow">
-                <div className="flex justify-between items-center">
-                  <h3 className="font-semibold text-zinc-100">{project.title}</h3>
-                  {project.live && <div className="flex items-center gap-1.5 text-xs text-zinc-400">
-                    <div className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse"></div>
-                    Live
-                  </div>}
-                </div>
-                <p className="text-sm text-zinc-400 leading-relaxed line-clamp-2">
-                  {project.description}
-                </p>
-                
-                <div className="mt-auto pt-4 flex items-center text-xs text-zinc-400 group-hover:text-zinc-200 transition-colors">
-                  View Details <ArrowUpRight className="ml-1 h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                </div>
+              {/* Description */}
+              <p className="text-sm text-zinc-400 leading-relaxed mb-6 flex-grow">
+                {project.description}
+              </p>
+
+              {/* Tech Stack */}
+              <div className="flex flex-wrap gap-2 mb-4">
+                {project.tech.slice(0, 4).map((tech) => (
+                  <span
+                    key={tech}
+                    className="px-2.5 py-1 bg-zinc-800/50 border border-zinc-700/50 rounded-lg text-xs font-medium text-zinc-300 transition-colors group-hover:bg-zinc-700/50 group-hover:border-zinc-600"
+                  >
+                    {tech}
+                  </span>
+                ))}
+                {project.tech.length > 4 && (
+                  <span className="px-2.5 py-1 text-xs font-medium text-zinc-500">
+                    +{project.tech.length - 4} more
+                  </span>
+                )}
+              </div>
+
+              {/* Action Links */}
+              <div className="flex gap-3">
+                {project.github && (
+                  <div className="flex items-center gap-1.5 text-xs text-zinc-400 group-hover:text-zinc-300 transition-colors">
+                    <Github className="h-3.5 w-3.5" />
+                    Source
+                  </div>
+                )}
+                {project.live && (
+                  <div className="flex items-center gap-1.5 text-xs text-zinc-400 group-hover:text-zinc-300 transition-colors">
+                    <ExternalLink className="h-3.5 w-3.5" />
+                    Live Demo
+                  </div>
+                )}
               </div>
             </motion.div>
           ))}
@@ -112,7 +119,7 @@ export const ProjectsSection = ({ limit }: ProjectsSectionProps) => {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               transition={{ duration: 0.2, ease: "easeOut" }}
-              className="relative w-full max-w-3xl max-h-[90vh] bg-zinc-950 border border-zinc-800 rounded-2xl overflow-hidden shadow-2xl flex flex-col z-10"
+              className="relative w-full max-w-2xl max-h-[80vh] bg-zinc-950 border border-zinc-800 rounded-2xl overflow-hidden shadow-2xl flex flex-col z-10"
             >
               <button 
                 onClick={() => setSelectedProject(null)}
@@ -121,38 +128,29 @@ export const ProjectsSection = ({ limit }: ProjectsSectionProps) => {
                 <X className="w-5 h-5" />
               </button>
 
-              <div className="w-full relative bg-zinc-900 border-b border-zinc-800/50" style={{ height: "45vh", minHeight: "250px" }}>
-                {selectedProject.video ? (
-                  <video 
-                    src={selectedProject.video} 
-                    autoPlay 
-                    loop 
-                    muted 
-                    playsInline
-                    className="w-full h-full object-cover"
-                  />
-                ) : selectedProject.coverImage ? (
-                  <img src={selectedProject.coverImage} loading="lazy" className="w-full h-full object-cover" alt="Cover" />
-                ) : (
-                  <div className="w-full h-full flex items-center justify-center text-zinc-600 font-medium text-xl uppercase tracking-wider">Coming Soon</div>
-                )}
+              {/* Header */}
+              <div className="p-6 md:p-8 border-b border-zinc-800/50">
+                <div className="flex items-start justify-between mb-4">
+                  <h2 className="text-2xl md:text-3xl font-bold text-white pr-4">{selectedProject.title}</h2>
+                  {selectedProject.live && (
+                    <div className="flex items-center gap-2 text-sm text-emerald-400 font-medium">
+                      <div className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></div>
+                      Live
+                    </div>
+                  )}
+                </div>
                 
-                {/* Gradient overlay for text contrast */}
-                <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/20 to-transparent"></div>
-                
-                <div className="absolute bottom-6 left-6 right-6">
-                  <h2 className="text-2xl md:text-3xl font-bold text-white mb-2 dropdown-shadow">{selectedProject.title}</h2>
-                  <div className="flex flex-wrap gap-2">
-                    {selectedProject.tech.map((t) => (
-                      <span key={t} className="px-2.5 py-1 bg-zinc-900/80 backdrop-blur-md border border-zinc-700/50 rounded-md text-xs font-medium text-zinc-300 shadow-sm">
-                        {t}
-                      </span>
-                    ))}
-                  </div>
+                <div className="flex flex-wrap gap-2">
+                  {selectedProject.tech.map((t) => (
+                    <span key={t} className="px-3 py-1.5 bg-zinc-800/50 border border-zinc-700/50 rounded-lg text-sm font-medium text-zinc-300">
+                      {t}
+                    </span>
+                  ))}
                 </div>
               </div>
 
-              <div className="p-6 md:p-8 flex flex-col gap-6 overflow-y-auto">
+              {/* Content */}
+              <div className="p-6 md:p-8 flex flex-col gap-6 overflow-y-auto flex-grow">
                 <div className="flex flex-col gap-3">
                   <h3 className="text-lg font-semibold text-zinc-100">About this project</h3>
                   <p className="text-[15px] leading-relaxed text-zinc-400">
@@ -160,13 +158,14 @@ export const ProjectsSection = ({ limit }: ProjectsSectionProps) => {
                   </p>
                 </div>
 
-                <div className="flex gap-4 pt-4 border-t border-zinc-800/60 mt-2">
+                {/* Links */}
+                <div className="flex gap-4 pt-4 border-t border-zinc-800/60 mt-auto">
                   {selectedProject.github && (
                     <a 
                       href={selectedProject.github} 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 bg-zinc-900 hover:bg-zinc-800 text-zinc-100 font-medium text-sm rounded-lg border border-zinc-700/50 transition-colors shadow-sm"
+                      className="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-zinc-900 hover:bg-zinc-800 text-zinc-100 font-medium text-sm rounded-lg border border-zinc-700/50 transition-colors shadow-sm"
                     >
                       <Github className="w-4 h-4" /> View Source
                     </a>
@@ -176,7 +175,7 @@ export const ProjectsSection = ({ limit }: ProjectsSectionProps) => {
                       href={selectedProject.live} 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 bg-zinc-100 hover:bg-white text-zinc-900 font-medium text-sm rounded-lg transition-colors shadow-sm"
+                      className="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-zinc-100 hover:bg-white text-zinc-900 font-medium text-sm rounded-lg transition-colors shadow-sm"
                     >
                       <ExternalLink className="w-4 h-4" /> Visit Live Site
                     </a>
