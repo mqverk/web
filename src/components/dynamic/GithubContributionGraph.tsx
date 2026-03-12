@@ -220,10 +220,16 @@ export const GithubContributionGraph = ({
                     }}
                     onMouseEnter={(e) => {
                       if (!day) return;
+                      console.log('Hover on day:', {
+                        date: day.date,
+                        count: day.count,
+                        level: day.level
+                      });
                       const rect = e.currentTarget.getBoundingClientRect();
                       const label = day.count === 0
                         ? `No commits on ${formatDate(day.date)}`
                         : `${day.count} commit${day.count !== 1 ? "s" : ""} on ${formatDate(day.date)}`;
+                      console.log('Setting tooltip:', label);
                       setTooltip({ 
                         x: rect.left + rect.width / 2, 
                         y: rect.top - 5, 
