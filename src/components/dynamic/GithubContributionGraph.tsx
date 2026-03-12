@@ -205,19 +205,12 @@ export const GithubContributionGraph = ({
             {weeks.map((week, w) => (
               <div key={w} className="flex flex-col gap-1">
                 {week.days.map((day, d) => (
-                  <motion.div
+                  <div
                     key={d}
                     className={`aspect-square rounded-[2px] border border-zinc-700/30 ${
                       day ? `${LEVEL_COLORS[day.level]} cursor-pointer` : "bg-transparent"
-                    } transition-colors duration-200 relative group`}
-                    style={{ minWidth: '12px', minHeight: '12px' }}
-                    initial={{ scale: 0, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    transition={{ 
-                      delay: (w * 7 + d) * 0.01,
-                      duration: 0.2,
-                      ease: "easeOut"
-                    }}
+                    } transition-colors duration-200 relative`}
+                    style={{ minWidth: '14px', minHeight: '14px' }}
                     onMouseEnter={(e) => {
                       if (!day) return;
                       console.log('Hover on day:', {
@@ -236,11 +229,11 @@ export const GithubContributionGraph = ({
                         text: label 
                       });
                     }}
-                    onMouseLeave={() => setTooltip(null)}
-                  >
-                    {/* Invisible hover area expansion */}
-                    <div className="absolute inset-[-2px]" />
-                  </motion.div>
+                    onMouseLeave={() => {
+                      console.log('Mouse leave, clearing tooltip');
+                      setTooltip(null);
+                    }}
+                  />
                 ))}
               </div>
             ))}
