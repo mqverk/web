@@ -246,14 +246,15 @@ export const GithubContributionGraph = ({
       {/* Tooltip */}
       {tooltip && (
         <div
-          className="absolute z-[99999] px-2 py-1 text-xs font-medium text-white bg-black border border-gray-600 rounded shadow-lg pointer-events-none whitespace-nowrap"
+          className="absolute z-[9999] px-3 py-2 text-sm font-bold text-yellow-400 bg-red-600 border-2 border-yellow-400 rounded-lg shadow-2xl pointer-events-none whitespace-nowrap"
           style={{
             left: tooltip.x,
-            top: tooltip.y - 40,
+            top: Math.max(0, tooltip.y - 50),
             transform: "translateX(-50%)",
           }}
         >
           {tooltip.text}
+          <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-yellow-400"></div>
         </div>
       )}
     </div>
