@@ -198,6 +198,7 @@ export const GithubContributionGraph = ({
                 {week.days.map((day, d) => (
                   <div
                     key={d}
+                    title={day ? (day.count === 0 ? `No commits on ${formatDate(day.date)}` : `${day.count} commit${day.count !== 1 ? "s" : ""} on ${formatDate(day.date)}`) : undefined}
                     className={`w-4 h-4 rounded-[3px] border border-zinc-700/50 ${
                       day ? `${LEVEL_COLORS[day.level]} cursor-pointer hover:border-zinc-500` : "bg-transparent"
                     } transition-all duration-200 flex items-center justify-center`}
