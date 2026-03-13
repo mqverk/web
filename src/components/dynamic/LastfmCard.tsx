@@ -1,6 +1,6 @@
 import { useEffect, useState, useCallback, useRef } from "react";
 import { fetchLastfmData, LastfmData } from "@/lib/api";
-import { Music2, Headphones, Heart } from "lucide-react";
+import { Music2, Headphones } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 
 const POLL_INTERVAL = 5_000;
@@ -57,7 +57,7 @@ export const LastfmCard = () => {
   const currentTrack = data?.nowPlaying ?? data?.recentTrack ?? null;
 
   return (
-    <div className="flex flex-col h-full gap-2.5">
+    <div className="flex flex-col gap-2.5">
 
       {/* Now Playing — compact horizontal */}
       <div className="relative overflow-hidden rounded-xl border border-zinc-800 bg-zinc-900/50">
@@ -196,8 +196,8 @@ export const LastfmCard = () => {
           <span className="text-xs font-bold text-white">BWU</span>
         </div>
         <div className="flex flex-col overflow-hidden min-w-0">
-          <span className="text-[10px] text-zinc-500 font-semibold uppercase tracking-wider mb-0.5 flex items-center gap-1">
-            <Heart className="w-2.5 h-2.5 text-pink-500 fill-pink-500" /> Favourite Artist
+            <span className="text-[10px] text-zinc-500 font-semibold uppercase tracking-wider mb-0.5">
+              Favourite Artist
           </span>
           <span className="text-sm font-semibold text-zinc-100 truncate">BoyWithUke</span>
         </div>
