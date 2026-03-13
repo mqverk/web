@@ -78,7 +78,7 @@ export default async function handler(req: any, res: any) {
     if (req.method === 'OPTIONS') {
         return res.status(200).end();
     }
-
+    console.log('Received request for view count');
     // If no valid REST API configured, return default count
     if (!KV_REST_API_URL || !KV_REST_API_TOKEN) {
         return res.status(200).json({ count: INITIAL_VIEWS, configured: false });

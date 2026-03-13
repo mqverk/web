@@ -25,10 +25,11 @@ function lastfmDevApi(): Plugin {
                     const lfm = (method: string, extra = '') =>
                         `${LASTFM_API_BASE}?method=${method}&user=${encodeURIComponent(username)}&api_key=${apiKey}&format=json${extra}`;
 
-                    const [recentRes, topTracksRes, topArtistsRes] = await Promise.all([
+                    const [recentRes, topTracksRes, topArtistsRes, userInfoRes] = await Promise.all([
                         fetch(lfm('user.getrecenttracks', '&limit=1')),
                         fetch(lfm('user.gettoptracks', '&period=7day&limit=1')),
                         fetch(lfm('user.gettopartists', '&period=1month&limit=1')),
+                        fetch(lfm('user.getinfo')),
                     ]);
 
                     let nowPlaying = null;
@@ -96,9 +97,21 @@ function lastfmDevApi(): Plugin {
                         }
                     }
 
-                    res.end(JSON.stringify({ nowPlaying, recentTrack, topTrack, topArtist }));
+                    let userStats = null;
+                    if (userInfoRes.ok) {
+                        const data = await userInfoRes.json();
+                        const u = data?.user;
+                        if (u) {
+                            userStats = {
+                                scrobbles: parseInt(u.playcount || '0', 10),
+                                artistCount: parseInt(u.artist_count || '0', 10),
+                            };
+                        }
+                    }
+
+                    res.end(JSON.stringify({ nowPlaying, recentTrack, topTrack, topArtist, userStats }));
                 } catch (error: any) {
-                    res.end(JSON.stringify({ nowPlaying: null, recentTrack: null, topTrack: null, topArtist: null, error: error?.message || 'Dev API error' }));
+                    res.end(JSON.stringify({ nowPlaying: null, recentTrack: null, topTrack: null, topArtist: null, userStats: null, error: error?.message || 'Dev API error' }));
                 }
             });
         },
