@@ -58,6 +58,11 @@ export const LastfmCard = () => {
 
   return (
     <div className="flex flex-col gap-2.5">
+      {/* Heading */}
+      <div className="flex items-center gap-2 text-zinc-500">
+        <Music2 className="w-5 h-5" />
+        <span className="text-sm font-medium">Music</span>
+      </div>
 
       {/* Now Playing — compact horizontal */}
       <div className="relative overflow-hidden rounded-xl border border-zinc-800 bg-zinc-900/50">

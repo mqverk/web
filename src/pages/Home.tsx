@@ -54,7 +54,7 @@ export const Home = () => {
 
       <Section delay={0.5}>
         <Suspense fallback={<FallbackLoader />}>
-          <div className="p-6 md:p-10 grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="p-6 md:p-10 grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
             <LastfmCard />
             <GithubCard username={import.meta.env.VITE_GITHUB_USERNAME || "mqverk"} />
           </div>
