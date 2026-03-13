@@ -164,37 +164,34 @@ export const LastfmCard = () => {
         </AnimatePresence>
       </div>
 
-      {/* Most Listened This Week — compact bottom row */}
-      {!loading && data?.topTrack && (
+      {/* Most Listened Artist — Spotify-style */}
+      {!loading && data?.topArtist && (
         <motion.a
-          href={data.topTrack.url}
+          href={data.topArtist.url}
           target="_blank"
           rel="noopener noreferrer"
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3, delay: 0.1 }}
-          className="flex items-center gap-3 p-2.5 rounded-lg border border-zinc-800 bg-zinc-900/50 hover:bg-zinc-900 transition-colors cursor-pointer group"
+          className="flex items-center gap-3 p-3 rounded-lg border border-zinc-800 bg-zinc-900/50 hover:bg-zinc-900 transition-colors cursor-pointer group"
         >
-          {data.topTrack.albumArt ? (
+          {data.topArtist.image ? (
             <img
-              src={data.topTrack.albumArt}
-              alt=""
+              src={data.topArtist.image}
+              alt={data.topArtist.name}
               loading="lazy"
-              className="w-9 h-9 rounded object-cover shadow-md group-hover:scale-105 transition-transform"
+              className="w-10 h-10 rounded-full object-cover shadow-md ring-1 ring-zinc-700 group-hover:scale-105 transition-transform"
             />
           ) : (
-            <div className="w-9 h-9 rounded bg-zinc-800 flex items-center justify-center">
+            <div className="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center ring-1 ring-zinc-700">
               <Music2 className="w-4 h-4 text-zinc-600" />
             </div>
           )}
-          <div className="flex flex-col overflow-hidden w-full min-w-0">
-            <span className="text-[10px] text-zinc-500 font-semibold uppercase tracking-wider">
-              Most Listened Artist
+          <div className="flex flex-col overflow-hidden min-w-0">
+            <span className="text-sm font-semibold text-zinc-100 truncate group-hover:text-white transition-colors">
+              {data.topArtist.name}
             </span>
-            <span className="text-xs font-medium text-zinc-300 truncate">
-              {data.topTrack.songName}
-              <span className="text-zinc-500"> · {data.topTrack.artistName} · {data.topTrack.playcount} plays</span>
-            </span>
+            <span className="text-xs text-zinc-500">Artist</span>
           </div>
         </motion.a>
       )}

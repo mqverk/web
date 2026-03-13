@@ -72,6 +72,7 @@ export interface LastfmArtist {
     name: string;
     playcount: string;
     url: string;
+    image?: string;
 }
 
 export interface LastfmTopTrack extends LastfmTrack {

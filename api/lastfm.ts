@@ -77,10 +77,16 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       const data = await topArtistsRes.json();
       const artist = data?.topartists?.artist?.[0];
       if (artist) {
+        const images: { '#text': string; size: string }[] = artist.image || [];
+        const img = images.find(i => i.size === 'extralarge') ||
+                    images.find(i => i.size === 'large') ||
+                    images.find(i => i.size === 'medium') ||
+                    images[0];
         topArtist = {
           name: artist.name,
           playcount: artist.playcount || '0',
           url: artist.url || '#',
+          image: img?.['#text'] || '',
         };
       }
     }
