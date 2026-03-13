@@ -43,7 +43,7 @@ export const GithubCard = ({ username = import.meta.env.VITE_GITHUB_USERNAME || 
                   <span className="font-medium text-zinc-200 group-hover:text-white truncate">{repo.name}</span>
                 </div>
                 {repo.description && (
-                  <p className="text-xs text-zinc-500 line-clamp-2 leading-relaxed overflow-hidden">{repo.description}</p>
+                  <p className="text-xs text-zinc-500 truncate" title={repo.description}>{repo.description}</p>
                 )}
                 <div className="flex items-center gap-3 text-xs text-zinc-500">
                   <span className="flex items-center gap-1">
