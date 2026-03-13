@@ -36,14 +36,14 @@ export const GithubCard = ({ username = import.meta.env.VITE_GITHUB_USERNAME || 
                 href={repo.html_url}
                 target="_blank"
                 rel="noreferrer"
-                className="group flex flex-col justify-between p-3 rounded-lg border border-zinc-800 bg-zinc-900/50 hover:bg-zinc-800 transition-colors h-[104px]"
+                className="group grid grid-rows-[auto_1fr_auto] gap-1 p-3 rounded-lg border border-zinc-800 bg-zinc-900/50 hover:bg-zinc-800 transition-colors h-[104px] overflow-hidden"
               >
-                <div className="flex items-center gap-2 mb-1">
+                <div className="flex items-center gap-2">
                   <BookOpen className="w-4 h-4 text-zinc-400 group-hover:text-zinc-300" />
                   <span className="font-medium text-zinc-200 group-hover:text-white truncate">{repo.name}</span>
                 </div>
                 {repo.description && (
-                  <p className="text-xs text-zinc-500 line-clamp-2 mt-1 mb-2">{repo.description}</p>
+                  <p className="text-xs text-zinc-500 line-clamp-2 leading-relaxed overflow-hidden">{repo.description}</p>
                 )}
                 <div className="flex items-center gap-3 text-xs text-zinc-500">
                   <span className="flex items-center gap-1">
