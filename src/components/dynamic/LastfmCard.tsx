@@ -86,7 +86,7 @@ export const LastfmCard = () => {
           )}
 
           {/* Now Playing — compact horizontal */}
-          <div className="relative overflow-hidden rounded-lg border border-zinc-800 bg-zinc-900/50 min-h-[94px]">
+          <div className="relative overflow-hidden rounded-lg border border-zinc-800 bg-zinc-900/50 h-[104px]">
             <AnimatePresence mode="wait">
               {currentTrack ? (
                 <motion.a
@@ -98,7 +98,7 @@ export const LastfmCard = () => {
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.3 }}
-                  className="flex items-center gap-3 p-3 group"
+                  className="flex items-center gap-3 p-3 group h-[102px]"
                 >
                   <div className="relative shrink-0">
                     {currentTrack.albumArt ? (
@@ -186,7 +186,7 @@ export const LastfmCard = () => {
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3, delay: 0.05 }}
-              className="group block p-3 rounded-lg border border-zinc-800 bg-zinc-900/50 hover:bg-zinc-800 transition-colors min-h-[94px]"
+              className="group block p-3 rounded-lg border border-zinc-800 bg-zinc-900/50 hover:bg-zinc-800 transition-colors h-[104px]"
             >
               <div className="flex items-center gap-3">
                 {data.topTrack.albumArt ? (
@@ -225,7 +225,7 @@ export const LastfmCard = () => {
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3, delay: 0.1 }}
-            className="group block p-3 rounded-lg border border-zinc-800 bg-zinc-900/50 min-h-[94px]"
+            className="group block p-3 rounded-lg border border-zinc-800 bg-zinc-900/50 h-[104px]"
           >
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-full bg-gradient-to-br from-violet-500 to-pink-500 flex items-center justify-center shrink-0 shadow-md">

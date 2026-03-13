@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { fetchGithubData, GithubUser, GithubRepo } from "@/lib/api";
-import { Github, Star, GitFork, BookOpen } from "lucide-react";
+import { Github, Star, BookOpen } from "lucide-react";
 
 export const GithubCard = ({ username = import.meta.env.VITE_GITHUB_USERNAME || "mqverk" }: { username?: string }) => {
   const [data, setData] = useState<{ user: GithubUser; repos: GithubRepo[] } | null>(null);
@@ -36,7 +36,7 @@ export const GithubCard = ({ username = import.meta.env.VITE_GITHUB_USERNAME || 
                 href={repo.html_url}
                 target="_blank"
                 rel="noreferrer"
-                className="group block p-3 rounded-lg border border-zinc-800 bg-zinc-900/50 hover:bg-zinc-800 transition-colors"
+                className="group flex flex-col justify-between p-3 rounded-lg border border-zinc-800 bg-zinc-900/50 hover:bg-zinc-800 transition-colors h-[104px]"
               >
                 <div className="flex items-center gap-2 mb-1">
                   <BookOpen className="w-4 h-4 text-zinc-400 group-hover:text-zinc-300" />
