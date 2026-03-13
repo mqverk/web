@@ -105,10 +105,10 @@ export const LastfmCard = () => {
                       <img
                         src={currentTrack.albumArt}
                         alt=""
-                        className="w-11 h-11 rounded-lg object-cover shadow-md"
+                        className="w-14 h-14 rounded-xl object-cover shadow-md"
                       />
                     ) : (
-                      <div className="w-11 h-11 rounded-lg bg-zinc-800 flex items-center justify-center">
+                      <div className="w-14 h-14 rounded-xl bg-zinc-800 flex items-center justify-center">
                         <Music2 className="w-4 h-4 text-zinc-600" />
                       </div>
                     )}
@@ -194,10 +194,10 @@ export const LastfmCard = () => {
                     src={data.topTrack.albumArt}
                     alt=""
                     loading="lazy"
-                    className="w-10 h-10 rounded-lg object-cover shadow-md group-hover:scale-105 transition-transform shrink-0"
+                    className="w-14 h-14 rounded-xl object-cover shadow-md group-hover:scale-105 transition-transform shrink-0"
                   />
                 ) : (
-                  <div className="w-10 h-10 rounded-lg bg-zinc-800 flex items-center justify-center shrink-0">
+                  <div className="w-14 h-14 rounded-xl bg-zinc-800 flex items-center justify-center shrink-0">
                     <Music2 className="w-4 h-4 text-zinc-600" />
                   </div>
                 )}
@@ -228,7 +228,7 @@ export const LastfmCard = () => {
             className="group block p-3 rounded-lg border border-zinc-800 bg-zinc-900/50 h-[104px]"
           >
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-violet-500 to-pink-500 flex items-center justify-center shrink-0 shadow-md">
+              <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-violet-500 to-pink-500 flex items-center justify-center shrink-0 shadow-md">
                 <span className="text-xs font-bold text-white">BWU</span>
               </div>
               <div className="flex flex-col overflow-hidden min-w-0">
