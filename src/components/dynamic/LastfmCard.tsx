@@ -86,7 +86,7 @@ export const LastfmCard = () => {
           )}
 
           {/* Now Playing — compact horizontal */}
-          <div className="relative overflow-hidden rounded-lg border border-zinc-800 bg-zinc-900/50 min-h-[102px]">
+          <div className="relative overflow-hidden rounded-lg border border-zinc-800 bg-zinc-900/50 min-h-[94px]">
             <AnimatePresence mode="wait">
               {currentTrack ? (
                 <motion.a
@@ -143,7 +143,7 @@ export const LastfmCard = () => {
                     <span className="block text-xs text-zinc-500 truncate">
                       {currentTrack.artistName}
                     </span>
-                    <div className="mt-1.5 flex items-center gap-2 text-[11px] text-zinc-500">
+                    <div className="mt-1 flex items-center gap-2 text-[10px] text-zinc-500">
                       <span className="px-1.5 py-0.5 rounded border border-zinc-700/70 bg-zinc-800/70 uppercase tracking-wide">
                         {isPlaying ? "Live" : "Recent"}
                       </span>
@@ -186,7 +186,7 @@ export const LastfmCard = () => {
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3, delay: 0.05 }}
-              className="group block p-4 rounded-lg border border-zinc-800 bg-zinc-900/50 hover:bg-zinc-800 transition-colors min-h-[102px]"
+              className="group block p-3 rounded-lg border border-zinc-800 bg-zinc-900/50 hover:bg-zinc-800 transition-colors min-h-[94px]"
             >
               <div className="flex items-center gap-3">
                 {data.topTrack.albumArt ? (
@@ -211,7 +211,7 @@ export const LastfmCard = () => {
                   <span className="text-xs text-zinc-500 truncate">
                     {data.topTrack.artistName} · {data.topTrack.playcount} plays
                   </span>
-                  <div className="mt-1.5 flex items-center gap-2 text-[11px] text-zinc-500">
+                  <div className="mt-1 flex items-center gap-2 text-[10px] text-zinc-500">
                     <span className="px-1.5 py-0.5 rounded border border-zinc-700/70 bg-zinc-800/70">Top Track</span>
                     <span>Window: 7 days</span>
                   </div>
@@ -225,7 +225,7 @@ export const LastfmCard = () => {
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3, delay: 0.1 }}
-            className="group block p-4 rounded-lg border border-zinc-800 bg-zinc-900/50 min-h-[102px]"
+            className="group block p-3 rounded-lg border border-zinc-800 bg-zinc-900/50 min-h-[94px]"
           >
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-full bg-gradient-to-br from-violet-500 to-pink-500 flex items-center justify-center shrink-0 shadow-md">
@@ -239,7 +239,7 @@ export const LastfmCard = () => {
                 <span className="text-xs text-zinc-500 truncate">
                   {currentTrack?.artistName === "BoyWithUke" ? `Currently playing: ${currentTrack.songName}` : "Pinned pick"}
                 </span>
-                <div className="mt-1.5 flex items-center gap-2 text-[11px] text-zinc-500">
+                <div className="mt-1 flex items-center gap-2 text-[10px] text-zinc-500">
                   <span className="px-1.5 py-0.5 rounded border border-zinc-700/70 bg-zinc-800/70">Pinned</span>
                   <span>Always featured</span>
                 </div>
