@@ -29,7 +29,7 @@ export const GithubCard = ({ username = import.meta.env.VITE_GITHUB_USERNAME || 
             <span><strong>{data.user.followers}</strong> Followers</span>
           </div>
           
-          <div className="flex flex-col gap-3 flex-1 overflow-y-auto pr-2 custom-scrollbar">
+          <div className="flex flex-col gap-4 flex-1 overflow-y-auto custom-scrollbar">
             {data.repos.map((repo) => (
               <a
                 key={repo.id}
