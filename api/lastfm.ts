@@ -77,16 +77,27 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       const data = await topArtistsRes.json();
       const artist = data?.topartists?.artist?.[0];
       if (artist) {
-        const images: { '#text': string; size: string }[] = artist.image || [];
-        const img = images.find(i => i.size === 'extralarge') ||
-                    images.find(i => i.size === 'large') ||
-                    images.find(i => i.size === 'medium') ||
-                    images[0];
+        // Last.fm deprecated artist images in 2019 — fetch from Deezer instead
+        let artistImage = '';
+        try {
+          const deezerRes = await fetch(
+            `https://api.deezer.com/search/artist?q=${encodeURIComponent(artist.name)}&limit=1`
+          );
+          if (deezerRes.ok) {
+            const deezerData = await deezerRes.json();
+            artistImage = deezerData?.data?.[0]?.picture_xl ||
+                          deezerData?.data?.[0]?.picture_big ||
+                          deezerData?.data?.[0]?.picture_medium ||
+                          '';
+          }
+        } catch {
+          // silently fall back to no image
+        }
         topArtist = {
           name: artist.name,
           playcount: artist.playcount || '0',
           url: artist.url || '#',
-          image: img?.['#text'] || '',
+          image: artistImage,
         };
       }
     }
