@@ -228,17 +228,17 @@ export const LastfmCard = () => {
             className="group block p-3 rounded-lg border border-zinc-800 bg-zinc-900/50 h-[104px]"
           >
             <div className="flex items-center gap-3">
-              <div className="w-[76px] h-[76px] rounded-xl bg-gradient-to-br from-violet-500 to-pink-500 flex items-center justify-center shrink-0 shadow-md">
-                <span className="text-xs font-bold text-white">BWU</span>
-              </div>
+              <img
+                src="/assets/image.png"
+                alt="BoyWithUke"
+                loading="lazy"
+                className="w-[76px] h-[76px] rounded-xl object-cover shrink-0 shadow-md"
+              />
               <div className="flex flex-col overflow-hidden min-w-0">
                 <span className="text-[10px] text-zinc-500 font-semibold uppercase tracking-wider mb-0.5">
                   Favourite Artist
                 </span>
                 <span className="text-sm font-semibold text-zinc-100 truncate">BoyWithUke</span>
-                <span className="text-xs text-zinc-500 truncate">
-                  {currentTrack?.artistName === "BoyWithUke" ? `Currently playing: ${currentTrack.songName}` : "Pinned pick"}
-                </span>
                 <div className="mt-1 flex items-center gap-2 text-[10px] text-zinc-500">
                   <span className="px-1.5 py-0.5 rounded border border-zinc-700/70 bg-zinc-800/70">Pinned</span>
                   <span>Always featured</span>
