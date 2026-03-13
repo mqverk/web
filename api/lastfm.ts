@@ -8,16 +8,17 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const username = process.env.LASTFM_USERNAME || '';
 
     if (!apiKey || !username) {
-      return res.status(200).json({ nowPlaying: null, recentTrack: null, topTrack: null, topArtist: null, error: 'Missing LASTFM env vars' });
+      return res.status(200).json({ nowPlaying: null, recentTrack: null, topTrack: null, topArtist: null, userStats: null, error: 'Missing LASTFM env vars' });
     }
 
     const lfm = (method: string, extra = '') =>
       `${LASTFM_API_BASE}?method=${method}&user=${encodeURIComponent(username)}&api_key=${apiKey}&format=json${extra}`;
 
-    const [recentRes, topTracksRes, topArtistsRes] = await Promise.all([
+    const [recentRes, topTracksRes, topArtistsRes, userInfoRes] = await Promise.all([
       fetch(lfm('user.getrecenttracks', '&limit=1')),
       fetch(lfm('user.gettoptracks', '&period=7day&limit=1')),
       fetch(lfm('user.gettopartists', '&period=1month&limit=1')),
+      fetch(lfm('user.getinfo')),
     ]);
 
     let nowPlaying = null;
@@ -102,10 +103,22 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       }
     }
 
+    let userStats = null;
+    if (userInfoRes.ok) {
+      const data = await userInfoRes.json();
+      const u = data?.user;
+      if (u) {
+        userStats = {
+          scrobbles: parseInt(u.playcount || '0', 10),
+          artistCount: parseInt(u.artist_count || '0', 10),
+        };
+      }
+    }
+
     res.setHeader('Cache-Control', 'public, s-maxage=5, stale-while-revalidate=5');
-    return res.status(200).json({ nowPlaying, recentTrack, topTrack, topArtist });
+    return res.status(200).json({ nowPlaying, recentTrack, topTrack, topArtist, userStats });
   } catch (error: any) {
     console.error('Last.fm API error:', error?.message || error);
-    return res.status(200).json({ nowPlaying: null, recentTrack: null, topTrack: null, topArtist: null, error: error?.message || 'Internal Server Error' });
+    return res.status(200).json({ nowPlaying: null, recentTrack: null, topTrack: null, topArtist: null, userStats: null, error: error?.message || 'Internal Server Error' });
   }
 }

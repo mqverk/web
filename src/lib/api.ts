@@ -84,6 +84,7 @@ export interface LastfmData {
     recentTrack?: LastfmTrack | null;
     topTrack?: LastfmTopTrack | null;
     topArtist?: LastfmArtist | null;
+    userStats?: { scrobbles: number; artistCount: number } | null;
     error?: string;
 }
 

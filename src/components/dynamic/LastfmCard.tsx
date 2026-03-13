@@ -64,6 +64,14 @@ export const LastfmCard = () => {
         <span className="text-sm font-medium">Music</span>
       </div>
 
+      {/* Stats row */}
+      {!loading && data?.userStats && (
+        <div className="flex gap-4 text-xs text-zinc-400">
+          <span><strong className="text-zinc-300">{data.userStats.scrobbles.toLocaleString()}</strong> Scrobbles</span>
+          <span><strong className="text-zinc-300">{data.userStats.artistCount.toLocaleString()}</strong> Artists</span>
+        </div>
+      )}
+
       {/* Now Playing — compact horizontal */}
       <div className="relative overflow-hidden rounded-xl border border-zinc-800 bg-zinc-900/50">
         <AnimatePresence mode="wait">
