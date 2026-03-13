@@ -189,7 +189,7 @@ export const LastfmCard = () => {
           )}
           <div className="flex flex-col overflow-hidden w-full min-w-0">
             <span className="text-[10px] text-zinc-500 font-semibold uppercase tracking-wider">
-              Most Listened This Week
+              Most Listened Artist
             </span>
             <span className="text-xs font-medium text-zinc-300 truncate">
               {data.topTrack.songName}
